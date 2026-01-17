@@ -1,0 +1,191 @@
+@use "../styles/variables" as *;
+
+.container {
+  min-height: 100vh;
+  background-color: $white;
+  padding: 80px 48px 96px;
+
+  @media (max-width: 768px) {
+    padding: 64px 24px 72px;
+  }
+}
+
+.inner {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.header {
+  max-width: 520px;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-family: $font-primary;
+  font-size: clamp(44px, 7vw, 72px);
+  font-weight: 600;
+  color: $brown;
+  margin: 0 0 16px;
+  text-transform: lowercase;
+}
+
+.subtitle {
+  font-family: $font-mono;
+  font-size: 12px;
+  line-height: 1.7;
+  color: $light-brown;
+  margin: 0;
+}
+
+.list {
+  border-bottom: 1px solid $cream;
+}
+
+.row {
+  border-top: 1px solid $cream;
+}
+
+.rowTop {
+  display: grid;
+  grid-template-columns: 120px 1fr minmax(220px, 280px) 40px;
+  column-gap: 16px;
+  align-items: center;
+}
+
+.rowButton {
+  grid-column: 1 / 4;
+  display: grid;
+  grid-template-columns: 120px 1fr minmax(220px, 280px);
+  column-gap: 16px;
+  align-items: center;
+  width: 100%;
+  padding: 22px 0;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+
+  &:focus-visible {
+    outline: 2px solid rgba($dark-brown, 0.3);
+    outline-offset: 4px;
+  }
+}
+
+.code {
+  font-family: $font-mono;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $light-brown;
+}
+
+.name {
+  font-family: $font-primary;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 600;
+  color: $brown;
+}
+
+.roleBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  font-family: $font-mono;
+  text-align: left;
+}
+
+.role {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $brown;
+}
+
+.email {
+  font-size: 12px;
+  color: $light-brown;
+}
+
+.linkedin {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background-color: $dark-brown;
+  color: $white;
+  font-family: $font-mono;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: lowercase;
+  text-decoration: none;
+}
+
+.details {
+  height: 0;
+  overflow: hidden;
+}
+
+.detailsInner {
+  display: grid;
+  grid-template-columns: 120px 1fr minmax(220px, 280px) 40px;
+  column-gap: 16px;
+  padding: 0 0 26px;
+  opacity: 0;
+}
+
+.description {
+  grid-column: 2 / 3;
+  max-width: 520px;
+  font-family: $font-mono;
+  font-size: 12px;
+  line-height: 1.7;
+  color: $brown;
+  margin: 0;
+}
+
+.dots {
+  grid-column: 4 / 5;
+  justify-self: end;
+  align-self: end;
+  opacity: 0.5;
+}
+
+@media (max-width: 900px) {
+  .rowTop {
+    grid-template-columns: 1fr 32px;
+  }
+
+  .rowButton {
+    grid-column: 1 / 2;
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+  }
+
+  .detailsInner {
+    grid-template-columns: 1fr 32px;
+    row-gap: 12px;
+  }
+
+  .description {
+    grid-column: 1 / 2;
+  }
+
+  .dots {
+    grid-column: 2 / 3;
+  }
+}
+
+@media (max-width: 600px) {
+  .rowButton {
+    padding: 18px 0;
+  }
+
+  .roleBlock {
+    gap: 4px;
+  }
+}
