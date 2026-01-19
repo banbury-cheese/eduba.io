@@ -1,0 +1,224 @@
+@use "../styles/variables" as *;
+
+.section {
+  position: relative;
+  background-color: $white;
+}
+
+// The Scroll Track - determines the scroll length
+.track {
+  height: 350vh; // Enough space to scrub through animations
+  position: relative;
+}
+
+// The Fixed Stage - stays pinned while we scroll the track
+.stickyViewport {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  // max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 0px;
+  gap: 60px;
+  background-color: $white;
+}
+
+// Left side - Fixed Wheel
+.wheelSide {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: $skin;
+  // Make sure wheel stays behind if cards overlap (though they are in diff cols)
+  z-index: 1;
+}
+
+.wheelContent {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.title {
+  font-size: clamp(24px, 2.8vw, 48px);
+  font-weight: 600;
+  font-family: $font-primary;
+  color: $dark-brown;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: clamp(14px, 1vw, 18px);
+  color: $light-brown;
+  line-height: 1.6;
+  font-family: $font-mono;
+}
+
+.wheelContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.wheelSvg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+// Wheel Elements
+.wheelGroup {
+  transform-origin: center;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.3;
+  transform: scale(0.95);
+  cursor: pointer;
+
+  &.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.wheelPath {
+  transition: fill 0.4s ease;
+}
+
+.wheelLabel {
+  font-size: 14px;
+  font-weight: 800;
+  // letter-spacing: 2px;
+  fill: $dark-brown;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.wheelSubLabel {
+  font-size: 14px;
+  font-weight: 100;
+  // letter-spacing: 2px;
+  fill: $dark-brown;
+  pointer-events: none;
+  font-family: $font-primary;
+}
+
+.nodeLabel {
+  font-size: 10px;
+  fill: $text-dark;
+  font-family: $font-mono;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: all 0.4s ease;
+
+  .active & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Connectors
+.connector1,
+.connector2,
+.connector3 {
+  opacity: 1;
+  // Stroke styles are handled inline/SVG attributes mostly,
+  // but we ensure they are ready for GSAP style overrides
+  will-change: stroke-dashoffset;
+}
+
+// Right side - Cards
+.cardsSide {
+  position: relative;
+  height: 100%;
+  // overflow: hidden; // Keep cards inside
+}
+
+.card {
+  position: absolute;
+  width: 100%;
+  // Start mainly off-screen or positioned by JS
+  will-change: transform, opacity;
+  background: $white;
+  padding-bottom: 40px;
+
+  // Card Visuals
+  display: flex;
+  flex-direction: column;
+
+  // Add a pseudo-element for the top border/separator if needed
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: rgba($dark-brown, 0.15);
+    margin-bottom: 24px;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 24px;
+  cursor: pointer;
+}
+
+.sectionNumber {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: $light-brown;
+  font-family: $font-primary;
+  min-width: 24px;
+}
+
+.sectionTitle {
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 500;
+  font-family: $font-primary;
+  color: $dark-brown;
+  line-height: 1.2;
+}
+
+.sectionBody {
+  overflow: hidden; // For collapse animation
+  // height will be animated
+}
+
+.sectionDescription {
+  font-size: 16px;
+  color: $text-dark;
+  line-height: 1.7;
+  max-width: 480px;
+  font-family: $font-mono;
+  margin-bottom: 32px;
+  opacity: 0.9;
+}
+
+.consultButton {
+  align-self: flex-start;
+  padding: 12px 24px;
+  background-color: transparent;
+  color: $dark-brown;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid rgba($dark-brown, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $dark-brown;
+    color: $white;
+  }
+}
