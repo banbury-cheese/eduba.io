@@ -1,0 +1,190 @@
+@use "../../styles/variables" as *;
+
+.page {
+  background-color: $skin;
+  color: $dark-brown;
+  min-height: 100%;
+  padding: 40px 48px 80px;
+  font-family: $font-primary;
+}
+
+.header {
+  border-bottom: 1px dashed rgba($dark-brown, 0.25);
+  padding-bottom: 28px;
+  margin-bottom: 32px;
+}
+
+.kicker {
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba($dark-brown, 0.7);
+}
+
+.title {
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.05;
+  margin: 16px 0 12px;
+}
+
+.subtitle {
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 640px;
+  color: rgba($dark-brown, 0.8);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.section {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 32px;
+  padding: 28px 0;
+  border-bottom: 1px dashed rgba($dark-brown, 0.25);
+}
+
+.sectionMeta {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.sectionSlash {
+  opacity: 0.5;
+}
+
+.sectionBody {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: $font-mono;
+}
+
+.input,
+.textarea,
+.fileInput {
+  border: 1px solid rgba($dark-brown, 0.2);
+  background: $white;
+  padding: 12px 14px;
+  border-radius: 6px;
+  font-family: $font-primary;
+  font-size: 14px;
+  color: $dark-brown;
+}
+
+.textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.submitButton {
+  background-color: $dark-brown;
+  color: $white;
+  padding: 14px 28px;
+  border-radius: 6px;
+  font-family: $font-mono;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba($dark-brown, 0.2);
+}
+
+.helper {
+  font-size: 12px;
+  color: rgba($dark-brown, 0.7);
+  max-width: 420px;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: $font-mono;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+}
+
+.resultLabel {
+  color: rgba($dark-brown, 0.6);
+}
+
+.resultLink {
+  font-family: $font-primary;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 14px;
+  color: $dark-brown;
+  text-decoration: underline;
+}
+
+.error {
+  color: #9b2f33;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding: 32px 28px 70px;
+  }
+
+  .section {
+    grid-template-columns: 1fr;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 28px 20px 60px;
+  }
+}
