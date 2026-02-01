@@ -1,4 +1,4 @@
-# Eduba Sector Agent (Python)
+ # Eduba Sector Agent (Python)
 
 Generates a custom sector page payload from chat + docs + links, applies pricing guardrails, and auto‑publishes to Sanity.
 

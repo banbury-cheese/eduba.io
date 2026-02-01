@@ -25,6 +25,46 @@ def fetch_sector_slugs(
     return slugs
 
 
+def fetch_sector_by_slug(
+    project_id: str,
+    dataset: str,
+    api_version: str,
+    token: str,
+    slug: str,
+) -> dict | None:
+    query = (
+        '*[_type == "sector" && slug.current == $slug][0]'
+        '{'
+        '"slug": slug.current,'
+        'title,'
+        'pageIndex,'
+        'pageTag,'
+        'hero,'
+        'consulting,'
+        'whyUs,'
+        'services,'
+        'methodology,'
+        'engagement,'
+        'faq,'
+        'cta'
+        '}'
+    )
+    url = f"https://{project_id}.api.sanity.io/v{api_version}/data/query/{dataset}"
+    headers = {"Authorization": f"Bearer {token}"}
+    response = requests.get(
+        url,
+        headers=headers,
+        params={"query": query, "$slug": f"\"{slug}\""},
+        timeout=30,
+    )
+    if not response.ok:
+        raise RuntimeError(
+            f"Sanity query failed: {response.status_code} {response.text}"
+        )
+    data = response.json()
+    return data.get("result")
+
+
 def publish_sector(
     project_id: str,
     dataset: str,

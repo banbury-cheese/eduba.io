@@ -9,8 +9,10 @@ from agent.config import Settings
 from agent.ingest import Source, gather_sources, truncate_sources
 from agent.openai_client import OpenAIClient
 from agent.pricing import apply_price_guardrails
-from agent.prompts import SYSTEM_PROMPT, USER_PROMPT_TEMPLATE
-from agent.sanity_client import fetch_sector_slugs, publish_sector
+import json
+
+from agent.prompts import EDIT_PROMPT_TEMPLATE, SYSTEM_PROMPT, USER_PROMPT_TEMPLATE
+from agent.sanity_client import fetch_sector_by_slug, fetch_sector_slugs, publish_sector
 
 
 def slugify(value: str) -> str:
@@ -81,6 +83,86 @@ def generate_sector_payload(agent_input: AgentInput, settings: Settings) -> dict
     payload = apply_price_guardrails(payload)
     payload = add_keys(payload)
 
+    return payload
+
+
+@dataclass
+class EditInput:
+    slug: str
+    sector_label: str
+    instructions: str
+    context: str
+    files: List[str]
+    links: List[str]
+
+
+def strip_keys(items: list[dict]) -> list[dict]:
+    cleaned = []
+    for item in items:
+        if isinstance(item, dict):
+            cleaned.append({k: v for k, v in item.items() if k != "_key"})
+        else:
+            cleaned.append(item)
+    return cleaned
+
+
+def normalize_existing(payload: dict, slug: str) -> dict:
+    payload = dict(payload)
+    payload["slug"] = payload.get("slug") or slug
+    for section in ("consulting", "services", "engagement"):
+        if isinstance(payload.get(section), dict):
+            cards = payload[section].get("cards", [])
+            payload[section]["cards"] = strip_keys(cards)
+    if isinstance(payload.get("whyUs"), dict):
+        payload["whyUs"]["items"] = strip_keys(payload["whyUs"].get("items", []))
+    if isinstance(payload.get("methodology"), dict):
+        payload["methodology"]["steps"] = strip_keys(
+            payload["methodology"].get("steps", [])
+        )
+    if isinstance(payload.get("faq"), dict):
+        payload["faq"]["items"] = strip_keys(payload["faq"].get("items", []))
+    return payload
+
+
+def generate_updated_payload(edit_input: EditInput, settings: Settings) -> dict:
+    sources = gather_sources(edit_input.files, edit_input.links)
+    sources = truncate_sources(sources, max_chars=5000)
+    sources_summary = build_sources_summary(sources)
+
+    existing = fetch_sector_by_slug(
+        project_id=settings.sanity_project_id,
+        dataset=settings.sanity_dataset,
+        api_version=settings.sanity_api_version,
+        token=settings.sanity_api_token,
+        slug=edit_input.slug,
+    )
+    if not existing:
+        raise ValueError(f"Sector not found for slug: {edit_input.slug}")
+
+    normalized = normalize_existing(existing, edit_input.slug)
+    sector_label = edit_input.sector_label or normalized.get("title") or "Sector"
+    existing_json = json.dumps(normalized, indent=2)
+
+    prompt = EDIT_PROMPT_TEMPLATE.format(
+        slug=edit_input.slug,
+        sector_label=sector_label,
+        instructions=edit_input.instructions,
+        company_context=edit_input.context or "(no additional context)",
+        sources_summary=sources_summary,
+        existing_json=existing_json,
+    )
+
+    client = OpenAIClient(
+        api_key=settings.openai_api_key,
+        model=settings.openai_model,
+        temperature=settings.openai_temperature,
+        max_output_tokens=settings.max_output_tokens,
+    )
+
+    payload = client.generate_json(SYSTEM_PROMPT, prompt)
+    payload["slug"] = edit_input.slug
+    payload = apply_price_guardrails(payload)
+    payload = add_keys(payload)
     return payload
 
 

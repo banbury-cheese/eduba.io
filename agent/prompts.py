@@ -82,3 +82,29 @@ Rules:
 - Use the provided slug and target sector in labels/titles.
 - Return only JSON. No markdown.
 """
+
+EDIT_PROMPT_TEMPLATE = """
+You are editing an existing sector page for Eduba.
+
+Target slug: {slug}
+Sector label: {sector_label}
+
+Edit instructions:
+{instructions}
+
+Company context (from chat):
+{company_context}
+
+Sources summary:
+{sources_summary}
+
+Current sector JSON:
+{existing_json}
+
+Requirements:
+- Return the FULL JSON document in the same schema (include all fields).
+- Keep the slug unchanged and use the same label structure.
+- Preserve the number of items per section.
+- Apply edits to improve fit for the company context.
+- Return only JSON. No markdown.
+"""
