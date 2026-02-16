@@ -1,4 +1,5 @@
 @use "../styles/variables" as *;
+@use "../styles/breakpoints" as *;
 
 .frame {
   position: fixed;
@@ -9,6 +10,10 @@
   background-color: $dark-brown;
   height: 100vh;
   overflow: hidden;
+
+  @include media("<=phone") {
+    padding: 5px;
+  }
 }
 
 // Top Navigation
@@ -16,14 +21,30 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   padding: 0px 2px 7px 3px;
   color: $cream;
+
+  @include media("<=tablet") {
+    padding: 2px 2px 8px;
+  }
+
+  @include media("<=phone") {
+    padding: 2px 0 6px;
+    gap: 6px;
+  }
 }
 
 .logoSection {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
+
+  @include media("<=phone") {
+    gap: 6px;
+    margin-left: 4px;
+  }
 }
 
 .logoIcon {
@@ -37,60 +58,157 @@
     width: 100%;
     height: 100%;
   }
+
+  @include media("<=phone") {
+    height: 16px;
+  }
 }
 
 .logoText {
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
+  white-space: nowrap;
+
+  @include media("<=tablet") {
+    font-size: 11px;
+  }
+
+  @include media("<=phone") {
+    font-size: 11px;
+  }
 }
 
 .navLinks {
   display: flex;
   align-items: center;
   gap: 14px;
+
+  @include media("<=tablet") {
+    gap: 8px;
+  }
+
+  @include media("<=phone") {
+    gap: 6px;
+  }
 }
 
 .readingsLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
+  color: inherit;
+  text-decoration: none;
   transition: opacity $transition-fast;
 
   &:hover {
     opacity: 0.7;
   }
+
+  @include media("<=tablet") {
+    width: 32px;
+    height: 28px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: $light-pink;
+    color: $dark-brown;
+    display: none;
+  }
+}
+
+.readingsIcon {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+
+  @include media("<=tablet") {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.navLabel {
+  display: inline;
+
+  @include media("<=tablet") {
+    display: none;
+  }
 }
 
 .navArrows {
-  position: absolute;
+  position: relative;
   width: 100%;
-  border: 2px solid black;
+  // border: 2px solid black;
   top: 40px;
-  z-index: 1000;
+  // z-index: 1000;
   display: flex;
   justify-content: space-between;
-
-  svg {
-    width: fit-content;
-    height: 100%;
-  }
 }
 
 .navArrowLeft {
   position: absolute;
-  top: 45px;
-  left: 20px;
-  height: 24px;
-  z-index: 1000;
+  top: -6%;
+  left: -15px;
+  height: 25px;
+  // z-index: 1000;
+
+  svg {
+    width: 100%;
+    height: 100% !important;
+  }
+
+  @include media("<=tablet") {
+    top: -30%;
+    left: 0px;
+    height: 16px;
+  }
+
+  @include media("<=phone") {
+    top: -30%;
+    left: 0px;
+    height: 16px;
+  }
+
+  @include media(">=desktop") {
+    top: -6%;
+    left: -3%;
+    height: 25px;
+  }
 }
 
 .navArrowRight {
   position: absolute;
-  top: 45px;
-  right: 20px;
-  height: 24px;
-  z-index: 1000;
+  top: -6%;
+  right: -15px;
+  height: 25px;
+  // z-index: 1000;
+
+  svg {
+    width: 100%;
+    height: 100% !important;
+  }
+
+  @include media("<=tablet") {
+    top: -30%;
+    right: 8px;
+    height: 16px;
+  }
+
+  @include media("<=phone") {
+    top: -30%;
+    right: 0px;
+    height: 16px;
+  }
+
+  @include media(">=desktop") {
+    top: -6%;
+    right: -3%;
+    height: 25px;
+  }
 }
 
 .chaptersButton {
@@ -104,6 +222,24 @@
   text-transform: uppercase;
   padding: 3px 12px;
   color: $dark-brown;
+  white-space: nowrap;
+
+  svg {
+    flex-shrink: 0;
+
+    @include media("<=tablet") {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  @include media("<=tablet") {
+    width: 32px;
+    height: 28px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 4px;
+  }
 }
 
 .navButtonPrimary {
@@ -120,6 +256,19 @@
     background-color: #25ca58;
     border-radius: 50%;
   }
+
+  @include media("<=tablet") {
+    width: auto;
+    height: 28px;
+    font-size: 10px;
+    gap: 6px;
+    padding: 0 10px;
+  }
+
+  @include media("<=phone") {
+    min-height: 28px;
+    padding: 0 8px;
+  }
 }
 
 // Main Content Container
@@ -129,6 +278,14 @@
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
+
+  @include media("<=tablet") {
+    padding-bottom: 84px;
+  }
+
+  @include media("<=phone") {
+    padding-bottom: 72px;
+  }
 
   // Custom scrollbar
   &::-webkit-scrollbar {
@@ -148,6 +305,14 @@
 
 .content {
   min-height: 100%;
+
+  @include media("<=tablet") {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 90vh;
+    margin-bottom: 84px;
+  }
 }
 
 // Hero Section
@@ -159,19 +324,55 @@
   align-items: flex-start;
   padding-top: 3vh;
   padding-bottom: 2vh;
+  padding-inline: 6px;
   border-bottom: 1px solid $cream;
+
+  @include media("<=tablet") {
+    margin-bottom: 8px;
+    padding-top: 2.2vh;
+    padding-bottom: 1.6vh;
+    padding-inline: 8px;
+  }
+
+  @include media("<=phone") {
+    margin-bottom: 6px;
+    padding-top: 1.4vh;
+    padding-bottom: 1.1vh;
+    padding-inline: 6px;
+  }
 }
 
 .heroTitle {
+  position: relative;
   font-size: clamp(120px, 20vw, 280px);
   font-weight: 700;
   color: $dark-brown;
   line-height: 0.85;
   letter-spacing: -0.02em;
   width: 94%;
+  margin: 0;
+
   svg {
     width: 100%;
-    height: fit-content;
+    height: auto;
+    display: block;
+  }
+
+  @include media("<=desktop") {
+    width: 97%;
+  }
+
+  @include media("<=tablet") {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  @include media("<=phone") {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: clamp(72px, 24vw, 120px);
   }
   // Leave space for custom display font
   // font-family: $font-display;
@@ -181,11 +382,29 @@
 .readings {
   display: flex;
   gap: 24px;
+  // flex: 1;
   justify-content: space-between;
   padding: 0px 20px;
   margin-bottom: $section-gap;
   flex-wrap: wrap;
   margin-top: 20px;
+
+  @include media("<=tablet") {
+    padding: 0 14px;
+    margin-top: 12px;
+    margin-bottom: 14px;
+    gap: 14px;
+  }
+
+  @include media("<=phone") {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 22px 14px;
+    padding: 0 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }
 
 .readingCard {
@@ -193,6 +412,11 @@
   align-items: flex-start;
   gap: 10px;
   max-width: 220px;
+
+  @include media("<=phone") {
+    max-width: none;
+    gap: 6px;
+  }
 }
 
 .bookmarkIcon {
@@ -206,6 +430,13 @@
     height: 100%;
     fill: none;
   }
+
+  @include media("<=phone") {
+    width: 11px;
+    height: 11px;
+    margin-top: 0;
+    margin-top: -3px;
+  }
 }
 
 .readingTitle {
@@ -214,16 +445,40 @@
   line-height: 1.4;
   color: $text-dark;
   font-weight: 500;
+
+  @include media("<=tablet") {
+    font-size: 9px;
+    line-height: 1.25;
+  }
+
+  @include media("<=phone") {
+    font-size: 11px;
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+  }
 }
 
 // Chapters Section
 .chapters {
   margin-top: 12vw;
+
+  @include media("<=tablet") {
+    margin-top: auto;
+    padding-top: 10px;
+  }
+
+  @include media("<=phone") {
+    padding-top: 8px;
+  }
 }
 
 .chaptersHeader {
   text-align: center;
   margin-bottom: 20px;
+
+  @include media("<=phone") {
+    margin-bottom: 10px;
+  }
 }
 
 .chaptersTitle {
@@ -243,11 +498,23 @@
   gap: 16px;
   padding: 0px 20px;
 
-  @media (max-width: 1024px) {
+  @include media("<=desktop") {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (max-width: 640px) {
+  @include media("<=tablet") {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+  @include media("<=phone") {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 0 8px;
+  }
+
+  @include media("<=small") {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -264,10 +531,21 @@
   aspect-ratio: 3 / 1;
   border-radius: 2px;
   font-weight: 600;
+  color: $brown;
 
   &:hover {
     background: $dark-brown;
     color: $cream;
+  }
+
+  @include media("<=tablet") {
+    padding: 10px 8px;
+    aspect-ratio: 1 / 0.9;
+  }
+
+  @include media("<=phone") {
+    padding: 8px 6px;
+    aspect-ratio: 1 / 0.85;
   }
 }
 
@@ -275,19 +553,42 @@
   font-size: 12px;
   text-transform: uppercase;
   line-height: 1.4;
+
+  @include media("<=tablet") {
+    font-size: 9px;
+    line-height: 1.2;
+  }
+
+  @include media("<=phone") {
+    font-size: 8px;
+    line-height: 1.15;
+  }
 }
 
 // Bottom Navigation
 .bottomNav {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
+  width: auto;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 19px 30px 20px 20px;
+  gap: 12px;
+  padding: 19px 20px 20px;
   border-radius: $radius-sm;
   pointer-events: none;
+
+  @include media("<=tablet") {
+    padding: 12px;
+  }
+
+  @include media("<=phone") {
+    padding: 10px 8px;
+    align-items: flex-end;
+  }
 }
 
 .bookCallButton {
@@ -306,6 +607,10 @@
   background-color: $white;
   border: 1px solid $dark-brown;
   padding: 5px;
+
+  @include media("<=phone") {
+    padding: 3px;
+  }
 }
 
 .bookCallInner {
@@ -319,6 +624,20 @@
   div {
     padding: 5px 28px 5px 5px;
   }
+
+  @include media("<=tablet") {
+    div {
+      padding: 4px 16px 4px 4px;
+    }
+  }
+
+  @include media("<=phone") {
+    padding: 1px;
+
+    div {
+      padding: 3px 10px 3px 3px;
+    }
+  }
 }
 
 .bookCallTitle {
@@ -326,6 +645,14 @@
   text-transform: uppercase;
   font-weight: 700;
   color: $dark-brown;
+
+  @include media("<=tablet") {
+    font-size: 10px;
+  }
+
+  @include media("<=phone") {
+    font-size: 9px;
+  }
 }
 
 .bookCallSubtitle {
@@ -335,6 +662,11 @@
   color: $light-brown;
   margin-top: 2px;
   font-family: $font-primary;
+
+  @include media("<=phone") {
+    font-size: 5px;
+    letter-spacing: 0.8px;
+  }
 }
 
 .bookCallArrow {
@@ -346,6 +678,10 @@
   svg {
     width: 100%;
     height: 100%;
+  }
+
+  @include media("<=phone") {
+    height: 13px;
   }
 }
 
@@ -381,6 +717,17 @@
   svg {
     display: block;
   }
+
+  @include media("<=phone") {
+    margin-bottom: -2px;
+    margin-right: -12px;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      display: none;
+    }
+  }
 }
 
 .ctaOuter {
@@ -393,6 +740,14 @@
   background-color: $dark-brown;
   border: 1px solid $light-brown;
   padding: 8px 20px;
+
+  @include media("<=tablet") {
+    padding: 6px 14px;
+  }
+
+  @include media("<=phone") {
+    padding: 5px 10px;
+  }
 }
 
 .ctaText {
@@ -401,6 +756,15 @@
   text-transform: uppercase;
   font-weight: 700;
   color: $cream;
+
+  @include media("<=tablet") {
+    font-size: 10px;
+  }
+
+  @include media("<=phone") {
+    font-size: 9px;
+    letter-spacing: 0.8px;
+  }
 }
 
 // Spacer for scrolling content

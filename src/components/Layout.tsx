@@ -33,16 +33,31 @@ export function Layout({ children }: LayoutProps) {
           <span className={styles.logoText}>The Faces of Interface</span>
         </div>
         <div className={styles.navLinks}>
-          <a href="#" className={styles.readingsLink}>
-            Readings
+          <a href="#" className={styles.readingsLink} aria-label="Readings">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="11"
+              height="11"
+              viewBox="0 0 11 11"
+              fill="none"
+              className={styles.readingsIcon}
+              aria-hidden="true"
+            >
+              <path
+                d="M1.375 1.375H4.8125V9.625H1.375V1.375ZM6.1875 1.375H9.625V9.625H6.1875V1.375Z"
+                fill="currentColor"
+              />
+            </svg>
+            <span className={styles.navLabel}>Readings</span>
           </a>
-          <button className={styles.chaptersButton}>
+          <button className={styles.chaptersButton} type="button" aria-label="Chapters">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="11"
               height="9"
               viewBox="0 0 11 9"
               fill="none"
+              aria-hidden="true"
             >
               <g clipPath="url(#clip0_237_190)">
                 <path
@@ -116,19 +131,19 @@ export function Layout({ children }: LayoutProps) {
                 </clipPath>
               </defs>
             </svg>
-            <span>Chapters</span>
+            <span className={styles.navLabel}>Chapters</span>
           </button>
-          <button className={styles.navButtonPrimary}>
+          <button className={styles.navButtonPrimary} type="button">
             <span className={styles.dot}></span>
             <span>Grab a Seat</span>
           </button>
         </div>
-        <div className={styles.navArrowLeft}>
+        {/* <div className={styles.navArrowLeft}>
           <ArrowCorner />
         </div>
         <div className={styles.navArrowRight}>
           <ArrowCorner mirror />
-        </div>
+        </div> */}
       </nav>
 
       {/* Main Scrollable Content */}
@@ -136,7 +151,7 @@ export function Layout({ children }: LayoutProps) {
 
       {/* Bottom Navigation */}
       <nav className={styles.bottomNav}>
-        <button className={styles.bookCallButton}>
+        <button className={styles.bookCallButton} type="button">
           <div className={styles.bookCallOuter}>
             <div className={styles.bookCallInner}>
               <div className={styles.bookCallInner}>
@@ -180,7 +195,7 @@ export function Layout({ children }: LayoutProps) {
           </div>
         </button>
 
-        <button className={styles.ctaButton}>
+        <button className={styles.ctaButton} type="button">
           <div className={styles.ctaCornerArrow}>
             <ArrowCorner size={16} mirror />
           </div>

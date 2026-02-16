@@ -25,6 +25,12 @@ export function HeroSection() {
       {/* Hero Section */}
       <section className={styles.hero}>
         <h1 className={styles.heroTitle}>
+          <div className={styles.navArrowLeft}>
+            <ArrowCorner />
+          </div>
+          <div className={styles.navArrowRight}>
+            <ArrowCorner mirror />
+          </div>
           <svg
             width="1406"
             height="313"
