@@ -55,7 +55,7 @@ Add env vars to `.env.local`:
 OPENAI_API_KEY=...
 OPENAI_MODEL=gpt-4o-mini
 OPENAI_TEMPERATURE=0.4
-OPENAI_MAX_OUTPUT_TOKENS=1800
+OPENAI_MAX_OUTPUT_TOKENS=5000
 SANITY_PROJECT_ID=...
 SANITY_DATASET=production
 SANITY_API_VERSION=2023-08-01
@@ -79,5 +79,6 @@ Add `--no-publish` to print the JSON without sending to Sanity.
 ## Notes
 
 - Pricing guardrails are intentionally static for now.
+- If large JSON outputs are getting cut off, increase `OPENAI_MAX_OUTPUT_TOKENS` (the client now auto-retries once with a larger cap when JSON is truncated).
 - Slug ordering drives `pageIndex` by current Sanity order.
 - For the web form, `/create-page` calls the same CLI via the API route.

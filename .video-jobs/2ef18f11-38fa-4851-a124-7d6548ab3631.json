@@ -1,0 +1,288 @@
+{
+  "id": "2ef18f11-38fa-4851-a124-7d6548ab3631",
+  "status": "ready",
+  "createdAt": "2026-02-07T18:38:30.342Z",
+  "updatedAt": "2026-02-07T18:41:33.027Z",
+  "brief": {
+    "company": "Ring Power",
+    "sector": "Industrial Services",
+    "slug": "ringpower",
+    "context": "Test scenario: Ring Power is evaluating AI to improve sales + operations across equipment sales, rentals, parts, and service.\r\n\r\nPrimary goals:\r\n- Reduce quote turnaround time for complex equipment opportunities.\r\n- Improve service triage and dispatch prioritization.\r\n- Forecast parts demand and reduce stockout risk.\r\n- Increase first-time fix rate and technician productivity.\r\n\r\nConstraints:\r\n- Existing systems are fragmented across CRM/ERP/service tools.\r\n- Outputs must be auditable and reviewed by humans before high-impact decisions.\r\n- Strong requirement for governance, access control, and reliability.\r\n- Team wants internal capability transfer, not vendor lock-in.\r\n\r\nBuying audience:\r\nCOO, VP Service Operations, Head of Parts, IT Director.\r\n\r\nSuccess outcomes for this test:\r\n- 25-35% faster quote cycle\r\n- 10-15% higher first-time fix rate\r\n- 15-20% lower urgent parts shortages\r\n- Clear governance and rollout model across pilot -> scale",
+    "customPrompt": "Keep Eduba branding fixed. Make the video feel executive and practical. Use all 8 section scenes (hero, consulting, why-us, services, methodology, choice, faq, cta). Prioritize animated diagrams over decorative visuals: pipeline flow, decision matrix, rollout timeline, and model comparison chart. Use concise commercial language and concrete outcome framing.",
+    "links": [
+      "https://www.ringpower.com/about-us/our-story"
+    ],
+    "website": "https://www.ringpower.com/",
+    "include": [],
+    "exclude": [
+      "privacy",
+      "terms",
+      "login"
+    ],
+    "template": "eduba-core-v1",
+    "aspectRatio": "16:9",
+    "durationSec": 90
+  },
+  "revisions": [
+    {
+      "id": "5a5a3416-19a0-4ce9-a251-b3e96a0d321b",
+      "version": 1,
+      "createdAt": "2026-02-07T18:38:30.342Z",
+      "notes": "Initial draft | voiceover-timing auto-adjusted",
+      "script": {
+        "meta": {
+          "title": "Transforming Ring Power with AI Solutions",
+          "slug": "ringpower",
+          "company": "Ring Power",
+          "sector": "Industrial Services",
+          "template": "eduba-core-v1",
+          "aspectRatio": "16:9",
+          "durationSec": 80,
+          "ctaText": "Discover how AI can elevate your operations.",
+          "voiceoverEnabled": true,
+          "illustrationStyle": "animated diagrams"
+        },
+        "scenes": [
+          {
+            "id": "scene-hero",
+            "type": "hero",
+            "durationSec": 10,
+            "headline": "Unlock Efficiency with AI at Ring Power",
+            "subcopy": "Revolutionize your sales and operations with tailored AI solutions.",
+            "voiceoverScript": "At Ring Power, we harness AI to streamline your operations. Experience faster quotes and improved service delivery.",
+            "layoutVariant": "focus",
+            "illustrationPrompt": "Animated diagram showing a streamlined process flow for sales and operations.",
+            "diagram": {
+              "type": "pipeline",
+              "title": "AI-Driven Efficiency Pipeline",
+              "caption": "Transforming operations through AI.",
+              "nodes": [
+                {
+                  "label": "Sales",
+                  "value": "Faster Quotes",
+                  "detail": "Reduce turnaround time by 25-35%."
+                },
+                {
+                  "label": "Service",
+                  "value": "Improved Triage",
+                  "detail": "Enhance dispatch prioritization."
+                }
+              ]
+            },
+            "bullets": [],
+            "cards": []
+          },
+          {
+            "id": "scene-consulting",
+            "type": "consulting",
+            "durationSec": 10,
+            "headline": "Tailored Consulting for Your Needs",
+            "subcopy": "Our experts analyze your unique challenges to implement effective AI solutions.",
+            "voiceoverScript": "We provide customized consulting to identify your specific needs. Our team ensures solutions fit seamlessly into your existing systems.",
+            "layoutVariant": "stacked",
+            "illustrationPrompt": "Diagram illustrating a consulting process with steps for analysis and implementation.",
+            "diagram": {
+              "type": "cycle",
+              "title": "Consulting Process",
+              "caption": "From analysis to implementation.",
+              "nodes": [
+                {
+                  "label": "Assessment",
+                  "value": "Identify Needs",
+                  "detail": "Understand your challenges."
+                },
+                {
+                  "label": "Solution Design",
+                  "value": "Tailored Strategies",
+                  "detail": "Develop custom AI solutions."
+                }
+              ]
+            },
+            "bullets": [],
+            "cards": []
+          },
+          {
+            "id": "scene-why-us",
+            "type": "why-us",
+            "durationSec": 10,
+            "headline": "Why Choose Ring Power?",
+            "subcopy": "Proven track record in enhancing operational efficiency with AI.",
+            "voiceoverScript": "With years of industry experience, we ensure reliable and effective AI solutions tailored to your needs.",
+            "layoutVariant": "focus",
+            "illustrationPrompt": "Comparison chart highlighting Ring Power's strengths against competitors.",
+            "diagram": {
+              "type": "comparison",
+              "title": "Ring Power vs Competitors",
+              "caption": "Our advantages in AI implementation.",
+              "nodes": [
+                {
+                  "label": "Experience",
+                  "value": "20+ Years",
+                  "detail": "Expertise in industrial services."
+                },
+                {
+                  "label": "Customization",
+                  "value": "Tailored Solutions",
+                  "detail": "No one-size-fits-all."
+                }
+              ]
+            },
+            "bullets": [],
+            "cards": []
+          },
+          {
+            "id": "scene-services",
+            "type": "services",
+            "durationSec": 10,
+            "headline": "Comprehensive AI Services",
+            "subcopy": "From sales to service, our AI solutions cover all bases.",
+            "voiceoverScript": "Our services include AI-driven sales optimization, service triage, and parts demand forecasting. Maximize your efficiency.",
+            "layoutVariant": "stacked",
+            "illustrationPrompt": "Flowchart of services offered, showcasing sales, service, and parts management.",
+            "diagram": {
+              "type": "pipeline",
+              "title": "AI Service Offerings",
+              "caption": "End-to-end solutions for your operations.",
+              "nodes": [
+                {
+                  "label": "Sales Optimization",
+                  "value": "Faster Quotes",
+                  "detail": "Reduce cycle time."
+                },
+                {
+                  "label": "Service Management",
+                  "value": "Improved Triage",
+                  "detail": "Prioritize effectively."
+                }
+              ]
+            },
+            "bullets": [],
+            "cards": []
+          },
+          {
+            "id": "scene-methodology",
+            "type": "methodology",
+            "durationSec": 10,
+            "headline": "Proven Methodology for Success",
+            "subcopy": "Our structured approach ensures effective implementation and governance.",
+            "voiceoverScript": "We follow a clear methodology that emphasizes governance, access control, and reliability in AI deployment.",
+            "layoutVariant": "focus",
+            "illustrationPrompt": "Timeline showing the rollout phases from pilot to full-scale implementation.",
+            "diagram": {
+              "type": "timeline",
+              "title": "AI Implementation Timeline",
+              "caption": "From pilot to scale.",
+              "nodes": [
+                {
+                  "label": "Pilot Phase",
+                  "value": "Test Solutions",
+                  "detail": "Initial deployment."
+                },
+                {
+                  "label": "Full Scale",
+                  "value": "Wider Implementation",
+                  "detail": "Broaden usage across departments."
+                }
+              ]
+            },
+            "bullets": [],
+            "cards": []
+          },
+          {
+            "id": "scene-choice",
+            "type": "choice",
+            "durationSec": 10,
+            "headline": "Your Choice for AI Excellence",
+            "subcopy": "Select Ring Power for a partnership that prioritizes your needs.",
+            "voiceoverScript": "Choosing Ring Power means opting for a partner committed to your success. We ensure internal capability transfer without vendor lock-in.",
+            "layoutVariant": "stacked",
+            "illustrationPrompt": "Decision matrix showing options for partnership and internal capability transfer.",
+            "diagram": {
+              "type": "matrix",
+              "title": "Partnership Decision Matrix",
+              "caption": "Evaluate your options.",
+              "nodes": [
+                {
+                  "label": "Internal Capability",
+                  "value": "Yes",
+                  "detail": "No vendor lock-in."
+                },
+                {
+                  "label": "Governance",
+                  "value": "Strong",
+                  "detail": "Reliable oversight."
+                }
+              ]
+            },
+            "bullets": [],
+            "cards": []
+          },
+          {
+            "id": "scene-faq",
+            "type": "faq",
+            "durationSec": 10,
+            "headline": "Your Questions Answered",
+            "subcopy": "We address common concerns about AI implementation.",
+            "voiceoverScript": "Have questions? We provide clear answers about governance, reliability, and internal capability transfer.",
+            "layoutVariant": "focus",
+            "illustrationPrompt": "FAQ section with common questions and concise answers.",
+            "diagram": {
+              "type": "faq",
+              "title": "FAQ",
+              "caption": "Key concerns addressed.",
+              "nodes": [
+                {
+                  "label": "How reliable is the AI?",
+                  "value": "High",
+                  "detail": "Auditable outputs."
+                },
+                {
+                  "label": "What about governance?",
+                  "value": "Strong",
+                  "detail": "Access control in place."
+                }
+              ]
+            },
+            "bullets": [],
+            "cards": []
+          },
+          {
+            "id": "scene-cta",
+            "type": "cta",
+            "durationSec": 10,
+            "headline": "Ready to Transform?",
+            "subcopy": "Contact us to explore tailored AI solutions for your operations.",
+            "voiceoverScript": "Join us at Ring Power to leverage AI for operational excellence. Let's discuss your unique needs today.",
+            "layoutVariant": "focus",
+            "illustrationPrompt": "Call-to-action graphic encouraging contact and engagement.",
+            "diagram": {
+              "type": "cards",
+              "title": "Get in Touch",
+              "caption": "Start your AI journey.",
+              "nodes": [
+                {
+                  "label": "Contact Us",
+                  "value": "info@ringpower.com",
+                  "detail": "Reach out for a consultation."
+                },
+                {
+                  "label": "Visit Our Site",
+                  "value": "www.ringpower.com",
+                  "detail": "Learn more about our services."
+                }
+              ]
+            },
+            "bullets": [],
+            "cards": []
+          }
+        ]
+      }
+    }
+  ],
+  "selectedRevisionId": "5a5a3416-19a0-4ce9-a251-b3e96a0d321b",
+  "chat": [],
+  "output": {
+    "videoUrl": "/generated-videos/2ef18f11-38fa-4851-a124-7d6548ab3631-5a5a3416-19a.mp4",
+    "posterUrl": "/generated-videos/2ef18f11-38fa-4851-a124-7d6548ab3631-5a5a3416-19a.jpg"
+  }
+}

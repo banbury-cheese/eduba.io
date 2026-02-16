@@ -1,0 +1,411 @@
+{
+  "meta": {
+    "schemaVersion": 2,
+    "title": "Enhancing Heavy Equipment Operations with AI",
+    "slug": "ringpower",
+    "company": "Ring Power",
+    "sector": "Heavy Equipment Operations",
+    "template": "eduba-core-v1",
+    "aspectRatio": "16:9",
+    "durationSec": 60,
+    "ctaText": "Transform Your Operations Today",
+    "voiceoverEnabled": true,
+    "illustrationStyle": "executive"
+  },
+  "scenes": [
+    {
+      "id": "scene-hero",
+      "type": "hero",
+      "durationSec": 8,
+      "headline": "Revolutionize Your Heavy Equipment Operations",
+      "subcopy": "Unlock the potential of AI to enhance reliability and uptime.",
+      "voiceoverScript": "Imagine a world where your equipment runs seamlessly. With Eduba’s AI orchestration, that world is within reach.",
+      "layoutVariant": "stacked",
+      "illustrationPrompt": "Show heavy equipment in operation with AI overlays.",
+      "visualization": {
+        "componentId": "chart.kpi.cards",
+        "title": "Operational Efficiency Metrics",
+        "caption": "Key metrics before and after AI implementation.",
+        "themeVariant": "default",
+        "valueMode": "numeric",
+        "nodes": [],
+        "edges": [],
+        "laneLabels": [],
+        "categories": [],
+        "series": [
+          {
+            "id": "pre-ai",
+            "label": "Before AI",
+            "values": [30, 50, 20],
+            "rawValues": ["30%", "50%", "20%"]
+          },
+          {
+            "id": "post-ai",
+            "label": "After AI",
+            "values": [90, 95, 5],
+            "rawValues": ["90%", "95%", "5%"]
+          }
+        ],
+        "slices": [],
+        "points": [],
+        "items": []
+      },
+      "bullets": [],
+      "cards": []
+    },
+    {
+      "id": "scene-consulting",
+      "type": "consulting",
+      "durationSec": 8,
+      "headline": "Tailored Solutions for Your Needs",
+      "subcopy": "We analyze your operations to identify improvement areas.",
+      "voiceoverScript": "Our team collaborates with you to pinpoint inefficiencies. Together, we design a custom AI solution.",
+      "layoutVariant": "split",
+      "illustrationPrompt": "Show a team analyzing data with a focus on collaboration.",
+      "visualization": {
+        "componentId": "flow.pipeline",
+        "title": "Consultation Process",
+        "caption": "Steps to identify and implement solutions.",
+        "themeVariant": "accent",
+        "nodes": [
+          {
+            "id": "1",
+            "label": "Assessment",
+            "detail": "Evaluate current operations",
+            "lane": "Consultation"
+          },
+          {
+            "id": "2",
+            "label": "Design",
+            "detail": "Create tailored AI strategy",
+            "lane": "Consultation"
+          },
+          {
+            "id": "3",
+            "label": "Implementation",
+            "detail": "Deploy AI orchestration",
+            "lane": "Consultation"
+          }
+        ],
+        "edges": [
+          {
+            "id": "e1",
+            "source": "1",
+            "target": "2",
+            "label": "Next Step"
+          },
+          {
+            "id": "e2",
+            "source": "2",
+            "target": "3",
+            "label": "Next Step"
+          }
+        ],
+        "laneLabels": ["Consultation"],
+        "categories": [],
+        "series": [],
+        "slices": [],
+        "points": [],
+        "items": []
+      },
+      "bullets": [],
+      "cards": []
+    },
+    {
+      "id": "scene-why-us",
+      "type": "why-us",
+      "durationSec": 8,
+      "headline": "Why Choose Eduba?",
+      "subcopy": "Proven results and industry expertise set us apart.",
+      "voiceoverScript": "Our solutions deliver measurable ROI. Experience faster service turnaround and reduced downtime.",
+      "layoutVariant": "stacked",
+      "illustrationPrompt": "Highlight key differentiators in a competitive landscape.",
+      "visualization": {
+        "componentId": "chart.scatter.impactRisk",
+        "title": "Impact vs. Risk",
+        "caption": "Eduba's solutions outperform competitors.",
+        "themeVariant": "default",
+        "valueMode": "qualitative",
+        "nodes": [
+          {
+            "id": "eduba",
+            "label": "Eduba",
+            "detail": "High impact, low risk",
+            "lane": "Solutions"
+          },
+          {
+            "id": "competitor1",
+            "label": "Competitor A",
+            "detail": "Medium impact, medium risk",
+            "lane": "Solutions"
+          },
+          {
+            "id": "competitor2",
+            "label": "Competitor B",
+            "detail": "Low impact, high risk",
+            "lane": "Solutions"
+          }
+        ],
+        "edges": [],
+        "laneLabels": ["Solutions"],
+        "categories": [],
+        "series": [],
+        "slices": [],
+        "points": [],
+        "items": []
+      },
+      "bullets": [],
+      "cards": []
+    },
+    {
+      "id": "scene-services",
+      "type": "services",
+      "durationSec": 8,
+      "headline": "Comprehensive Service Offerings",
+      "subcopy": "From diagnostics to parts planning, we cover it all.",
+      "voiceoverScript": "Our AI-driven services enhance fleet management. Experience the difference in uptime and efficiency.",
+      "layoutVariant": "focus",
+      "illustrationPrompt": "Visualize a range of service offerings.",
+      "visualization": {
+        "componentId": "chart.bar.stacked",
+        "title": "Service Offerings Breakdown",
+        "caption": "Diverse services to optimize operations.",
+        "themeVariant": "muted",
+        "valueMode": "numeric",
+        "nodes": [],
+        "edges": [],
+        "laneLabels": [],
+        "categories": [],
+        "series": [
+          {
+            "id": "services",
+            "label": "Service Types",
+            "values": [40, 30, 20, 10],
+            "rawValues": ["40%", "30%", "20%", "10%"]
+          }
+        ],
+        "slices": [],
+        "points": [],
+        "items": []
+      },
+      "bullets": [],
+      "cards": []
+    },
+    {
+      "id": "scene-methodology",
+      "type": "methodology",
+      "durationSec": 8,
+      "headline": "Proven Methodology for Success",
+      "subcopy": "Our structured approach ensures effective implementation.",
+      "voiceoverScript": "We follow a systematic process to ensure your operations benefit fully from our AI solutions.",
+      "layoutVariant": "stacked",
+      "illustrationPrompt": "Show a timeline of the implementation process.",
+      "visualization": {
+        "componentId": "chart.line.timeline",
+        "title": "Implementation Timeline",
+        "caption": "Key milestones in the AI orchestration process.",
+        "themeVariant": "default",
+        "valueMode": "qualitative",
+        "nodes": [
+          {
+            "id": "1",
+            "label": "Week 1",
+            "detail": "Initial Assessment",
+            "lane": "Timeline"
+          },
+          {
+            "id": "2",
+            "label": "Week 4",
+            "detail": "Strategy Design",
+            "lane": "Timeline"
+          },
+          {
+            "id": "3",
+            "label": "Week 8",
+            "detail": "Implementation",
+            "lane": "Timeline"
+          },
+          {
+            "id": "4",
+            "label": "Week 12",
+            "detail": "Review & Optimize",
+            "lane": "Timeline"
+          }
+        ],
+        "edges": [
+          {
+            "id": "e1",
+            "source": "1",
+            "target": "2",
+            "label": "Next Phase"
+          },
+          {
+            "id": "e2",
+            "source": "2",
+            "target": "3",
+            "label": "Next Phase"
+          },
+          {
+            "id": "e3",
+            "source": "3",
+            "target": "4",
+            "label": "Next Phase"
+          }
+        ],
+        "laneLabels": ["Timeline"],
+        "categories": [],
+        "series": [],
+        "slices": [],
+        "points": [],
+        "items": []
+      },
+      "bullets": [],
+      "cards": []
+    },
+    {
+      "id": "scene-choice",
+      "type": "choice",
+      "durationSec": 8,
+      "headline": "Make the Right Choice",
+      "subcopy": "Invest in a future-proof solution for your operations.",
+      "voiceoverScript": "Choosing Eduba means investing in reliability and efficiency. Let's transform your operations together.",
+      "layoutVariant": "focus",
+      "illustrationPrompt": "Highlight decision-making in a corporate setting.",
+      "visualization": {
+        "componentId": "chart.bar.comparison",
+        "title": "Choose Wisely",
+        "caption": "Comparing options for AI orchestration.",
+        "themeVariant": "accent",
+        "valueMode": "qualitative",
+        "nodes": [
+          {
+            "id": "eduba",
+            "label": "Eduba",
+            "detail": "High reliability, quick turnaround",
+            "lane": "Options"
+          },
+          {
+            "id": "other",
+            "label": "Other Providers",
+            "detail": "Variable reliability",
+            "lane": "Options"
+          }
+        ],
+        "edges": [],
+        "laneLabels": ["Options"],
+        "categories": [],
+        "series": [],
+        "slices": [],
+        "points": [],
+        "items": []
+      },
+      "bullets": [],
+      "cards": []
+    },
+    {
+      "id": "scene-faq",
+      "type": "faq",
+      "durationSec": 8,
+      "headline": "Your Questions Answered",
+      "subcopy": "We address common queries about our AI solutions.",
+      "voiceoverScript": "Have questions? We’re here to clarify how our solutions can benefit your operations.",
+      "layoutVariant": "stacked",
+      "illustrationPrompt": "Show a FAQ session with a focus on clarity.",
+      "visualization": {
+        "componentId": "flow.swimlane",
+        "title": "FAQ Process",
+        "caption": "Common questions and responses.",
+        "themeVariant": "default",
+        "valueMode": "qualitative",
+        "nodes": [
+          {
+            "id": "1",
+            "label": "What is AI orchestration?",
+            "detail": "Overview of AI orchestration benefits.",
+            "lane": "FAQs"
+          },
+          {
+            "id": "2",
+            "label": "How long for ROI?",
+            "detail": "Expected ROI timeline.",
+            "lane": "FAQs"
+          },
+          {
+            "id": "3",
+            "label": "What support is available?",
+            "detail": "Ongoing support options.",
+            "lane": "FAQs"
+          }
+        ],
+        "edges": [],
+        "laneLabels": ["FAQs"],
+        "categories": [],
+        "series": [],
+        "slices": [],
+        "points": [],
+        "items": []
+      },
+      "bullets": [],
+      "cards": []
+    },
+    {
+      "id": "scene-cta",
+      "type": "cta",
+      "durationSec": 8,
+      "headline": "Transform Your Operations Today",
+      "subcopy": "Contact us to get started on your AI journey.",
+      "voiceoverScript": "Don’t wait. Reach out to us today and discover how we can enhance your operations.",
+      "layoutVariant": "focus",
+      "illustrationPrompt": "Show a call to action with contact information.",
+      "visualization": {
+        "componentId": "flow.cycle",
+        "title": "Next Steps",
+        "caption": "Your journey to enhanced operations.",
+        "themeVariant": "accent",
+        "valueMode": "qualitative",
+        "nodes": [
+          {
+            "id": "1",
+            "label": "Contact Us",
+            "detail": "Reach out for consultation.",
+            "lane": "Steps"
+          },
+          {
+            "id": "2",
+            "label": "Schedule Assessment",
+            "detail": "Set up an initial assessment.",
+            "lane": "Steps"
+          },
+          {
+            "id": "3",
+            "label": "Implement Solution",
+            "detail": "Begin your AI journey.",
+            "lane": "Steps"
+          }
+        ],
+        "edges": [
+          {
+            "id": "e1",
+            "source": "1",
+            "target": "2",
+            "label": "Next Step"
+          },
+          {
+            "id": "e2",
+            "source": "2",
+            "target": "3",
+            "label": "Next Step"
+          }
+        ],
+        "laneLabels": ["Steps"],
+        "categories": [],
+        "series": [],
+        "slices": [],
+        "points": [],
+        "items": []
+      },
+      "bullets": [],
+      "cards": []
+    }
+  ]
+}

@@ -48,26 +48,40 @@ class OpenAIClient:
         self.max_output_tokens = max_output_tokens
 
     def generate_json(self, system_prompt: str, user_prompt: str) -> dict:
-        response = self.client.responses.create(
-            model=self.model,
-            input=[
-                {
-                    "role": "system",
-                    "content": [
-                        {"type": "input_text", "text": system_prompt.strip()}
-                    ],
-                },
-                {
-                    "role": "user",
-                    "content": [
-                        {"type": "input_text", "text": user_prompt.strip()}
-                    ],
-                },
-            ],
-            temperature=self.temperature,
-            max_output_tokens=self.max_output_tokens,
-        )
-        text = extract_text(response)
-        if not text:
-            raise ValueError("OpenAI response had no text content")
-        return parse_json(text)
+        def request(prompt: str, max_tokens: int) -> str:
+            response = self.client.responses.create(
+                model=self.model,
+                input=[
+                    {
+                        "role": "system",
+                        "content": [
+                            {"type": "input_text", "text": system_prompt.strip()}
+                        ],
+                    },
+                    {
+                        "role": "user",
+                        "content": [
+                            {"type": "input_text", "text": prompt.strip()}
+                        ],
+                    },
+                ],
+                temperature=self.temperature,
+                max_output_tokens=max_tokens,
+            )
+            text = extract_text(response)
+            if not text:
+                raise ValueError("OpenAI response had no text content")
+            return text
+
+        first_text = request(user_prompt, self.max_output_tokens)
+        try:
+            return parse_json(first_text)
+        except json.JSONDecodeError:
+            retry_prompt = (
+                f"{user_prompt.strip()}\n\n"
+                "IMPORTANT: Your previous answer was truncated. Return compact valid JSON only. "
+                "No prose, no markdown, no comments."
+            )
+            retry_tokens = max(self.max_output_tokens * 2, 5000)
+            second_text = request(retry_prompt, retry_tokens)
+            return parse_json(second_text)

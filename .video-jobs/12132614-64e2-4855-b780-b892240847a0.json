@@ -1,0 +1,139 @@
+{
+  "id": "12132614-64e2-4855-b780-b892240847a0",
+  "status": "ready",
+  "createdAt": "2026-02-07T17:54:35.443Z",
+  "updatedAt": "2026-02-07T17:57:11.363Z",
+  "brief": {
+    "company": "Ring Power Corporation",
+    "sector": "Manufacturing",
+    "slug": "ring-power",
+    "context": "Ring Power Corporation\tHeavy Equipment / Manufacturing\t1,600+ employees\t$738.9M revenue\tSt. Augustine (HQ)\tLargest Cat dealer in SE US. Family-owned, 8 divisions, 22+ branch locations. Perfect for time-savings pitch across service scheduling, parts inventory, sales operations, and fleet management.\r\n\r\nFocus on time savings and operational efficiency. Your VigilOre case study where our AI pipeline shortened process from160 hours to 5 minutes. Emphasize that most value comes from smart database queries and rule-based logic, not just AI.",
+    "links": [
+      "https://www.ringpower.com/about-us/our-story"
+    ],
+    "website": "https://www.ringpower.com/",
+    "include": [],
+    "exclude": [],
+    "template": "eduba-core-v1",
+    "aspectRatio": "16:9",
+    "durationSec": 45
+  },
+  "revisions": [
+    {
+      "id": "28bb4399-f879-450b-abdf-183a6bbeb484",
+      "version": 1,
+      "createdAt": "2026-02-07T17:54:35.443Z",
+      "notes": "Initial draft",
+      "script": {
+        "meta": {
+          "title": "Maximize Efficiency with Ring Power Corporation",
+          "slug": "ring-power",
+          "company": "Ring Power Corporation",
+          "sector": "Manufacturing",
+          "template": "eduba-core-v1",
+          "aspectRatio": "16:9",
+          "durationSec": 45,
+          "ctaText": "Contact Us for Customized Solutions",
+          "voiceoverEnabled": true,
+          "illustrationStyle": "corporate, clean, and modern"
+        },
+        "scenes": [
+          {
+            "id": "scene-hero",
+            "type": "hero",
+            "durationSec": 5,
+            "headline": "Transform Your Operations with Ring Power",
+            "subcopy": "Unlock significant time savings and operational efficiency.",
+            "voiceoverScript": "At Ring Power, we empower manufacturers to streamline operations. Experience time savings like never before.",
+            "illustrationPrompt": "A busy manufacturing floor with workers efficiently operating heavy machinery.",
+            "bullets": [],
+            "cards": []
+          },
+          {
+            "id": "scene-consulting",
+            "type": "consulting",
+            "durationSec": 6,
+            "headline": "Expert Consulting for Tailored Solutions",
+            "subcopy": "Our consultants analyze your needs to optimize performance.",
+            "voiceoverScript": "Our expert consultants assess your unique challenges. We tailor solutions that fit your operational needs.",
+            "illustrationPrompt": "A consultant discussing strategies with a manufacturing team in a conference room.",
+            "bullets": [],
+            "cards": []
+          },
+          {
+            "id": "scene-why-us",
+            "type": "why-us",
+            "durationSec": 6,
+            "headline": "Why Choose Ring Power?",
+            "subcopy": "Family-owned with a legacy of reliability and innovation.",
+            "voiceoverScript": "As the largest Cat dealer in the Southeast, we bring unmatched expertise. Trust us for dependable solutions.",
+            "illustrationPrompt": "A timeline showcasing Ring Power's history and milestones in the manufacturing sector.",
+            "bullets": [],
+            "cards": []
+          },
+          {
+            "id": "scene-services",
+            "type": "services",
+            "durationSec": 6,
+            "headline": "Comprehensive Services to Enhance Efficiency",
+            "subcopy": "From service scheduling to fleet management, we cover it all.",
+            "voiceoverScript": "Our services streamline service scheduling, parts inventory, and fleet management. Efficiency is our priority.",
+            "illustrationPrompt": "A visual representation of various services offered, like scheduling and fleet management.",
+            "bullets": [],
+            "cards": []
+          },
+          {
+            "id": "scene-methodology",
+            "type": "methodology",
+            "durationSec": 6,
+            "headline": "Proven Methodology for Success",
+            "subcopy": "Our AI-driven approach delivers measurable results.",
+            "voiceoverScript": "Our VigilOre case study shows how we reduced processes from 160 hours to just 5 minutes. Results matter.",
+            "illustrationPrompt": "A graphical comparison of time taken for processes before and after implementing AI solutions.",
+            "bullets": [],
+            "cards": []
+          },
+          {
+            "id": "scene-choice",
+            "type": "choice",
+            "durationSec": 6,
+            "headline": "Smart Choices for Smart Operations",
+            "subcopy": "Leverage data-driven insights for better decision-making.",
+            "voiceoverScript": "Our smart database queries and rule-based logic provide actionable insights. Make informed decisions with confidence.",
+            "illustrationPrompt": "A dashboard displaying data analytics and insights relevant to manufacturing operations.",
+            "bullets": [],
+            "cards": []
+          },
+          {
+            "id": "scene-faq",
+            "type": "faq",
+            "durationSec": 5,
+            "headline": "Your Questions Answered",
+            "subcopy": "We address your concerns to ensure clarity and confidence.",
+            "voiceoverScript": "Have questions? Our team is here to provide the answers you need. We prioritize your understanding.",
+            "illustrationPrompt": "A friendly customer service representative engaging with clients over a phone call.",
+            "bullets": [],
+            "cards": []
+          },
+          {
+            "id": "scene-cta",
+            "type": "cta",
+            "durationSec": 5,
+            "headline": "Ready to Optimize Your Operations?",
+            "subcopy": "Contact us today for customized solutions that save time.",
+            "voiceoverScript": "Don’t wait. Reach out to Ring Power for tailored solutions that enhance your operational efficiency.",
+            "illustrationPrompt": "A visual of a contact form or phone number encouraging viewers to reach out.",
+            "bullets": [],
+            "cards": []
+          }
+        ]
+      }
+    }
+  ],
+  "selectedRevisionId": "28bb4399-f879-450b-abdf-183a6bbeb484",
+  "chat": [],
+  "output": {
+    "videoUrl": "/generated-videos/12132614-64e2-4855-b780-b892240847a0-28bb4399-f87.mp4",
+    "posterUrl": "/generated-videos/12132614-64e2-4855-b780-b892240847a0-28bb4399-f87.jpg"
+  }
+}
