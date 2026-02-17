@@ -32,7 +32,6 @@ const sections = [
 ];
 
 export function ThreeWheelStrategy() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
 
@@ -43,220 +42,367 @@ export function ThreeWheelStrategy() {
     if (!track || !viewport) return;
 
     const scroller = track.closest("main") || window;
+    const mm = gsap.matchMedia();
 
-    const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray<HTMLElement>(
-        viewport.querySelectorAll(`.${styles.card}`),
-      );
-      const bodies = gsap.utils.toArray<HTMLElement>(
-        viewport.querySelectorAll(`.${styles.sectionBody}`),
-      );
-      const wheelGroups = gsap.utils.toArray<SVGGElement>(
-        viewport.querySelectorAll(`.${styles.wheelGroup}`),
-      );
-
-      const connector1 = viewport.querySelector(`.${styles.connector1}`);
-      const connector2 = viewport.querySelector(`.${styles.connector2}`);
-      const connector3 = viewport.querySelector(`.${styles.connector3}`);
-
-      // --- CONFIG ---
-      // We want distinct headers visible at the bottom.
-      const headerHeight = 80;
-      const cardGap = 0;
-      const vh = window.innerHeight;
-
-      // Bottom Stack Positions
-      // Card 3 (Bottom): 100vh - 80px (just visible)
-      // Card 2 (Above 3): 100vh - 160px
-      const stack3Pos = vh - 150; // More space for bottom card
-      const stack2Pos = vh - 280; // More space for middle card
-
-      // Top Stack Positions
-      // Card 1: 0
-      // Card 2: 80
-      // Card 3: 160
-      const top2Pos = 80;
-      const top3Pos = 160;
-
-      // --- INITIAL STATE: CARDS ---
-
-      // Card 1: Open at Top
-      gsap.set(cards[0], { y: 0, zIndex: 1 });
-
-      // Card 2: Pinned at Bottom Stack 1
-      gsap.set(cards[1], { y: stack2Pos, zIndex: 2 });
-
-      // Card 3: Pinned at Bottom Stack 2 (Very bottom)
-      gsap.set(cards[2], { y: stack3Pos, zIndex: 3 });
-
-      // Bodies
-      // Card 1 Open, others Collapsed (Hidden)
-      gsap.set(bodies[0], { opacity: 1, height: "auto" });
-      gsap.set(bodies[1], { opacity: 0, height: 0 });
-      gsap.set(bodies[2], { opacity: 0, height: 0 });
-
-      // --- INITIAL STATE: WHEEL ---
-      // No scaling, full opacity initially (or maybe slight opacity diff for inactive?)
-      // User said "remove scaling effect entirely... add color change"
-      // Let's set all to neutral first.
-      const inactiveFill = "rgba(162, 119, 122, 0.1)";
-      const activeFill = "rgba(162, 119, 122, 0.4)"; // Darker/Richer when active
-
-      // Helper to set initial state
-      wheelGroups.forEach((g, i) => {
-        // Reset transforms
-        gsap.set(g, { transformOrigin: "center", scale: 1, opacity: 1 });
-        // Set initial fill
-        const path = g.querySelector("path");
-        if (path) {
-          gsap.set(path, { fill: i === 0 ? activeFill : inactiveFill });
-        }
-      });
-
-      // --- INITIAL STATE: CONNECTORS ---
-      const dashArray = "10 10";
-      gsap.set([connector1, connector2, connector3], {
-        strokeDasharray: dashArray,
-        strokeDashoffset: 0,
-        opacity: 1, // Ensure visibility
-      });
-
-      // --- TIMELINE ---
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: track,
-          scroller: scroller,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.5,
-        },
-      });
-
-      // Duration config
-      const moveDur = 1;
-      const expandDur = 0.5;
-      const readHold = 0.5;
-      const buffer = 0.1;
-
-      // Exact total duration of the sequence
-      // Stage 1 Move (1) + Expand (0.5) + Hold (0.5) + Stage 2 Move (1) + Expand (0.5) + Buffer (0.1)
-      // Note: We are sequencing in absolute time, so total is logical end point.
-      const totalDur =
-        moveDur + expandDur + readHold + moveDur + expandDur + buffer;
-
-      // --- GLOBAL: CONNECTORS FLOW ---
-      // We start at time 0. The dash animation must last exactly `totalDur`
-      // so it finishes exactly when the scroll finishes.
-
-      // Connectors 1 & 3: Forward Flow
-      if (connector1 && connector3) {
-        tl.to(
-          [connector1, connector3],
-          {
-            strokeDashoffset: -400,
-            duration: totalDur,
-            ease: "none",
-          },
-          0,
+    mm.add("(min-width: 801px)", () => {
+      const ctx = gsap.context(() => {
+        const cards = gsap.utils.toArray<HTMLElement>(
+          viewport.querySelectorAll(`.${styles.card}`),
         );
-      }
-
-      // Connector 2: Reverse Flow (Opposite Direction)
-      if (connector2) {
-        tl.to(
-          connector2,
-          {
-            strokeDashoffset: 400, // Positive value for opposite direction
-            duration: totalDur,
-            ease: "none",
-          },
-          0,
+        const bodies = gsap.utils.toArray<HTMLElement>(
+          viewport.querySelectorAll(`.${styles.sectionBody}`),
         );
-      }
+        const wheelGroups = gsap.utils.toArray<SVGGElement>(
+          viewport.querySelectorAll(`.${styles.wheelGroup}`),
+        );
 
-      // --- STAGE 1: Card 2 Enters ---
-      // Explicitly start at 0 to ensure we run parallel to the dash anim
+        const connector1 = viewport.querySelector(`.${styles.connector1}`);
+        const connector2 = viewport.querySelector(`.${styles.connector2}`);
+        const connector3 = viewport.querySelector(`.${styles.connector3}`);
 
-      // 1. Move Up (Collapsed)
-      tl.to(
-        cards[1],
-        { y: top2Pos, duration: moveDur, ease: "power2.inOut" },
-        0,
-      );
-      // tl.to(cards[2], { y: stack2Pos, duration: moveDur, ease: "power2.inOut" }, 0);
+        const vh = window.innerHeight;
+        const stack3Pos = vh - 150;
+        const stack2Pos = vh - 280;
+        const top2Pos = 80;
+        const top3Pos = 160;
 
-      // Wheel Color Transition (1 -> 2)
-      const path1 = wheelGroups[0].querySelector("path");
-      const path2 = wheelGroups[1].querySelector("path");
+        gsap.set(cards[0], { y: 0, zIndex: 1 });
+        gsap.set(cards[1], { y: stack2Pos, zIndex: 2 });
+        gsap.set(cards[2], { y: stack3Pos, zIndex: 3 });
 
-      if (path1) tl.to(path1, { fill: inactiveFill, duration: moveDur }, 0);
-      if (path2) tl.to(path2, { fill: activeFill, duration: moveDur }, 0);
+        gsap.set(bodies[0], { opacity: 1, height: "auto" });
+        gsap.set(bodies[1], { opacity: 0, height: 0 });
+        gsap.set(bodies[2], { opacity: 0, height: 0 });
 
-      // 2. Expand/Collapse (starts after moveDur)
-      const stage1ExpandStart = moveDur - expandDur;
-      tl.to(
-        bodies[1],
-        {
+        const inactiveFill = "rgba(162, 119, 122, 0.1)";
+        const activeFill = "rgba(162, 119, 122, 0.4)";
+
+        wheelGroups.forEach((g, i) => {
+          gsap.set(g, { transformOrigin: "center", scale: 1, opacity: 1 });
+          const path = g.querySelector("path");
+          if (path) {
+            gsap.set(path, { fill: i === 0 ? activeFill : inactiveFill });
+          }
+        });
+
+        const dashArray = "10 10";
+        gsap.set([connector1, connector2, connector3], {
+          strokeDasharray: dashArray,
+          strokeDashoffset: 0,
           opacity: 1,
-          height: "auto",
-          duration: expandDur,
-          ease: "power4.inOut",
-        },
-        stage1ExpandStart,
-      );
-      tl.to(
-        bodies[0],
-        { opacity: 0, height: 0, duration: expandDur, ease: "power4.inOut" },
-        stage1ExpandStart,
-      );
+        });
 
-      // 3. Read Hold
-      // We just advance the insertion point logically, but we are placing things absolutely/relatively now.
-      const stage2MoveStart = stage1ExpandStart + expandDur + readHold;
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: track,
+            scroller,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.5,
+          },
+        });
 
-      // --- STAGE 2: Card 3 Enters ---
+        const moveDur = 1;
+        const expandDur = 0.5;
+        const readHold = 0.5;
+        const buffer = 0.1;
+        const totalDur =
+          moveDur + expandDur + readHold + moveDur + expandDur + buffer;
 
-      // 1. Move Up (Collapsed)
-      tl.to(
-        cards[2],
-        { y: top3Pos, duration: moveDur, ease: "power2.inOut" },
-        stage2MoveStart,
-      );
+        if (connector1 && connector3) {
+          tl.to(
+            [connector1, connector3],
+            {
+              strokeDashoffset: -400,
+              duration: totalDur,
+              ease: "none",
+            },
+            0,
+          );
+        }
 
-      // Wheel Color Transition (2 -> 3)
-      const path3 = wheelGroups[2].querySelector("path");
-      if (path2)
+        if (connector2) {
+          tl.to(
+            connector2,
+            {
+              strokeDashoffset: 400,
+              duration: totalDur,
+              ease: "none",
+            },
+            0,
+          );
+        }
+
         tl.to(
-          path2,
-          { fill: inactiveFill, duration: moveDur },
+          cards[1],
+          { y: top2Pos, duration: moveDur, ease: "power2.inOut" },
+          0,
+        );
+
+        const path1 = wheelGroups[0].querySelector("path");
+        const path2 = wheelGroups[1].querySelector("path");
+
+        if (path1) tl.to(path1, { fill: inactiveFill, duration: moveDur }, 0);
+        if (path2) tl.to(path2, { fill: activeFill, duration: moveDur }, 0);
+
+        const stage1ExpandStart = moveDur - expandDur;
+        tl.to(
+          bodies[1],
+          {
+            opacity: 1,
+            height: "auto",
+            duration: expandDur,
+            ease: "power4.inOut",
+          },
+          stage1ExpandStart,
+        );
+        tl.to(
+          bodies[0],
+          { opacity: 0, height: 0, duration: expandDur, ease: "power4.inOut" },
+          stage1ExpandStart,
+        );
+
+        const stage2MoveStart = stage1ExpandStart + expandDur + readHold;
+
+        tl.to(
+          cards[2],
+          { y: top3Pos, duration: moveDur, ease: "power2.inOut" },
           stage2MoveStart,
         );
-      if (path3)
-        tl.to(path3, { fill: activeFill, duration: moveDur }, stage2MoveStart);
 
-      // 2. Expand/Collapse
-      const stage2ExpandStart = stage2MoveStart + moveDur;
-      tl.to(
-        bodies[2],
-        {
+        const path3 = wheelGroups[2].querySelector("path");
+        if (path2)
+          tl.to(
+            path2,
+            { fill: inactiveFill, duration: moveDur },
+            stage2MoveStart,
+          );
+        if (path3)
+          tl.to(path3, { fill: activeFill, duration: moveDur }, stage2MoveStart);
+
+        const stage2ExpandStart = stage2MoveStart + moveDur;
+        tl.to(
+          bodies[2],
+          {
+            opacity: 1,
+            height: "auto",
+            duration: expandDur,
+            ease: "power4.inOut",
+          },
+          stage2ExpandStart - expandDur,
+        );
+        tl.to(
+          bodies[1],
+          { opacity: 0, height: 0, duration: expandDur, ease: "power4.inOut" },
+          stage2ExpandStart - expandDur,
+        );
+
+        tl.to({}, { duration: buffer });
+      }, track);
+
+      return () => ctx.revert();
+    });
+
+    mm.add("(max-width: 800px)", () => {
+      const ctx = gsap.context(() => {
+        const cards = gsap.utils.toArray<HTMLElement>(
+          viewport.querySelectorAll(`.${styles.card}`),
+        );
+        const bodies = gsap.utils.toArray<HTMLElement>(
+          viewport.querySelectorAll(`.${styles.sectionBody}`),
+        );
+        const wheelGroups = gsap.utils.toArray<SVGGElement>(
+          viewport.querySelectorAll(`.${styles.wheelGroup}`),
+        );
+
+        const connector1 = viewport.querySelector(`.${styles.connector1}`);
+        const connector2 = viewport.querySelector(`.${styles.connector2}`);
+        const connector3 = viewport.querySelector(`.${styles.connector3}`);
+
+        if (cards.length < 3 || bodies.length < 3 || wheelGroups.length < 3) {
+          return;
+        }
+
+        const inactiveFill = "rgba(162, 119, 122, 0.1)";
+        const activeFill = "rgba(162, 119, 122, 0.4)";
+
+        gsap.set(cards, {
+          x: 0,
+          y: 0,
+          top: 0,
+          left: 0,
+          right: 0,
+          position: "absolute",
+        });
+        gsap.set(cards[0], { autoAlpha: 1, zIndex: 3, pointerEvents: "auto" });
+        gsap.set(cards[1], { autoAlpha: 0, zIndex: 2, pointerEvents: "none" });
+        gsap.set(cards[2], { autoAlpha: 0, zIndex: 1, pointerEvents: "none" });
+
+        gsap.set(bodies[0], { opacity: 1, height: "auto" });
+        gsap.set(bodies[1], { opacity: 0, height: 0 });
+        gsap.set(bodies[2], { opacity: 0, height: 0 });
+
+        wheelGroups.forEach((g, i) => {
+          gsap.set(g, { transformOrigin: "center", scale: 1, opacity: 1 });
+          const path = g.querySelector("path");
+          if (path) {
+            gsap.set(path, { fill: i === 0 ? activeFill : inactiveFill });
+          }
+        });
+
+        const dashArray = "10 10";
+        gsap.set([connector1, connector2, connector3], {
+          strokeDasharray: dashArray,
+          strokeDashoffset: 0,
           opacity: 1,
-          height: "auto",
-          duration: expandDur,
-          ease: "power4.inOut",
-        },
-        stage2ExpandStart - expandDur,
-      );
-      tl.to(
-        bodies[1],
-        { opacity: 0, height: 0, duration: expandDur, ease: "power4.inOut" },
-        stage2ExpandStart - expandDur,
-      );
+        });
 
-      // Buffer to maintain timeline length
-      tl.to({}, { duration: buffer });
-    }, track);
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: track,
+            scroller,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.5,
+          },
+        });
 
-    return () => ctx.revert();
+        const moveDur = 1.1;
+        const expandDur = 0.45;
+        const readHold = 0.35;
+        const buffer = 0.15;
+        const totalDur =
+          moveDur + expandDur + readHold + moveDur + expandDur + buffer;
+
+        if (connector1 && connector3) {
+          tl.to(
+            [connector1, connector3],
+            {
+              strokeDashoffset: -280,
+              duration: totalDur,
+              ease: "none",
+            },
+            0,
+          );
+        }
+
+        if (connector2) {
+          tl.to(
+            connector2,
+            {
+              strokeDashoffset: 280,
+              duration: totalDur,
+              ease: "none",
+            },
+            0,
+          );
+        }
+
+        const path1 = wheelGroups[0].querySelector("path");
+        const path2 = wheelGroups[1].querySelector("path");
+        const path3 = wheelGroups[2].querySelector("path");
+
+        tl.to(
+          cards[0],
+          {
+            autoAlpha: 0,
+            y: -16,
+            duration: moveDur,
+            ease: "power2.inOut",
+            pointerEvents: "none",
+          },
+          0,
+        );
+        tl.fromTo(
+          cards[1],
+          { autoAlpha: 0, y: 16, pointerEvents: "none" },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: moveDur,
+            ease: "power2.inOut",
+            pointerEvents: "auto",
+          },
+          0,
+        );
+
+        if (path1) tl.to(path1, { fill: inactiveFill, duration: moveDur }, 0);
+        if (path2) tl.to(path2, { fill: activeFill, duration: moveDur }, 0);
+
+        const phase1BodyStart = moveDur - expandDur;
+        tl.to(
+          bodies[1],
+          {
+            opacity: 1,
+            height: "auto",
+            duration: expandDur,
+            ease: "power4.inOut",
+          },
+          phase1BodyStart,
+        );
+        tl.to(
+          bodies[0],
+          { opacity: 0, height: 0, duration: expandDur, ease: "power4.inOut" },
+          phase1BodyStart,
+        );
+
+        const phase2Start = phase1BodyStart + expandDur + readHold;
+        tl.to(
+          cards[1],
+          {
+            autoAlpha: 0,
+            y: -16,
+            duration: moveDur,
+            ease: "power2.inOut",
+            pointerEvents: "none",
+          },
+          phase2Start,
+        );
+        tl.fromTo(
+          cards[2],
+          { autoAlpha: 0, y: 16, pointerEvents: "none" },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: moveDur,
+            ease: "power2.inOut",
+            pointerEvents: "auto",
+          },
+          phase2Start,
+        );
+
+        if (path2)
+          tl.to(
+            path2,
+            { fill: inactiveFill, duration: moveDur },
+            phase2Start,
+          );
+        if (path3) tl.to(path3, { fill: activeFill, duration: moveDur }, phase2Start);
+
+        const phase2BodyStart = phase2Start + moveDur - expandDur;
+        tl.to(
+          bodies[2],
+          {
+            opacity: 1,
+            height: "auto",
+            duration: expandDur,
+            ease: "power4.inOut",
+          },
+          phase2BodyStart,
+        );
+        tl.to(
+          bodies[1],
+          { opacity: 0, height: 0, duration: expandDur, ease: "power4.inOut" },
+          phase2BodyStart,
+        );
+
+        tl.to({}, { duration: buffer });
+      }, track);
+
+      return () => ctx.revert();
+    });
+
+    return () => mm.revert();
   }, []);
 
   return (

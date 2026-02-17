@@ -1,4 +1,5 @@
 @use "../styles/variables" as *;
+@use "../styles/breakpoints" as *;
 
 .section {
   position: relative;
@@ -9,6 +10,14 @@
 .track {
   height: 350vh; // Enough space to scrub through animations
   position: relative;
+
+  @include media("<=tablet") {
+    height: 240vh;
+  }
+
+  @include media("<=phone") {
+    height: 260vh;
+  }
 }
 
 // The Fixed Stage - stays pinned while we scroll the track
@@ -25,6 +34,16 @@
   padding: 0 0px;
   gap: 60px;
   background-color: $white;
+
+  @include media("<=tablet") {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 55dvh) minmax(0, 1fr);
+    gap: 0;
+  }
+
+  @include media("<=phone") {
+    grid-template-rows: minmax(0, 54dvh) minmax(0, 1fr);
+  }
 }
 
 // Left side - Fixed Wheel
@@ -37,6 +56,18 @@
   background-color: $skin;
   // Make sure wheel stays behind if cards overlap (though they are in diff cols)
   z-index: 1;
+
+  @include media("<=tablet") {
+    height: auto;
+    min-height: 0;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 16px 14px 10px;
+  }
+
+  @include media("<=phone") {
+    padding: 14px 10px 8px;
+  }
 }
 
 .wheelContent {
@@ -45,6 +76,13 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+
+  @include media("<=tablet") {
+    max-width: none;
+    width: 100%;
+    gap: 12px;
+    height: 100%;
+  }
 }
 .title {
   font-size: clamp(24px, 2.8vw, 48px);
@@ -53,6 +91,21 @@
   color: $dark-brown;
   line-height: 1.1;
   margin-bottom: 16px;
+
+  @include media("<=tablet") {
+    font-size: 6vw;
+    margin-bottom: 8px;
+  }
+
+  @include media("<=phone") {
+    font-size: 5vw;
+    margin-bottom: 3px;
+  }
+
+  @include media("<=small") {
+    font-size: 3vw;
+    margin-bottom: 3px;
+  }
 }
 
 .subtitle {
@@ -60,18 +113,60 @@
   color: $light-brown;
   line-height: 1.6;
   font-family: $font-mono;
+
+  @include media("<=tablet") {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  @include media("<=phone") {
+    font-size: 11px;
+    line-height: 1.4;
+    // display: none;
+  }
 }
 
 .wheelContainer {
   position: relative;
   width: 100%;
   aspect-ratio: 1;
+
+  @include media("<=tablet") {
+    width: 100%;
+    flex: 1;
+    // max-height: 45vh;
+    aspect-ratio: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include media("<=phone") {
+    height: 40vh;
+    flex: 1;
+  }
+
+  @include media("<=small") {
+    height: 43vh;
+    flex: auto;
+  }
 }
 
 .wheelSvg {
   width: 100%;
   height: auto;
   overflow: visible;
+
+  @include media("<=tablet") {
+    width: min(100%, 360px);
+    max-height: 100%;
+    height: 100%;
+  }
+
+  @include media("<=phone") {
+    width: min(100%, 320px);
+  }
 }
 
 // Wheel Elements
@@ -108,6 +203,10 @@
   fill: $dark-brown;
   pointer-events: none;
   font-family: $font-primary;
+
+  @include media("<=phone") {
+    display: none;
+  }
 }
 
 .nodeLabel {
@@ -139,6 +238,18 @@
   position: relative;
   height: 100%;
   // overflow: hidden; // Keep cards inside
+
+  @include media("<=tablet") {
+    position: relative;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    margin: 0 14px 18px;
+  }
+
+  @include media("<=phone") {
+    margin: 0 14px 14px;
+  }
 }
 
 .card {
@@ -162,6 +273,14 @@
     background: rgba($dark-brown, 0.15);
     margin-bottom: 24px;
   }
+
+  @include media("<=tablet") {
+    padding-bottom: 0;
+
+    &::before {
+      margin-bottom: 14px;
+    }
+  }
 }
 
 .sectionHeader {
@@ -170,6 +289,11 @@
   gap: 16px;
   margin-bottom: 24px;
   cursor: pointer;
+
+  @include media("<=tablet") {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
 }
 
 .sectionNumber {
@@ -179,6 +303,11 @@
   color: $light-brown;
   font-family: $font-primary;
   min-width: 24px;
+
+  @include media("<=tablet") {
+    font-size: 12px;
+    min-width: 20px;
+  }
 }
 
 .sectionTitle {
@@ -187,6 +316,15 @@
   font-family: $font-primary;
   color: $dark-brown;
   line-height: 1.2;
+
+  @include media("<=tablet") {
+    font-size: clamp(26px, 7.2vw, 34px);
+    line-height: 1.15;
+  }
+
+  @include media("<=phone") {
+    font-size: clamp(22px, 7vw, 30px);
+  }
 }
 
 .sectionBody {
@@ -202,6 +340,19 @@
   font-family: $font-mono;
   margin-bottom: 32px;
   opacity: 0.9;
+
+  @include media("<=tablet") {
+    font-size: 14px;
+    line-height: 1.55;
+    max-width: none;
+    margin-bottom: 18px;
+  }
+
+  @include media("<=phone") {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
 }
 
 .consultButton {
@@ -220,5 +371,10 @@
   &:hover {
     background-color: $dark-brown;
     color: $white;
+  }
+
+  @include media("<=tablet") {
+    padding: 10px 16px;
+    font-size: 10px;
   }
 }
