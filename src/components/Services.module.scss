@@ -1,13 +1,22 @@
 @use "../styles/variables" as *;
+@use "../styles/breakpoints" as *;
 
 .container {
+  --services-pad-x: 48px;
   min-height: 100vh;
   background-color: $white;
   position: relative;
-  padding: 40px 48px 72px;
+  padding: 40px var(--services-pad-x) 72px;
 
-  @media (max-width: 768px) {
-    padding: 32px 24px 56px;
+  @include media("<=tablet") {
+    --services-pad-x: 16px;
+    padding: 24px var(--services-pad-x) 52px;
+  }
+
+  @include media("<=phone") {
+    --services-pad-x: 10px;
+    padding-top: 20px;
+    padding-bottom: 40px;
   }
 }
 
@@ -18,36 +27,79 @@
 
 .header {
   display: grid;
-  grid-template-columns: minmax(220px, 1fr) minmax(280px, 1.6fr);
+  grid-template-columns: minmax(220px, 1fr) minmax(320px, 1.6fr);
   gap: 48px;
   padding: 18px 0 24px;
   border-top: 1px solid $cream;
   border-bottom: 1px solid $cream;
 
-  @media (max-width: 1024px) {
+  @include media("<=tablet") {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 4px;
+    // padding: 14px 0 18px;
   }
 }
 
-.headerLeft,
+.headerLeft {
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-height: 54px;
+  padding-left: 42px;
+
+  @include media("<=tablet") {
+    min-height: 40px;
+    padding-left: 0px;
+  }
+
+  @include media("<=phone") {
+    padding-left: 0px;
+  }
+}
+
 .headerRight {
   display: flex;
   align-items: center;
   position: relative;
+  padding-right: 36px;
+
+  @include media("<=tablet") {
+    align-items: flex-start;
+    padding-right: 0;
+  }
+
+  @include media("<=phone") {
+    padding-right: 0;
+  }
 }
 
 .arrowHeaderLeft {
   position: absolute;
-  bottom: -12px;
-  transform: rotate(180deg);
+  left: 0;
+  bottom: -40%;
+  transform: translateY(-50%) rotate(180deg);
+
+  @include media("<=tablet") {
+    top: 1px;
+    transform: rotate(180deg) scale(0.84);
+    transform-origin: top left;
+    display: none;
+  }
 }
 
 .arrowHeaderRight {
   position: absolute;
-  top: -12px;
+  top: -10px;
   right: 0;
   transform: rotate(90deg);
+
+  @include media("<=tablet") {
+    top: auto;
+    bottom: -2px;
+    transform: rotate(90deg) scale(0.84);
+    transform-origin: bottom right;
+    display: none;
+  }
 }
 
 .sectionLabel {
@@ -56,7 +108,15 @@
   font-family: $font-primary;
   color: $dark-brown;
   line-height: 1.2;
-  margin: 0px 48px;
+  margin: 0;
+
+  @include media("<=tablet") {
+    font-size: 28px;
+  }
+
+  @include media("<=phone") {
+    font-size: 26px;
+  }
 }
 
 .sectionDescription {
@@ -65,14 +125,19 @@
   color: $light-brown;
   line-height: 1.7;
   max-width: 94%;
-  margin: 0;
-  margin: 20px 0px;
+  margin: 12px 0 0;
+
+  @include media("<=tablet") {
+    max-width: 100%;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 4px;
+  }
 }
 
 .servicesMeta {
   display: flex;
   justify-content: flex-end;
-  // margin: 20px 0 32px;
   position: absolute;
   rotate: 90deg;
   right: -80px;
@@ -80,19 +145,29 @@
   font-size: 10px;
   font-weight: 600;
   font-family: $font-mono;
-  // letter-spacing: 0.2em;
   text-transform: uppercase;
   color: $dark-brown;
+
+  @include media("<=tablet") {
+    display: none;
+  }
 }
 
 .cardsContainer {
   display: flex;
   flex-direction: column;
-  gap: 0px;
+  gap: 0;
   margin-top: 9vh;
+
+  @include media("<=tablet") {
+    margin-top: 10vh;
+    margin-left: calc(var(--services-pad-x) * -1);
+    margin-right: calc(var(--services-pad-x) * -1);
+  }
 }
 
 .card {
+  --card-tail: clamp(36px, 6vh, 72px);
   position: relative;
   margin-top: -10px;
 
@@ -101,11 +176,16 @@
     position: absolute;
     left: 0;
     right: 0;
-    height: 6vh;
-    bottom: -6vh;
+    height: var(--card-tail);
+    bottom: calc(var(--card-tail) * -1);
     background-color: var(--card-bg);
     z-index: 0;
     pointer-events: none;
+  }
+
+  @include media("<=tablet") {
+    --card-tail: 40px;
+    margin-top: -8px;
   }
 }
 
@@ -121,7 +201,6 @@
   cursor: pointer;
   position: relative;
   transition: transform 0.25s ease;
-  // overflow: hidden;
 
   &:hover {
     transform: translateY(-2px);
@@ -131,6 +210,12 @@
     outline: 2px solid rgba($dark-brown, 0.3);
     outline-offset: 4px;
   }
+
+  @include media("<=tablet") {
+    &:hover {
+      transform: none;
+    }
+  }
 }
 
 .cardCover {
@@ -139,13 +224,34 @@
   height: clamp(90px, 9vw, 132px);
   z-index: 0;
   margin-top: -10px;
+
+  @include media("<=tablet") {
+    height: clamp(96px, 27vw, 118px);
+    margin-top: -8px;
+  }
 }
 
 .cardHeaderSvg {
   width: 100%;
   z-index: 1;
-  height: clamp(90px, 9vw, 132px);
   display: block;
+}
+
+.cardHeaderSvgDesktop {
+  height: clamp(90px, 9vw, 132px);
+
+  @include media("<=tablet") {
+    display: none;
+  }
+}
+
+.cardHeaderSvgMobile {
+  display: none;
+
+  @include media("<=tablet") {
+    display: block;
+    height: clamp(96px, 27vw, 118px);
+  }
 }
 
 .cardHeaderContent {
@@ -157,6 +263,15 @@
   padding-left: 2vw;
   pointer-events: none;
   z-index: 2;
+
+  @include media("<=tablet") {
+    align-items: flex-start;
+    padding: 18px 56px 0 16px;
+  }
+
+  @include media("<=phone") {
+    padding: 20px 46px 0 14px;
+  }
 }
 
 .cardTitle {
@@ -167,6 +282,12 @@
   margin: 0;
   line-height: 1.05;
   max-width: clamp(250px, 52vw, 620px);
+
+  @include media("<=tablet") {
+    font-size: clamp(22px, 8vw, 30px);
+    line-height: 1.1;
+    max-width: 76%;
+  }
 }
 
 .cardContent {
@@ -180,22 +301,37 @@
 }
 
 .cardContentFrame {
-  // border: 1px solid var(--card-border);
   border-top: none;
-  // border-radius: 0 0 16px 16px;
-  padding: 10px 2vw 100px;
+  padding: 14px clamp(18px, 2vw, 28px) 84px;
+
+  @include media("<=tablet") {
+    padding: 10px 14px 64px;
+  }
+
+  @include media("<=phone") {
+    padding: 10px 12px 56px;
+  }
 }
 
 .cardInner {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  // background-color: $white;
-  // border-radius: 12px;
-  // border: 1px solid rgba($dark-brown, 0.15);
+  display: block;
+}
 
-  @media (max-width: 1024px) {
-    padding: 28px;
+.desktopContent {
+  display: block;
+
+  @include media("<=tablet") {
+    display: none;
+  }
+}
+
+.mobileContent {
+  display: none;
+
+  @include media("<=tablet") {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 }
 
@@ -203,30 +339,14 @@
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: 64px;
-  padding: 0px 10px;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-}
-
-.cardDivider {
-  border-top: 1px dashed var(--card-title);
-  width: 100%;
-  opacity: 0.4;
+  padding: 0 10px;
 }
 
 .cardBody {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: 64px;
-  padding: 0px 10px;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
+  padding: 0 10px;
 }
 
 .cardLeft,
@@ -235,23 +355,45 @@
   flex-direction: column;
 }
 
+.contentSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cardDivider {
+  border-top: 1px dashed var(--card-title);
+  width: 100%;
+  opacity: 0.4;
+  margin: 20px 0;
+
+  @include media("<=tablet") {
+    margin: 0px 0;
+  }
+}
+
 .label {
   font-size: 10px;
   font-weight: 600;
   font-family: $font-mono;
   letter-spacing: 0.16em;
   color: var(--card-title);
-  margin-bottom: 0;
+  margin: 0;
   display: block;
 }
 
 .headline {
-  font-size: clamp(26px, 3.3vw, 45px);
+  font-size: clamp(24px, 3vw, 42px);
   font-weight: 500;
   font-family: $font-primary;
   color: var(--card-title);
   line-height: 1.12;
-  margin: 0 0 36px 0;
+  margin: 0 0 36px;
+
+  @include media("<=tablet") {
+    font-size: clamp(22px, 6.8vw, 30px);
+    margin: 0;
+  }
 }
 
 .description {
@@ -259,9 +401,19 @@
   font-family: $font-primary;
   font-weight: 400;
   color: var(--card-title);
-  opacity: 0.7;
+  opacity: 0.72;
   line-height: 1.45;
   margin: 0;
+
+  @include media("<=tablet") {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-top: -12px;
+  }
+
+  @include media("<=phone") {
+    font-size: 15px;
+  }
 }
 
 .projectsSection {
@@ -269,6 +421,17 @@
 
   .label {
     margin-bottom: 12px;
+  }
+
+  @include media("<=tablet") {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 4px;
+
+    .label {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -279,6 +442,10 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+
+  @include media("<=tablet") {
+    margin-top: 2px;
+  }
 }
 
 .projectItem {
