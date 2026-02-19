@@ -1,4 +1,5 @@
 @use "../styles/variables" as *;
+@use "../styles/breakpoints" as *;
 
 .container {
   position: relative;
@@ -27,6 +28,11 @@
   // padding: 40px;
   z-index: 100; // Above cards
 
+  @include media("<=tablet") {
+    top: 10px;
+    right: 10px;
+  }
+
   span {
     color: white;
   }
@@ -45,6 +51,12 @@
   text-transform: uppercase;
   overflow: hidden;
   height: 60px;
+  width: 280px;
+
+  @include media("<=tablet") {
+    width: min(72vw, 248px);
+    height: 52px;
+  }
 
   // Custom button styling if needed
 }
@@ -58,6 +70,10 @@
   height: 100%;
   pointer-events: none; // Let clicks pass through transparent areas
   // background: transparent; // Default
+
+  @include media("<=tablet") {
+    top: 8px;
+  }
 }
 
 // The Visible Parts
@@ -71,12 +87,16 @@
   justify-content: flex-end; // Pin to bottom? Or simply fill space?
   // We want the BODY to start after the tabs.
   pointer-events: auto; // Re-enable clicks
+
+  @include media("<=tablet") {
+    padding: 0 0 12px;
+  }
 }
 
 .tab {
   position: absolute;
   top: 2px; // Will be offset by JS/CSS var if needed, or simple top alignment
-  // Left will be set by JS via style={{ left: ... }}
+  left: var(--tab-offset, 40px);
   height: 60px; // Match SVG height approx
   display: flex;
   align-items: center;
@@ -95,12 +115,25 @@
     z-index: 0;
     pointer-events: none;
   }
+
+  @include media("<=tablet") {
+    top: 0;
+    left: 0;
+    right: auto;
+    width: min(72vw, 248px);
+    height: 52px;
+  }
 }
 
 .tabSvg {
   width: 280px;
   height: auto;
   display: block;
+
+  @include media("<=tablet") {
+    width: 100%;
+    height: 52px;
+  }
 }
 
 .tabPath {
@@ -119,6 +152,30 @@
   text-transform: uppercase;
   color: var(--work-title, #5d3136);
   z-index: 2;
+
+  @include media("<=tablet") {
+    left: 16px;
+    transform: translateY(-50%);
+    text-align: left;
+    max-width: calc(100% - 26px);
+    white-space: nowrap;
+    font-size: 10px;
+  }
+}
+
+.seeAllLabel {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: white;
+  z-index: 2;
+  white-space: nowrap;
 }
 
 .body {
@@ -132,51 +189,168 @@
   padding: 40px 60px;
   // box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
   overflow: hidden;
+
+  @include media("<=1024px") {
+    padding: 24px;
+  }
+
+  @include media("<=tablet") {
+    margin-top: 42px;
+    height: calc(100% - 42px);
+    padding: 20px 14px 14px;
+  }
 }
 
 // Content Inside Body
 .bodyHeader {
   display: flex;
-  justify-content: space-between;
+  gap: 36px;
   align-items: flex-start;
   margin-bottom: 30px;
+
+  @include media("<=tablet") {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
 }
 
 .mainTitle {
   font-family: $font-primary;
-  font-size: 4vw;
+  font-size: clamp(54px, 4.4vw, 92px);
   font-weight: 700;
-  align-self: center;
-  // line-height: 0.9;
+  line-height: 0.95;
   color: var(--work-title, #5d3136); // Default accent
-  max-width: 60%;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+
+  @include media("<=1024px") {
+    font-size: 40px;
+  }
+
+  @include media("<=tablet") {
+    max-width: 100%;
+    font-size: clamp(38px, 11vw, 52px);
+    line-height: 0.96;
+    margin: 0;
+  }
 }
 
 .metaInfo {
-  text-align: right;
+  flex: 0 0 clamp(260px, 24vw, 420px);
+  width: clamp(260px, 24vw, 420px);
+  margin-left: auto;
+  text-align: left;
   font-family: $font-mono;
   font-size: 12px;
   color: var(--work-meta, rgba(93, 49, 54, 0.7));
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  align-items: flex-end;
+  gap: 10px;
+  align-items: flex-start;
+  min-height: 0;
+
+  @include media("<=tablet") {
+    flex: none;
+    width: 100%;
+    margin-left: 0;
+    text-align: left;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 11px;
+    min-height: 0;
+  }
 }
 
-.tagRow {
+.metaMain {
   display: flex;
+  flex-direction: column;
   gap: 8px;
-  margin-top: 8px;
+  align-items: flex-start;
+
+  @include media("<=tablet") {
+    gap: 6px;
+  }
 }
 
-.tag {
-  background: var(--work-tag-bg, #ead5d6);
-  color: var(--work-tag-text, #5d3136);
-  padding: 4px 8px;
-  border-radius: 2px;
-  font-size: 10px;
-  text-transform: uppercase;
+.metaYear,
+.metaClient {
+  display: block;
+}
+
+.metaClient {
+  @include media("<=tablet") {
+    display: none;
+  }
+}
+
+.viewProject {
+  color: var(--work-title, #5d3136);
+  font-family: $font-mono;
+  font-size: 12px;
   font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @include media("<=tablet") {
+    font-size: 10px;
+  }
+}
+
+.tagTicker {
+  margin-top: 8px;
+  width: 100%;
+  overflow: hidden;
+  background: var(--work-tag-bg, #ead5d6);
+  padding: 3px 0;
+
+  @include media("<=tablet") {
+    width: 100%;
+    margin-top: 0;
+    background: transparent;
+    padding: 0;
+  }
+}
+
+.tagTickerTrack {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  width: max-content;
+  white-space: nowrap;
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--work-tag-text, #5d3136);
+  animation: ticker-scroll 14s linear infinite;
+  will-change: transform;
+
+  @include media("<=tablet") {
+    animation: none;
+    display: flex;
+    gap: 0;
+    white-space: normal;
+    width: 100%;
+    font-size: 10px;
+  }
+
+  span {
+    display: inline-block;
+
+    @include media("<=tablet") {
+      &:last-child {
+        display: none;
+      }
+    }
+  }
 }
 
 .divider {
@@ -186,6 +360,12 @@
   margin-bottom: 40px;
   margin-left: -10%;
   position: relative;
+
+  @include media("<=tablet") {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 16px;
+  }
 }
 
 .gallery {
@@ -203,6 +383,28 @@
   &::-webkit-scrollbar {
     display: none;
   }
+
+  @include media("<=1024px") {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  @include media("<=tablet") {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 16px;
+    padding: 0;
+    grid-template-columns: 2fr;
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    gap: 10px;
+    overflow: hidden;
+    flex: 0 0 auto;
+
+    .placeholder:nth-child(n + 2) {
+      display: none;
+    }
+  }
 }
 
 .placeholder {
@@ -217,6 +419,11 @@
   letter-spacing: 1px;
   aspect-ratio: 16/10;
   // border: white 1px solid;
+
+  @include media("<=tablet") {
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
 }
 
 .summary {
@@ -225,19 +432,19 @@
   line-height: 1.4;
   color: var(--work-summary, #4a4a4a);
   max-width: 800px;
+
+  @include media("<=tablet") {
+    font-size: 14px;
+    line-height: 1.4;
+    max-width: none;
+  }
 }
 
-@media (max-width: 1024px) {
-  .body {
-    padding: 24px;
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
   }
-
-  .gallery {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .mainTitle {
-    font-size: 40px;
+  to {
+    transform: translateX(calc(-50% - 22px));
   }
 }

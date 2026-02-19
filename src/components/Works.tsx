@@ -173,15 +173,17 @@ export function Works() {
                 d="M0 7V45.5H344L311.601 2.77064C310.277 1.02527 308.213 0 306.023 0H7C3.13401 0 0 3.13401 0 7Z"
               />
             </svg>
-            <span className={styles.tabLabel}>SEE ALL WORKS -&gt;</span>
+            <span className={styles.seeAllLabel}>SEE ALL WORKS -&gt;</span>
           </div>
 
           {works.map((work, index) => {
             const theme = workThemes[work.theme];
+            const tagsTicker = work.tags.join(", ");
 
             return (
               <div
                 key={work.id}
+                id={`work-${work.id}`}
                 className={styles.cardContainer}
                 style={
                   {
@@ -202,7 +204,7 @@ export function Works() {
                   <div
                     className={styles.tab}
                     style={{
-                      left: `${index * 250 + 40}px`, // Offset calculation
+                      ["--tab-offset" as string]: `${index * 250 + 40}px`,
                       zIndex: 10 + index,
                     }}
                   >
@@ -227,14 +229,22 @@ export function Works() {
                     <div className={styles.bodyHeader}>
                       <h3 className={styles.mainTitle}>{work.title}</h3>
                       <div className={styles.metaInfo}>
-                        <span>{work.year}</span>
-                        <span>{work.client}</span>
-                        <div className={styles.tagRow}>
-                          {work.tags.map((tag) => (
-                            <span key={tag} className={styles.tag}>
-                              {tag}
-                            </span>
-                          ))}
+                        <div className={styles.metaMain}>
+                          <span className={styles.metaYear}>{work.year}</span>
+                          <span className={styles.metaClient}>{work.client}</span>
+                        </div>
+                        <a
+                          href={`#work-${work.id}`}
+                          className={styles.viewProject}
+                          aria-label={`View ${work.title} project`}
+                        >
+                          VIEW PROJECT -&gt;
+                        </a>
+                        <div className={styles.tagTicker} aria-hidden="true">
+                          <div className={styles.tagTickerTrack}>
+                            <span>{tagsTicker}</span>
+                            <span>{tagsTicker}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
