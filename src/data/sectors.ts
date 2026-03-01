@@ -3,29 +3,29 @@ import type { Sector } from "@/lib/sectorTypes";
 export const fallbackSectors: Sector[] = [
   {
     slug: "defense-military",
-    title: "Defense & Military",
+    title: "Defence & Intelligence",
     pageIndex: "001",
-    pageTag: "DEFENSE AI ORCHESTRATION",
+    pageTag: "DEFENSE AI INTEGRATION",
     hero: {
       title: "Defense AI,\nminus the black box.",
       subtitle:
-        "We help defense teams ship mission-ready AI pipelines, not demos. Your operators learn the orchestration patterns, keep the IP, and get resilient decision support in contested environments.",
+        "We help defense teams ship mission-ready AI systems, not demos. Your operators learn the patterns, keep the IP, and get resilient decision support in contested environments. Veteran-owned, security-first.",
       ctaLabel: "LET'S TALK",
       ctaHref: "#",
       exploreLabel: "EXPLORE",
     },
     consulting: {
       label: "Consulting",
-      title: "Your Defense Orchestration Partners",
+      title: "Your Defense AI Partners",
       description: [
-        "Find a partner who ships mission-ready AI pipelines your teams can run, extend, and certify.",
-        "We turn ad hoc pilots into governed orchestration with human oversight, evaluation harnesses, and clean handover. Your people keep the skills and the IP.",
+        "Find a partner who ships mission-ready AI systems your teams can run, extend, and certify.",
+        "We turn ad hoc pilots into governed multi-agent systems with human oversight, evaluation harnesses, and clean handover. Your people keep the skills and the IP.",
       ],
       cards: [
         {
           id: "/001",
-          title: "mission-ready orchestration",
-          body: "your stack already has sensors, data lakes, and legacy systems. we map critical workflows, then compose data, models, and rules into a single pipeline with clear inputs/outputs and safety boundaries.",
+          title: "multi-agent compliance",
+          body: "we build platforms like VigilOre — specialized agents for document intake, aggregation, comparison, and reporting across multilingual regulatory frameworks. 160+ hours reduced to under 5 minutes.",
         },
         {
           id: "/002",
@@ -45,27 +45,27 @@ export const fallbackSectors: Sector[] = [
       items: [
         {
           id: "01",
+          title: "VETERAN-OWNED",
+          description:
+            "8 years USMC experience on cryptographic systems and fighter jet avionics. We understand mission-critical environments.",
+        },
+        {
+          id: "02",
           title: "TRUTH OVER HYPE",
           description:
             "clear go/no-go guidance for mission fit; we will say no when automation is unsafe.",
         },
         {
-          id: "02",
-          title: "WORKING POCS > POWERPOINTS",
-          description:
-            "we ship something real your operators can extend - measured by decision time, accuracy, or mission impact.",
-        },
-        {
           id: "03",
-          title: "MULTI-MODEL ORCHESTRATION",
+          title: "WORKING SYSTEMS > POWERPOINTS",
           description:
-            "validation, comparison, and fallback across models to increase reliability and explainability.",
+            "we ship something real your operators can extend — measured by decision time, accuracy, or mission impact.",
         },
         {
           id: "04",
-          title: "GOVERNANCE BUILT-IN",
+          title: "PROVEN DELIVERY",
           description:
-            "role-based access, red-team tests, and policy-grade audit trails.",
+            "VigilOre reduced 160+ hours of manual compliance to under 5 minutes per cycle.",
         },
         {
           id: "05",
@@ -75,9 +75,9 @@ export const fallbackSectors: Sector[] = [
         },
         {
           id: "06",
-          title: "FAST DECISION BANDWIDTH",
+          title: "GOVERNANCE BUILT-IN",
           description:
-            "structured for leaders who can approve $50-250k in 1-2 meetings.",
+            "role-based access, red-team tests, and policy-grade audit trails from day one.",
         },
       ],
     },
@@ -85,7 +85,7 @@ export const fallbackSectors: Sector[] = [
       label: "Services",
       title: "Our Defense Services",
       intro:
-        "We focus on shipping mission-ready pipelines your teams can run and extend. Each service transfers capability (and IP) to you, with governance and adoption patterns baked in.",
+        "We focus on shipping mission-ready systems your teams can run and extend. Each engagement transfers capability (and IP) to you, with governance and adoption patterns baked in.",
       cards: [
         {
           id: "/001",
@@ -103,18 +103,18 @@ export const fallbackSectors: Sector[] = [
           id: "/003",
           title: "rapid prototyping",
           price: "$30-120K",
-          body: "4-week pocs for intel triage, logistics planning, predictive maintenance, or training copilots.",
+          body: "4-week POCs for intel triage, logistics planning, compliance automation, or training copilots.",
         },
         {
           id: "/004",
-          title: "multi-model orchestration",
-          price: "$XXX",
-          body: "arbitration, consensus, and fallback across models with evaluation harnesses and slas.",
+          title: "multi-agent systems",
+          price: "$50-200K",
+          body: "full product builds like VigilOre — specialized agents for document intake, aggregation, comparison, and reporting.",
         },
         {
           id: "/005",
           title: "ethics & evaluation engine",
-          price: "$XXX",
+          price: "$25-75K",
           body: "bias and robustness tests, red-team exercises, and reporting that safety boards can sign off on.",
         },
       ],
@@ -130,31 +130,31 @@ export const fallbackSectors: Sector[] = [
         },
         {
           id: "02",
-          title: "OPPORTUNITY TRIAGE",
+          title: "WORKFLOW AUDIT",
           description:
-            "score by impact, feasibility, and governance load; pick 1-2 to prove.",
+            "we learn what your people actually do — where time disappears, what's high-stakes, what's tedious.",
         },
         {
           id: "03",
           title: "BUILD THE POC",
           description:
-            "pair-build a mission-ready pipeline with evaluation from day one.",
+            "pair-build a mission-ready system with evaluation from day one.",
         },
         {
           id: "04",
-          title: "PILOT & ADOPTION",
+          title: "PILOT & MEASURE",
           description:
             "ship to a small unit; instrument success (time saved, error rate, mission outcome).",
         },
         {
           id: "05",
-          title: "ORCHESTRATE",
+          title: "SCALE & CONNECT",
           description:
-            "connect the poc to data sources, tools, and human oversight; add multi-model logic.",
+            "connect the system to data sources, tools, and human oversight; add multi-model logic where needed.",
         },
         {
           id: "06",
-          title: "HANDOVER & SCALE",
+          title: "HANDOVER",
           description:
             "docs, runbooks, training, and a roadmap you can execute without us.",
         },
@@ -164,22 +164,22 @@ export const fallbackSectors: Sector[] = [
       label: "Choice",
       title: "Choose the Engagement Model That Suits You Best",
       intro:
-        "What you get - mission-ready pipeline, orchestration patterns, governance model, team capability, 100% IP retained. What you will not - buzzword decks, lock-in, dependency.",
+        "What you get — mission-ready system, governance model, team capability, 100% IP retained. What you won't — buzzword decks, lock-in, dependency.",
       cards: [
         {
           id: "/001",
           title: "advisory sprint",
-          body: "fixed-scope clarity: mission map, risk register, and first poc spec.",
+          body: "fixed-scope clarity: mission map, risk register, and first POC spec.",
         },
         {
           id: "/002",
           title: "co-build squad",
-          body: "2-4 of your builders + our architect/engineer to ship a poc in 4-6 weeks.",
+          body: "2-4 of your builders + our architect/engineer to ship a POC in 4-6 weeks.",
         },
         {
           id: "/003",
-          title: "project-based",
-          body: "we lead end-to-end delivery, with governance and adoption baked in - then hand it back.",
+          title: "full product build",
+          body: "we lead end-to-end delivery, with governance and adoption baked in — then hand it back.",
         },
       ],
     },
@@ -200,7 +200,7 @@ export const fallbackSectors: Sector[] = [
         {
           question: "how do you handle safety, security, and compliance?",
           answer:
-            "We build in rmf, audit trails, red-team tests, and human-in-the-loop gates from day one.",
+            "We build in RMF, audit trails, red-team tests, and human-in-the-loop gates from day one.",
         },
         {
           question: "can our team maintain this without you?",
@@ -208,9 +208,9 @@ export const fallbackSectors: Sector[] = [
             "Yes. We pair-build, document, and train so you keep the patterns and IP.",
         },
         {
-          question: "how do you measure mission impact?",
+          question: "what's your track record?",
           answer:
-            "We instrument time saved, accuracy, and operational outcomes tied to mission objectives.",
+            "VigilOre reduced 160+ hours of manual compliance to under 5 minutes. Our founder has 8 years USMC experience on cryptographic systems.",
         },
         {
           question: "what if automation increases risk?",
@@ -227,265 +227,40 @@ export const fallbackSectors: Sector[] = [
     },
   },
   {
-    slug: "aerospace",
-    title: "Aerospace",
-    pageIndex: "002",
-    pageTag: "AEROSPACE AI ORCHESTRATION",
-    hero: {
-      title: "Aerospace AI,\nminus the uncertainty.",
-      subtitle:
-        "We help aerospace teams ship reliable AI pipelines, not demos. Your engineers learn the orchestration patterns, keep the IP, and raise safety and uptime.",
-      ctaLabel: "LET'S TALK",
-      ctaHref: "#",
-      exploreLabel: "EXPLORE",
-    },
-    consulting: {
-      label: "Consulting",
-      title: "Your Aerospace Orchestration Partners",
-      description: [
-        "Find a partner who ships flight-ready AI pipelines your teams can run, extend, and certify.",
-        "We turn scattered pilots into production-minded orchestration with evaluation harnesses, human oversight, and clean handover. Your people keep the skills and the IP.",
-      ],
-      cards: [
-        {
-          id: "/001",
-          title: "fleet-ready orchestration",
-          body: "your stack already has maintenance systems, sensor data, and supply chains. we map critical workflows, then stitch data, models, and rules into a single pipeline with clear inputs/outputs and safety boundaries.",
-        },
-        {
-          id: "/002",
-          title: "safety & compliance built-in",
-          body: "we design with certification and audit trails from day one so safety reviews move faster.",
-        },
-        {
-          id: "/003",
-          title: "multi-model reliability",
-          body: "comparison, arbitration, and fallback across models so outputs are explainable, measurable, and resilient.",
-        },
-      ],
-    },
-    whyUs: {
-      label: "Why us",
-      title: "Why choose us for Aerospace?",
-      items: [
-        {
-          id: "01",
-          title: "TRUTH OVER HYPE",
-          description:
-            "clear go/no-go guidance for safety and certification; we will say no when ai is not the answer.",
-        },
-        {
-          id: "02",
-          title: "WORKING POCS > POWERPOINTS",
-          description:
-            "we ship something real your engineers can extend - measured by uptime, error reduction, or turn-time.",
-        },
-        {
-          id: "03",
-          title: "MULTI-MODEL ORCHESTRATION",
-          description:
-            "validation, comparison, and fallback across models to increase reliability and explainability.",
-        },
-        {
-          id: "04",
-          title: "GOVERNANCE BUILT-IN",
-          description:
-            "role-based access, evaluation harnesses, and audit trails that satisfy safety teams.",
-        },
-        {
-          id: "05",
-          title: "CAPABILITY TRANSFER",
-          description:
-            "pair-building, readable code, internal playbooks; your team keeps the patterns and the IP.",
-        },
-        {
-          id: "06",
-          title: "FAST DECISION BANDWIDTH",
-          description:
-            "designed for leaders who can approve $30-150k in 1-2 meetings.",
-        },
-      ],
-    },
-    services: {
-      label: "Services",
-      title: "Our Aerospace Services",
-      intro:
-        "We focus on shipping production-minded pipelines your teams can run and extend. Each service transfers capability (and IP) to you, with governance and adoption patterns baked in.",
-      cards: [
-        {
-          id: "/001",
-          title: "executive advisory",
-          price: "$5-10K",
-          body: "fleet readiness check, opportunity triage, and a 90-day build vs buy vs orchestrate map.",
-        },
-        {
-          id: "/002",
-          title: "capability workshops",
-          price: "$12-60K",
-          body: "ai literacy to capability, pipeline design sprint, and governance bootcamps tailored to your stack.",
-        },
-        {
-          id: "/003",
-          title: "rapid prototyping",
-          price: "$25-120K",
-          body: "4-week pocs for predictive maintenance, parts forecasting, quality inspection, or documentation copilots.",
-        },
-        {
-          id: "/004",
-          title: "multi-model orchestration",
-          price: "$XXX",
-          body: "arbitration, consensus, and fallback across models with evaluation harnesses and slas.",
-        },
-        {
-          id: "/005",
-          title: "ethics & evaluation engine",
-          price: "$XXX",
-          body: "bias and robustness tests, red-team exercises, and reporting safety can sign off on.",
-        },
-      ],
-    },
-    methodology: {
-      label: "Our methodology",
-      title: "Our No-Nonsense Aerospace Development Methodology",
-      steps: [
-        {
-          id: "01",
-          title: "DISCOVERY",
-          description: "stakeholders, constraints, and a truth-first safety scan.",
-        },
-        {
-          id: "02",
-          title: "OPPORTUNITY TRIAGE",
-          description:
-            "score by impact, feasibility, and certification load; pick 1-2 to prove.",
-        },
-        {
-          id: "03",
-          title: "BUILD THE POC",
-          description:
-            "pair-build a production-minded pipeline with evaluation from day one.",
-        },
-        {
-          id: "04",
-          title: "PILOT & ADOPTION",
-          description:
-            "ship to a small fleet or line; instrument success (downtime, error rate, turn-time).",
-        },
-        {
-          id: "05",
-          title: "ORCHESTRATE",
-          description:
-            "connect the poc to data sources, tools, and human oversight; add multi-model logic.",
-        },
-        {
-          id: "06",
-          title: "HANDOVER & SCALE",
-          description:
-            "docs, runbooks, training, and a roadmap you can execute without us.",
-        },
-      ],
-    },
-    engagement: {
-      label: "Choice",
-      title: "Choose the Engagement Model That Suits You Best",
-      intro:
-        "What you get - working pipeline, orchestration patterns, governance model, team capability, 100% IP retained. What you will not - buzzword decks, lock-in, dependency.",
-      cards: [
-        {
-          id: "/001",
-          title: "advisory sprint",
-          body: "fixed-scope clarity: opportunity map, risk register, and first poc spec.",
-        },
-        {
-          id: "/002",
-          title: "co-build squad",
-          body: "2-4 of your builders + our architect/engineer to ship a poc in 4-6 weeks.",
-        },
-        {
-          id: "/003",
-          title: "project-based",
-          body: "we lead end-to-end delivery, with governance and adoption baked in - then hand it back.",
-        },
-      ],
-    },
-    faq: {
-      label: "FAQ",
-      title: "Frequently Asked Questions",
-      items: [
-        {
-          question: "how do we pick the first aerospace use case?",
-          answer:
-            "We score candidate workflows by impact, feasibility, and certification risk, then pick 1-2 to prove fast.",
-        },
-        {
-          question: "how do you support certification and safety audits?",
-          answer:
-            "We build evaluation harnesses, audit trails, and documentation into the pipeline from day one.",
-        },
-        {
-          question: "can you integrate with mro and supply chain systems?",
-          answer:
-            "Yes. We design clear inputs and outputs to connect with existing maintenance and planning tools.",
-        },
-        {
-          question: "can our team maintain this without you?",
-          answer:
-            "Yes. We pair-build, document, and train so your team owns the system.",
-        },
-        {
-          question: "how do you prove roi in uptime or cost?",
-          answer:
-            "We instrument downtime avoided, turnaround time, and maintenance cost reductions.",
-        },
-        {
-          question: "what if ai outputs are inconsistent?",
-          answer:
-            "We use multi-model comparison and human gates to catch drift and keep decisions safe.",
-        },
-      ],
-    },
-    cta: {
-      label: "LET'S TALK",
-      title: "Book a no-obligation aerospace consultation today.",
-      buttonLabel: "LET'S TALK",
-      buttonHref: "#",
-    },
-  },
-  {
     slug: "enterprise",
     title: "Enterprise",
-    pageIndex: "003",
-    pageTag: "ENTERPRISE AI ORCHESTRATION",
+    pageIndex: "002",
+    pageTag: "ENTERPRISE AI TRAINING",
     hero: {
-      title: "Enterprise AI,\nminus the theater.",
+      title: "Your team has AI tools.\nThey're not sure what to do with them.",
       subtitle:
-        "We help mid-market enterprises ship working AI pipelines, not decks. Your team learns the orchestration patterns, keeps the IP, and gets adoption above the slideware line.",
+        "That's not a training problem. It's a translation problem. Someone needs to sit with your people, learn what they actually do all day, and show them exactly where these tools fit. Not in theory. In their workflows, with their data, on their deadlines.",
       ctaLabel: "LET'S TALK",
       ctaHref: "#",
       exploreLabel: "EXPLORE",
     },
     consulting: {
       label: "Consulting",
-      title: "Your Enterprise Orchestration Partners",
+      title: "Your Enterprise AI Training Partners",
       description: [
-        "Find a partner who ships working AI pipelines your teams can run, extend, and trust.",
-        "We turn scattered ChatGPT use into production-minded orchestration with human-in-the-loop, evaluation harnesses, and clean handover. Your people keep the skills and the IP.",
+        "Find a partner who trains your teams on AI that sticks — 95% sustained adoption after 30 days vs the ~10% industry average.",
+        "We learn your workflows first, train on what the audit uncovered, then build what makes sense to automate. Your people keep the skills and the IP.",
       ],
       cards: [
         {
           id: "/001",
-          title: "orchestration over tools",
-          body: "your stack already has plenty of software. what's missing is a way to compose it. we map critical workflows, then stitch data, models, and rules into a single pipeline with clear inputs/outputs and service boundaries.",
+          title: "workflow-first training",
+          body: "before we train anyone, we spend time understanding what your team actually does. what tools they use, where time disappears, what's tedious, what's high-stakes.",
         },
         {
           id: "/002",
-          title: "adoption & governance built-in",
-          body: "if it isn't used, it isn't value. we design human gates, audit trails, rbac, and evaluation tests from day one - so legal and ops are comfortable, and teams actually adopt the thing.",
+          title: "no generic curriculum",
+          body: "every session is built around the specific opportunities we found. your team works with their own tasks, their own data, in real time.",
         },
         {
           id: "/003",
-          title: "multi-model reliability",
-          body: "one model is a single point of failure. we add comparison, arbitration, and fallback across models (and non-ai rules) so outputs are explainable, measurable, and resilient.",
+          title: "build what makes sense",
+          body: "some things should be automated. most shouldn't. we help you tell the difference, then build the agents and workflows that actually earn back the investment.",
         },
       ],
     },
@@ -495,27 +270,27 @@ export const fallbackSectors: Sector[] = [
       items: [
         {
           id: "01",
-          title: "TRUTH OVER HYPE",
+          title: "95% SUSTAINED ADOPTION",
           description:
-            "clear use/don't use guidance for your context; we will say no when ai isn't the answer.",
+            "95% of trainees still using what we taught after 30 days. The industry average is around 10%.",
         },
         {
           id: "02",
-          title: "WORKING POCS > POWERPOINTS",
+          title: "340+ PEOPLE TRAINED",
           description:
-            "we ship something real that your team can extend - measured by time saved or defect reduction, not slide count.",
+            "since May 2025 across Pacific Life, Colgate-Palmolive, KPMG UK, and more.",
         },
         {
           id: "03",
-          title: "MULTI-MODEL ORCHESTRATION",
+          title: "TRUTH OVER HYPE",
           description:
-            "validation, comparison, and fallback across models to increase reliability and explainability.",
+            "clear use/don't use guidance for your context; we will say no when AI isn't the answer.",
         },
         {
           id: "04",
-          title: "GOVERNANCE BUILT-IN",
+          title: "REAL HOURS SAVED",
           description:
-            "role-based access, evaluation harnesses, red-team tests, and policy-grade audit trails.",
+            "2-3K projected annual hours saved from agents developed during training at Pacific Life & Colgate.",
         },
         {
           id: "05",
@@ -525,9 +300,9 @@ export const fallbackSectors: Sector[] = [
         },
         {
           id: "06",
-          title: "FAST DECISION BANDWIDTH",
+          title: "TRUSTED BY",
           description:
-            "designed for leaders who can approve $20-100k in 1-2 meetings.",
+            "Pacific Life, Colgate-Palmolive, KPMG UK, IAG, University of Edinburgh, Correlation One.",
         },
       ],
     },
@@ -535,79 +310,79 @@ export const fallbackSectors: Sector[] = [
       label: "Services",
       title: "Our Enterprise Services",
       intro:
-        "We focus on shipping production-minded pipelines your teams can run and extend. Each service transfers capability (and IP) to you, with governance and adoption patterns baked in.",
+        "We focus on training that sticks and systems that ship. Each engagement transfers capability (and IP) to you, with governance and adoption patterns baked in.",
       cards: [
         {
           id: "/001",
-          title: "executive advisory",
-          price: "$2-5K",
-          body: "vendor sanity check, opportunity triage, and a 90-day build vs buy vs orchestrate map.",
+          title: "executive briefing",
+          price: "60-90 MIN",
+          body: "executive alignment on what AI can actually do. Cut through vendor noise and hype cycles, tailored to your industry.",
         },
         {
           id: "/002",
-          title: "capability workshops",
-          price: "$10-50K",
-          body: "ai literacy to capability, pipeline design sprint, and governance bootcamps tailored to your stack.",
+          title: "implementation readiness",
+          price: "FULL DAY",
+          body: "workflow audit, opportunity mapping, and a clear build vs buy vs automate assessment for your org.",
         },
         {
           id: "/003",
-          title: "rapid prototyping",
-          price: "$20-100K",
-          body: "4-week pocs that hit a real workflow: research synthesis, claims triage, kyc, compliance reviews, or internal assistants.",
+          title: "multi-day training",
+          price: "SCOPED",
+          body: "hands-on sessions built entirely around your existing workflows. Your team works with their own tasks, their own data, in real time.",
         },
         {
           id: "/004",
-          title: "multi-model orchestration",
-          price: "$XXX",
-          body: "arbitration, consensus, and fallback across models with evaluation harnesses and slas.",
+          title: "technical implementation",
+          price: "SCOPED",
+          body: "we build the agents and workflows that actually earn back the investment. Your team pairs with us and keeps the IP.",
         },
         {
           id: "/005",
-          title: "ethics & evaluation engine",
-          price: "$XXX",
-          body: "bias and robustness tests, red-teaming, and reporting that legal can sign off on.",
+          title: "ongoing advisory",
+          price: "MONTHLY",
+          body: "sustained support to ensure adoption sticks and your team continues to build on what they learned.",
         },
       ],
     },
     methodology: {
       label: "Our methodology",
-      title: "Our No-Nonsense Enterprise Development Methodology",
+      title: "How We Work",
       steps: [
         {
           id: "01",
-          title: "DISCOVERY",
+          title: "LEARN YOUR WORKFLOWS",
           description:
-            "stakeholders, constraints, and a truth-first opportunity scan.",
+            "we spend time understanding what your team actually does. what tools they use, where time disappears.",
         },
         {
           id: "02",
-          title: "OPPORTUNITY TRIAGE",
+          title: "TRAIN ON WHAT WE FOUND",
           description:
-            "score by impact, feasibility, governance load; pick 1-2 to prove.",
+            "no generic curriculum. every session is built around the specific opportunities the audit uncovered.",
         },
         {
           id: "03",
-          title: "BUILD THE POC",
+          title: "BUILD WHAT MAKES SENSE",
           description:
-            "pair-build a production-minded pipeline with evaluation from day one.",
+            "some things should be automated. most shouldn't. we help you tell the difference.",
         },
         {
           id: "04",
-          title: "PILOT & ADOPTION",
+          title: "MEASURE ADOPTION",
           description:
-            "ship to a small cohort; instrument success (time saved, error rate).",
+            "we instrument time saved, adoption rates, and real outcomes — not slide count.",
         },
         {
           id: "05",
-          title: "ORCHESTRATE",
+          title: "ITERATE & EXPAND",
           description:
-            "connect the poc to data sources, tools, and human oversight; add multi-model logic.",
+            "double down on what works, cut what doesn't. expand to new teams and workflows.",
         },
         {
           id: "06",
-          title: "HANDOVER & SCALE",
+          title: "HANDOVER",
           description:
-            "docs, runbooks, training, and a roadmap you can execute without us.",
+            "your team owns the capability. docs, playbooks, and a roadmap you can execute without us.",
         },
       ],
     },
@@ -615,22 +390,22 @@ export const fallbackSectors: Sector[] = [
       label: "Choice",
       title: "Choose the Engagement Model That Suits You Best",
       intro:
-        "What you get - working pipeline, orchestration patterns, governance model, team capability, 100% IP retained. What you will not - buzzword decks, lock-in, dependency.",
+        "What you get — trained team, working agents, adoption that sticks, 100% IP retained. What you won't — buzzword decks, lock-in, dependency.",
       cards: [
         {
           id: "/001",
-          title: "advisory sprint",
-          body: "fixed-scope clarity: opportunity map, risk register, and first poc spec.",
+          title: "executive briefing",
+          body: "60-90 minutes: clear-eyed view of AI capabilities and strategic implications for your org.",
         },
         {
           id: "/002",
-          title: "co-build squad",
-          body: "2-4 of your builders + our architect/engineer to ship a poc in 4-6 weeks.",
+          title: "training program",
+          body: "multi-day sessions for your teams built around their actual workflows and data.",
         },
         {
           id: "/003",
-          title: "project-based",
-          body: "we lead end-to-end delivery, with governance and adoption baked in - then hand it back.",
+          title: "full engagement",
+          body: "audit, train, build, and measure — end-to-end with governance and adoption baked in.",
         },
       ],
     },
@@ -639,201 +414,201 @@ export const fallbackSectors: Sector[] = [
       title: "Frequently Asked Questions",
       items: [
         {
-          question: "how do we pick the first enterprise use case?",
+          question: "what makes your training different?",
           answer:
-            "We score candidate workflows by impact, feasibility, and governance load, then pick 1-2 to prove value quickly.",
+            "We learn your workflows first. Every session uses your team's actual tasks, data, and tools — not generic demos.",
         },
         {
-          question: "what does orchestration mean in practice?",
+          question: "what's your adoption rate?",
           answer:
-            "It means chaining data, models, tools, and human review into one reliable workflow with clear inputs and outputs.",
+            "95% of trainees still using what we taught after 30 days. The industry average for AI training adoption is around 10%.",
         },
         {
-          question: "how do you handle security and compliance?",
+          question: "who have you trained?",
           answer:
-            "We build role-based access, audit trails, evaluation harnesses, and red-team tests into every pipeline.",
+            "340+ people since May 2025 across Pacific Life, Colgate-Palmolive, KPMG UK, IAG, and University of Edinburgh.",
         },
         {
           question: "can our team maintain this without you?",
           answer:
-            "Yes. We pair-build, document, and train so your team can run and extend what we ship.",
+            "Yes. That's the point. We pair-build, document, and train so your team owns the capability.",
         },
         {
-          question: "how do you prove roi?",
+          question: "how do you prove ROI?",
           answer:
-            "We instrument time saved, defect reduction, and other outcomes tied to real workflows.",
+            "We instrument time saved, adoption rates, and real outcomes. Pacific Life & Colgate project 2-3K annual hours saved.",
         },
         {
-          question: "what if ai is not right for our problem?",
+          question: "what if AI isn't right for our problem?",
           answer:
-            "We will tell you. If automation is not the answer, we will recommend a different path.",
+            "We will tell you. If automation isn't the answer, we'll recommend a different path.",
         },
       ],
     },
     cta: {
       label: "LET'S TALK",
-      title: "Book a no-obligation enterprise consultation today.",
+      title: "Your team could be the next one that actually uses what they learned.",
       buttonLabel: "LET'S TALK",
       buttonHref: "#",
     },
   },
   {
-    slug: "government",
-    title: "Government",
-    pageIndex: "004",
-    pageTag: "GOVERNMENT AI ORCHESTRATION",
+    slug: "education-research",
+    title: "Education & Research",
+    pageIndex: "003",
+    pageTag: "EDUCATION AI INTEGRATION",
     hero: {
-      title: "Government AI,\nminus the guesswork.",
+      title: "Education AI,\nminus the hype.",
       subtitle:
-        "We help agencies ship citizen-ready AI pipelines, not pilots. Your teams learn the orchestration patterns, keep the IP, and deliver transparent services.",
+        "We teach abstract fundamentals independent of platform changes. Emphasis on critical output assessment and principles over procedures. The people most skeptical of AI often become its most thoughtful adopters.",
       ctaLabel: "LET'S TALK",
       ctaHref: "#",
       exploreLabel: "EXPLORE",
     },
     consulting: {
       label: "Consulting",
-      title: "Your Government Orchestration Partners",
+      title: "Your Education & Research AI Partners",
       description: [
-        "Find a partner who ships AI pipelines your teams can run, extend, and govern inside procurement constraints.",
-        "We turn scattered pilots into production-minded orchestration with human-in-the-loop, evaluation harnesses, and clean handover. Your people keep the skills and the IP.",
+        "Faculty workshops, published research, and curriculum programs that bridge theory-practice gaps.",
+        "From Flagler College to Edinburgh Futures Institute — we've been working with educators since 2022, turning skeptics into thoughtful adopters.",
       ],
       cards: [
         {
           id: "/001",
-          title: "public-service orchestration",
-          body: "your stack already has case systems, forms, and data silos. we map critical workflows, then stitch data, models, and rules into a single pipeline with clear inputs/outputs and service boundaries.",
+          title: "faculty AI workshops",
+          body: "hands-on sessions where faculty discover how AI connects to their actual research and teaching. Built around their disciplines, not generic demos.",
         },
         {
           id: "/002",
-          title: "governance & privacy built-in",
-          body: "we design with audit trails, pii handling, and rbac from day one so legal and ops are comfortable.",
+          title: "published research",
+          body: "psychometric assessment of large language models, AI governance research, and soft power measurement. Published at UKICER 2025 and arxiv.",
         },
         {
           id: "/003",
-          title: "multi-model reliability",
-          body: "one model is a single point of failure. we add comparison, arbitration, and fallback across models so outputs are explainable, measurable, and resilient.",
+          title: "curriculum development",
+          body: "programs that teach principles over procedures and critical output assessment. Students and faculty building first versions gain deeper understanding.",
         },
       ],
     },
     whyUs: {
       label: "Why us",
-      title: "Why choose us for Government?",
+      title: "Why choose us for Education?",
       items: [
         {
           id: "01",
-          title: "TRUTH OVER HYPE",
+          title: "PUBLISHED RESEARCHERS",
           description:
-            "clear use/do not use guidance for public impact; we will say no when ai is not the answer.",
+            "The Ethics Engine published at UKICER 2025. Psychometric assessment of LLMs via University of Edinburgh's Neuroplastics Lab.",
         },
         {
           id: "02",
-          title: "WORKING POCS > POWERPOINTS",
+          title: "SINCE 2022",
           description:
-            "we ship something real your teams can extend - measured by time saved or service outcomes.",
+            "from Flagler College faculty workshops to Edinburgh Futures Institute — this is where it all started.",
         },
         {
           id: "03",
-          title: "MULTI-MODEL ORCHESTRATION",
+          title: "PRINCIPLES OVER PROCEDURES",
           description:
-            "validation, comparison, and fallback across models to increase reliability and explainability.",
+            "we teach abstract fundamentals independent of platform changes so knowledge doesn't expire with the next update.",
         },
         {
           id: "04",
-          title: "GOVERNANCE BUILT-IN",
+          title: "SKEPTICS WELCOME",
           description:
-            "role-based access, evaluation harnesses, red-team tests, and policy-grade audit trails.",
+            "the people most skeptical of AI often become its most thoughtful adopters, if someone takes the time to connect it to their actual work.",
         },
         {
           id: "05",
-          title: "CAPABILITY TRANSFER",
+          title: "INTERNATIONAL REACH",
           description:
-            "pair-building, readable code, internal playbooks; your team keeps the patterns and the IP.",
+            "British Council, Academy of International Affairs NRW, Ben Gurion University, 25+ countries represented.",
         },
         {
           id: "06",
-          title: "FAST DECISION BANDWIDTH",
+          title: "40+ PROFESSORS TRAINED",
           description:
-            "structured for leaders who can approve $25-125k in 1-2 meetings.",
+            "at University of Edinburgh on AI integration into their research and teaching practice.",
         },
       ],
     },
     services: {
       label: "Services",
-      title: "Our Government Services",
+      title: "Our Education Services",
       intro:
-        "We focus on shipping production-minded pipelines your teams can run and extend. Each service transfers capability (and IP) to you, with governance and adoption patterns baked in.",
+        "We focus on building lasting AI literacy and capability in academic institutions. Each engagement transfers knowledge that doesn't expire with the next platform update.",
       cards: [
         {
           id: "/001",
-          title: "executive advisory",
-          price: "$5-10K",
-          body: "program sanity check, opportunity triage, and a 90-day build vs buy vs orchestrate map.",
+          title: "faculty workshops",
+          price: "CUSTOM",
+          body: "hands-on sessions where faculty discover how AI connects to their actual research and teaching disciplines.",
         },
         {
           id: "/002",
-          title: "capability workshops",
-          price: "$12-60K",
-          body: "ai literacy to capability, pipeline design sprint, and governance bootcamps tailored to your stack.",
+          title: "AI ethics briefings",
+          price: "CUSTOM",
+          body: "governance frameworks, ethical considerations, and policy implications for academic and policy audiences.",
         },
         {
           id: "/003",
-          title: "rapid prototyping",
-          price: "$20-100K",
-          body: "4-week pocs for case triage, benefits routing, compliance reviews, or internal assistants.",
+          title: "research partnerships",
+          price: "CUSTOM",
+          body: "psychometric assessment, AI evaluation methodology, and published research collaborations.",
         },
         {
           id: "/004",
-          title: "multi-model orchestration",
-          price: "$XXX",
-          body: "arbitration, consensus, and fallback across models with evaluation harnesses and slas.",
+          title: "curriculum programs",
+          price: "CUSTOM",
+          body: "design and delivery of AI curriculum that teaches critical thinking and principles over tool-specific procedures.",
         },
         {
           id: "/005",
-          title: "ethics & evaluation engine",
-          price: "$XXX",
-          body: "bias and robustness tests, red-team exercises, and reporting that oversight can sign off on.",
+          title: "student programs",
+          price: "CUSTOM",
+          body: "AI literacy programs that prepare students for a world where understanding AI systems is a baseline skill.",
         },
       ],
     },
     methodology: {
       label: "Our methodology",
-      title: "Our No-Nonsense Government Development Methodology",
+      title: "Our Education & Research Methodology",
       steps: [
         {
           id: "01",
-          title: "DISCOVERY",
+          title: "UNDERSTAND THE DISCIPLINE",
           description:
-            "stakeholders, constraints, and a truth-first public impact scan.",
+            "we learn the research area, teaching context, and where AI might genuinely help — or hinder.",
         },
         {
           id: "02",
-          title: "OPPORTUNITY TRIAGE",
+          title: "CONNECT TO ACTUAL WORK",
           description:
-            "score by impact, feasibility, and governance load; pick 1-2 to prove.",
+            "every session is built around the faculty's real research, teaching, or administrative challenges.",
         },
         {
           id: "03",
-          title: "BUILD THE POC",
+          title: "TEACH PRINCIPLES",
           description:
-            "pair-build a production-minded pipeline with evaluation from day one.",
+            "abstract fundamentals and critical output assessment that survive platform changes.",
         },
         {
           id: "04",
-          title: "PILOT & ADOPTION",
+          title: "BUILD TOGETHER",
           description:
-            "ship to a small cohort; instrument success (time saved, error rate, citizen satisfaction).",
+            "faculty and students build first versions — gaining deeper understanding through practice.",
         },
         {
           id: "05",
-          title: "ORCHESTRATE",
+          title: "PUBLISH & SHARE",
           description:
-            "connect the poc to data sources, tools, and human oversight; add multi-model logic.",
+            "research findings published at conferences and journals. Knowledge shared, not hoarded.",
         },
         {
           id: "06",
-          title: "HANDOVER & SCALE",
+          title: "SUSTAIN",
           description:
-            "docs, runbooks, training, and a roadmap you can execute without us.",
+            "ongoing advisory to ensure institutions continue to evolve their AI capability.",
         },
       ],
     },
@@ -841,22 +616,22 @@ export const fallbackSectors: Sector[] = [
       label: "Choice",
       title: "Choose the Engagement Model That Suits You Best",
       intro:
-        "What you get - working pipeline, orchestration patterns, governance model, team capability, 100% IP retained. What you will not - buzzword decks, lock-in, dependency.",
+        "What you get — trained faculty, published research, curriculum that lasts, institutional capability. What you won't — vendor lock-in or knowledge that expires.",
       cards: [
         {
           id: "/001",
-          title: "advisory sprint",
-          body: "fixed-scope clarity: opportunity map, risk register, and first poc spec.",
+          title: "workshop series",
+          body: "faculty workshops tailored to specific departments and research areas.",
         },
         {
           id: "/002",
-          title: "co-build squad",
-          body: "2-4 of your builders + our architect/engineer to ship a poc in 4-6 weeks.",
+          title: "research partnership",
+          body: "co-authored research, evaluation methodology, and published findings.",
         },
         {
           id: "/003",
-          title: "project-based",
-          body: "we lead end-to-end delivery, with governance and adoption baked in - then hand it back.",
+          title: "institutional program",
+          body: "comprehensive curriculum design, faculty training, and ongoing advisory.",
         },
       ],
     },
@@ -865,34 +640,260 @@ export const fallbackSectors: Sector[] = [
       title: "Frequently Asked Questions",
       items: [
         {
-          question: "how do you work with procurement and compliance?",
+          question: "what's your academic background?",
           answer:
-            "We align with your procurement steps and build audit-ready documentation from day one.",
+            "MSc Future Governance from University of Edinburgh. Published research at UKICER 2025 and in collaboration with the Neuroplastics Lab.",
         },
         {
-          question: "can you deploy within existing infrastructure?",
+          question: "do you work with skeptical faculty?",
           answer:
-            "Yes. We design for your current stack and keep data boundaries intact.",
+            "That's our specialty. The people most skeptical of AI often become its most thoughtful adopters when someone connects it to their actual work.",
         },
         {
-          question: "how do you handle privacy and pii?",
+          question: "what research have you published?",
           answer:
-            "We implement rbac, data minimization, and audit trails to protect sensitive data.",
+            "The Ethics Engine (psychometric assessment of LLMs), ICR soft power research for British Council, and AI governance work presented at international conferences.",
+        },
+        {
+          question: "can you work with our existing curriculum?",
+          answer:
+            "Yes. We design around your existing programs and disciplines, not the other way around.",
+        },
+        {
+          question: "what institutions have you worked with?",
+          answer:
+            "University of Edinburgh, Flagler College, Edinburgh Futures Institute, Academy of International Affairs NRW, British Council.",
+        },
+        {
+          question: "do you offer student programs?",
+          answer:
+            "Yes. AI literacy programs that teach critical thinking about AI systems, not just how to use specific tools.",
+        },
+      ],
+    },
+    cta: {
+      label: "LET'S TALK",
+      title: "Ready to build lasting AI capability in your institution?",
+      buttonLabel: "LET'S TALK",
+      buttonHref: "#",
+    },
+  },
+  {
+    slug: "government",
+    title: "Government & Policy",
+    pageIndex: "004",
+    pageTag: "GOVERNMENT AI GOVERNANCE",
+    hero: {
+      title: "Government AI,\nminus the guesswork.",
+      subtitle:
+        "We help government teams and policy institutions navigate AI with honest assessment, ethical frameworks, and practical governance. From ambassador briefings to citizen-centric AI systems.",
+      ctaLabel: "LET'S TALK",
+      ctaHref: "#",
+      exploreLabel: "EXPLORE",
+    },
+    consulting: {
+      label: "Consulting",
+      title: "Your Government & Policy AI Partners",
+      description: [
+        "AI ethics briefings, governance frameworks, and practical policy guidance for public institutions.",
+        "Working with the British Council, Academy of International Affairs NRW, and institutions across 25+ countries on AI governance and soft power measurement.",
+      ],
+      cards: [
+        {
+          id: "/001",
+          title: "AI ethics & governance",
+          body: "briefings for ambassadors, policymakers, and international affairs experts on AI's impact on governance, soft power, and institutional decision-making.",
+        },
+        {
+          id: "/002",
+          title: "policy frameworks",
+          body: "practical governance frameworks that balance innovation with accountability, transparency, and citizen trust.",
+        },
+        {
+          id: "/003",
+          title: "research & evaluation",
+          body: "psychometric assessment of AI systems, soft power measurement with ML and NLP, and published research that informs policy decisions.",
+        },
+      ],
+    },
+    whyUs: {
+      label: "Why us",
+      title: "Why choose us for Government & Policy?",
+      items: [
+        {
+          id: "01",
+          title: "INTERNATIONAL CREDIBILITY",
+          description:
+            "AI ethics briefings to ambassadors from 25+ countries at the Academy of International Affairs NRW in Bonn.",
+        },
+        {
+          id: "02",
+          title: "PUBLISHED RESEARCH",
+          description:
+            "British Council-commissioned soft power research using ML and NLP. Ethics Engine published via University of Edinburgh.",
+        },
+        {
+          id: "03",
+          title: "TRUTH OVER HYPE",
+          description:
+            "clear guidance on where AI helps governance and where it creates risk. We will say no when AI isn't the answer.",
+        },
+        {
+          id: "04",
+          title: "GOVERNANCE BUILT-IN",
+          description:
+            "audit trails, ethical frameworks, and accountability structures designed for public trust.",
+        },
+        {
+          id: "05",
+          title: "VETERAN-OWNED",
+          description:
+            "8 years USMC. We understand classified environments, security requirements, and mission-critical systems.",
+        },
+        {
+          id: "06",
+          title: "ACADEMIC RIGOR",
+          description:
+            "MSc Future Governance from University of Edinburgh. Research-backed, not vendor-driven.",
+        },
+      ],
+    },
+    services: {
+      label: "Services",
+      title: "Our Government & Policy Services",
+      intro:
+        "We focus on honest AI assessment and practical governance for public institutions. Every engagement is grounded in research and designed for transparency.",
+      cards: [
+        {
+          id: "/001",
+          title: "AI ethics briefing",
+          price: "CUSTOM",
+          body: "governance implications, ethical frameworks, and practical guidance for policymakers and international affairs experts.",
+        },
+        {
+          id: "/002",
+          title: "capability workshops",
+          price: "$12-60K",
+          body: "AI literacy to institutional capability, with governance and compliance tailored to your environment.",
+        },
+        {
+          id: "/003",
+          title: "policy research",
+          price: "CUSTOM",
+          body: "AI governance research, soft power measurement, and evaluation methodology that informs real policy decisions.",
+        },
+        {
+          id: "/004",
+          title: "rapid prototyping",
+          price: "$20-100K",
+          body: "4-week POCs for case triage, benefits routing, compliance reviews, or citizen-facing assistants.",
+        },
+        {
+          id: "/005",
+          title: "ethics & evaluation engine",
+          price: "$25-75K",
+          body: "psychometric assessment of AI systems, bias testing, and reporting that oversight bodies can sign off on.",
+        },
+      ],
+    },
+    methodology: {
+      label: "Our methodology",
+      title: "Our Government & Policy Methodology",
+      steps: [
+        {
+          id: "01",
+          title: "UNDERSTAND THE CONTEXT",
+          description:
+            "stakeholders, constraints, political landscape, and a truth-first assessment of where AI fits.",
+        },
+        {
+          id: "02",
+          title: "ASSESS & TRIAGE",
+          description:
+            "score opportunities by public impact, feasibility, and governance requirements.",
+        },
+        {
+          id: "03",
+          title: "BUILD OR BRIEF",
+          description:
+            "deliver governance briefings, policy frameworks, or working systems depending on the need.",
+        },
+        {
+          id: "04",
+          title: "PILOT & MEASURE",
+          description:
+            "ship to a small cohort; instrument success (time saved, service quality, citizen satisfaction).",
+        },
+        {
+          id: "05",
+          title: "GOVERN & SCALE",
+          description:
+            "connect systems to data sources, oversight structures, and accountability frameworks.",
+        },
+        {
+          id: "06",
+          title: "HANDOVER",
+          description:
+            "docs, frameworks, training, and a roadmap your institution can execute independently.",
+        },
+      ],
+    },
+    engagement: {
+      label: "Choice",
+      title: "Choose the Engagement Model That Suits You Best",
+      intro:
+        "What you get — honest assessment, governance frameworks, institutional capability, 100% IP retained. What you won't — vendor agendas, lock-in, or hype.",
+      cards: [
+        {
+          id: "/001",
+          title: "policy briefing",
+          body: "governance and ethics briefings for policymakers, ambassadors, and institutional leaders.",
+        },
+        {
+          id: "/002",
+          title: "research partnership",
+          body: "co-authored research, evaluation methodology, and published findings that inform policy.",
+        },
+        {
+          id: "/003",
+          title: "full engagement",
+          body: "end-to-end: assessment, training, building, and governance — then handover.",
+        },
+      ],
+    },
+    faq: {
+      label: "FAQ",
+      title: "Frequently Asked Questions",
+      items: [
+        {
+          question: "what's your experience with government and policy?",
+          answer:
+            "AI ethics briefings to ambassadors from 25+ countries. British Council-commissioned research. MSc Future Governance from University of Edinburgh.",
+        },
+        {
+          question: "can you work within procurement constraints?",
+          answer:
+            "Yes. We align with your procurement processes and build audit-ready documentation from day one.",
+        },
+        {
+          question: "how do you handle privacy and sensitive data?",
+          answer:
+            "We implement RBAC, data minimization, and audit trails. Our founder has 8 years USMC experience with classified systems.",
         },
         {
           question: "can our team maintain this without you?",
           answer:
-            "Yes. We pair-build, document, and train so you own the capability.",
+            "Yes. We train, document, and hand over so your institution owns the capability.",
         },
         {
-          question: "how do you prove roi in public services?",
+          question: "what research have you published?",
           answer:
-            "We instrument time saved, throughput, and service quality metrics tied to outcomes.",
+            "The Ethics Engine (psychometric assessment of LLMs), ICR soft power research for British Council, and AI governance work for international audiences.",
         },
         {
-          question: "what if ai is not right for the program?",
+          question: "what if AI isn't right for our program?",
           answer:
-            "We will tell you and recommend a simpler or safer alternative.",
+            "We will tell you and recommend a simpler or safer alternative. That's the conversation we like having.",
         },
       ],
     },

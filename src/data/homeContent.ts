@@ -3,84 +3,84 @@ export const layoutContent = {
   topNav: {
     readingsLabel: "Readings",
     chaptersLabel: "Chapters",
-    primaryCtaLabel: "Grab a Seat",
+    primaryCtaLabel: "Start a Conversation",
   },
   bottomNav: {
-    bookCallTitle: "BOOK A CALL",
+    bookCallTitle: "BOOK A DEMO",
     bookCallSubtitle: "GET STARTED TODAY",
-    secondaryCtaLabel: "CALL TO ACTION",
+    secondaryCtaLabel: "BOOK A DEMO",
   },
 } as const;
 
 export const heroContent = {
   readings: [
-    "WHEN AI SHOWS ITS POLITICS",
-    "THE $300 QUESTION",
-    "THE QUESTIONS SCHOOLS AREN'T ASKING ABOUT AI",
-    "THE PHD PARADOX",
-    "THE LAB PARTY THAT CHANGED HOW I THINK ABOUT MONEY",
+    "YOUR TEAM HAS AI TOOLS. THEY'RE NOT SURE WHAT TO DO WITH THEM.",
+    "THE REALITY OF AI IMPLEMENTATION COSTS",
+    "WHY 95% SUSTAINED ADOPTION BEATS 10% INDUSTRY AVERAGE",
+    "WHEN SHOULD THE ANSWER BE NO?",
+    "THE PEOPLE MOST SKEPTICAL OF AI BECOME ITS MOST THOUGHTFUL ADOPTERS",
   ],
   chaptersLabel: "The Chapters",
   chapters: [
-    "WHAT WE SELL",
-    "WHO IS OUR CLIENT",
-    "WHAT WE'VE MADE",
+    "BUILD. TEACH. GOVERN.",
+    "WHO WE WORK WITH",
+    "THE WORK",
     "WHICH SECTORS",
     "WHO ARE THE PEOPLE",
   ],
 } as const;
 
 export const threeWheelStrategyContent = {
-  title: "The Three Wheel Strategy",
+  title: "Build. Teach. Govern.",
   subtitle:
-    "We're not selling software or consulting. We're building a new operational paradigm where every employee becomes a solution architect.",
-  consultButtonLabel: "BOOK CONSULTATION",
+    "That's not a training problem. It's a translation problem. Someone needs to sit with your people, learn what they actually do all day, and show them exactly where these tools fit. Not in theory. In their workflows, with their data, on their deadlines.",
+  consultButtonLabel: "BOOK A DEMO",
   wheel: {
     node1: {
-      title: "DEMOCRATISE BUILDING",
-      subLabelLeft: "Non Technical Builders",
-      subLabelRight: "6Wk POCs",
+      title: "BUILD",
+      subLabelLeft: "Multi-Agent Systems",
+      subLabelRight: "Data Pipelines",
     },
     node2: {
-      title: "LEARN & OPTIMIZE",
-      subLabel: "buy what matters",
+      title: "TEACH",
+      subLabel: "Workflow Integration",
     },
     node3: {
-      titleLine1: "THE ORCHESTRATION",
-      titleLine2: "LAYER",
-      subLabel: "Human in the loop",
+      titleLine1: "GOVERN",
+      titleLine2: "",
+      subLabel: "Risk & Ethics",
     },
   },
   sections: [
     {
       id: "01",
-      title: "Democratize Building",
+      title: "Build",
       description:
-        "In 6 weeks, we teach non-technical employees to build POCs that used to require entire startups. Janet in accounting creates expense tools. Mike in ops builds workflow automation. They own it, they understand it, they iterate it.",
+        "Multi-agent systems, data pipelines, production infrastructure. We reduced 160-hour processes to 5 minutes. We focus on real implementation costs and the failures omitted from vendor case studies.",
       wheelKey: "democratise",
     },
     {
       id: "02",
-      title: "Learn & Optimize",
+      title: "Teach",
       description:
-        "We analyze what works, double down on winners, and cut what doesn't. Your team learns by doing, building institutional knowledge that compounds over time.",
+        "We teach abstract fundamentals independent of platform changes. Emphasis on critical output assessment and principles over procedures. Teams building first versions gain deeper understanding than any slide deck provides.",
       wheelKey: "learn",
     },
     {
       id: "03",
-      title: "The Orchestration Layer",
+      title: "Govern",
       description:
-        "Human-in-the-loop multimodal systems that connect your tools, your data, and your people. Not replacing humans-amplifying them.",
+        "Risk assessment, policy frameworks, ethics considerations. Our research measures psychological patterns in AI systems missed by standard evaluation methods.",
       wheelKey: "orchestration",
     },
   ],
 } as const;
 
 export const servicesContent = {
-  title: "The Untapped Opportunity",
+  title: "How We Work",
   description:
-    "Every YC startup is building what your employees could create in an afternoon. But those startups can't build what emerges when 100 employees each build their perfect tool and we orchestrate them together. That's a moat no vendor can cross.",
-  metaLabel: "COMPUTATIONAL ORCHESTRATION SERVICES",
+    "Learn First. Build Right. We start with understanding your needs, observe problems in actual tool usage, determine genuine AI requirements, then engineer validated solutions your teams understand and own.",
+  metaLabel: "WORKSHOPS & ENGAGEMENTS",
   labels: {
     title: "TITLE",
     description: "DESCRIPTION",
@@ -88,8 +88,8 @@ export const servicesContent = {
   },
   items: [
     {
-      id: "speaking",
-      title: "Speaking & Advisory",
+      id: "briefing",
+      title: "Executive Briefing",
       theme: {
         background: "#d8bfc1",
         title: "#5d3136",
@@ -98,66 +98,65 @@ export const servicesContent = {
       },
       headline: "Executive alignment on what AI can actually do",
       description:
-        "We cut through vendor noise and hype cycles. Your leadership team gets a clear-eyed view of capabilities, limitations, and strategic implications-tailored to your industry and org structure.",
+        "60-90 minute sessions that cut through vendor noise and hype cycles. Your leadership team gets a clear-eyed view of capabilities, limitations, and strategic implications — tailored to your industry and org structure.",
       projects: [
-        "FORTUNE 500 BOARD BRIEFING",
-        "FINTECH SUMMIT KEYNOTE",
-        "PRIVATE EQUITY DUE DILIGENCE",
+        "KPMG UK EXECUTIVE WORKSHOP",
+        "IAG INNOVATION TEAM",
+        "ACADEMY OF INTL. AFFAIRS NRW",
       ],
     },
     {
-      id: "workshops",
-      title: "Technical Workshops",
+      id: "readiness",
+      title: "Implementation Readiness",
       theme: {
         background: "#7b5a5c",
         title: "#fefbf6",
         dots: "rgba(254, 251, 246, 0.9)",
         border: "rgba(254, 251, 246, 0.24)",
       },
-      headline: "Hands-on training that sticks",
+      headline: "Full-day deep dives into your workflows",
       description:
-        "Two-day intensives where your team builds real systems. Not slides about AI-actual working prototypes using your data, your tools, your constraints. Engineers leave with patterns they can apply Monday morning.",
+        "Before we train anyone, we spend time understanding what your team actually does. What tools they use, where time disappears, what's tedious, what's high-stakes. No generic curriculum — every session is built around the specific opportunities we find.",
       projects: [
-        "MERIDIAN HEALTH SYSTEMS",
-        "COASTAL CAPITAL PARTNERS",
-        "PHOENIX INDUSTRIAL GROUP",
+        "PACIFIC LIFE",
+        "COLGATE-PALMOLIVE",
+        "UNIVERSITY OF EDINBURGH",
       ],
     },
     {
-      id: "prototyping",
-      title: "Rapid Prototyping",
+      id: "technical",
+      title: "Technical Implementation",
       theme: {
         background: "#F9ECDF",
         title: "#5d3136",
         dots: "rgba(66, 29, 36, 0.35)",
         border: "rgba(66, 29, 36, 0.2)",
       },
-      headline: "Working systems, not slideware. Prove value with real POCs",
+      headline: "Working systems, not slideware. Scoped and shipped.",
       description:
-        "We design and ship production-minded proofs: multi-model orchestration, ethics engines, and custom agentic flows. Your team pairs with us, learns the patterns, and keeps the IP.",
+        "Some things should be automated. Most shouldn't. We help you tell the difference, then build the agents and workflows that actually earn back the investment. Your team pairs with us, learns the patterns, and keeps the IP.",
       projects: [
-        "NORTHWAY LOGISTICS POC",
-        "EMBERFIELD MEDIA RESEARCH AI",
-        "LAKE & SHORE BANK KYC PIPELINE",
-        "REDHAVEN FIELD OPS AGENT",
+        "VIGILORE COMPLIANCE PLATFORM",
+        "ETHICS ENGINE RESEARCH",
+        "ICR SOFT POWER RESEARCH",
       ],
     },
     {
-      id: "strategic",
-      title: "Strategic Programs",
+      id: "educator",
+      title: "Educator Programs",
       theme: {
         background: "#5d3136",
         title: "#fefbf6",
         dots: "rgba(254, 251, 246, 0.9)",
         border: "rgba(254, 251, 246, 0.22)",
       },
-      headline: "Long-term transformation partnerships",
+      headline: "Custom programs for universities and faculty",
       description:
-        "Six-month engagements that rebuild how your organization thinks about and builds with AI. We embed with your teams, establish centers of excellence, and create sustainable competitive advantages.",
+        "Faculty AI workshops and academic research programs. The people most skeptical of AI often become its most thoughtful adopters, if someone takes the time to connect it to their actual work.",
       projects: [
-        "ENTERPRISE TRANSFORMATION",
-        "COE ESTABLISHMENT",
-        "CAPABILITY BUILDING",
+        "FLAGLER COLLEGE",
+        "EDINBURGH FUTURES INSTITUTE",
+        "CORRELATION ONE PARTNERSHIP",
       ],
     },
   ],
@@ -204,36 +203,36 @@ export const worksContent = {
   },
   items: [
     {
-      id: "colgate",
-      badge: "COLGATE",
-      title: "Colgate Workshop",
+      id: "pacific-colgate",
+      badge: "Pacific Life",
+      title: "Pacific Life & Colgate-Palmolive",
       year: "2025",
-      client: "JHON DOE",
-      tags: ["AI PIPELINE", "AUDITS", "FRONTEND"],
+      client: "CORRELATION ONE",
+      tags: ["WORKFLOW INTEGRATION", "AGENT DEVELOPMENT", "MULTI-DAY SESSIONS"],
       summary:
-        "eduba turned our AI strategy into a working pipeline in four weeks. They told us what not to build, paired with our team, and left us with skills, not dependency.",
+        "300+ employees trained on AI workflow integration. 95% sustained adoption after 30 days. 2-3K projected hours saved annually from course-built agents.",
       theme: "rose",
     },
     {
-      id: "vigilore",
-      badge: "VIGILORE",
-      title: "VigilOre Audit POC",
-      year: "2024",
-      client: "ANDREW ZDUNICH",
-      tags: ["RISK OPS", "COMPLIANCE", "DASHBOARD"],
+      id: "kpmg",
+      badge: "KPMG",
+      title: "KPMG UK Executive Workshop",
+      year: "2025",
+      client: "KPMG UK",
+      tags: ["STRATEGIC AI", "EXECUTIVE WORKSHOP", "GLOBAL CONSULTANCY"],
       summary:
-        "We reduced audit prep time by 38% in month one by building live risk maps and automated documentation flows. The team shipped new workflows without us.",
+        "40+ senior executives trained on strategic AI decision-making. Focused on the core question: when should the answer be no?",
       theme: "dark",
     },
     {
-      id: "armetor",
-      badge: "ARMETOR",
-      title: "Rapid Prototyping Sprint",
-      year: "2023",
-      client: "PRIYA CHANDRA",
-      tags: ["ORCHESTRATION", "MULTIMODAL", "PROTOTYPES"],
+      id: "vigilore",
+      badge: "VigilOre",
+      title: "VigilOre Compliance Platform",
+      year: "2024",
+      client: "ANDREW SDUNICH",
+      tags: ["MULTI-AGENT SYSTEMS", "COMPLIANCE", "FULL PRODUCT BUILD"],
       summary:
-        "A two-week build sprint delivered working agentic workflows across sales and ops. Their team kept the IP and rolled it out across regions.",
+        "Multi-agent compliance platform for DRC mining operations. Reduced 160+ hours of manual compliance work per cycle to under 5 minutes.",
       theme: "skin",
     },
   ],
@@ -241,7 +240,7 @@ export const worksContent = {
 
 export const reviewsContent = {
   title:
-    "We start with truth, not hype. We teach your people to build. Then we orchestrate what works into an advantage.",
+    "We start with truth, not hype. We teach your people to build. Then we help them govern what works.",
   sideLabel: {
     line1: "A FEW WORDS FROM",
     line2: "OUR CLIENTS",
@@ -253,39 +252,39 @@ export const reviewsContent = {
   items: [
     {
       id: 1,
-      client: "Jhon Doe",
-      company: "KPMG",
+      client: "Lissa Pritchard",
+      company: "IAG",
       quote:
-        "eduba turned our ai strategy into a working pipeline in four weeks. they told us what not to build, paired with our team, and left us with skills-not dependency. we cut analysis time by 38% in month one.",
-      source: "LINKEDIN",
-      headerCode: "(POC_CLIENT)",
+        "A pleasure working with Jake and his team at Eduba. They brought clarity to our AI strategy and helped our innovation team see exactly where these tools fit into development, thought leadership, and customer experience.",
+      source: "DIRECT",
+      headerCode: "(HEAD_OF_INNOVATION)",
     },
     {
       id: 2,
-      client: "Sarah Smith",
-      company: "Deloitte",
+      client: "Andrew Sdunich",
+      company: "Armetour",
       quote:
-        "The team at eduba didn't just deliver a product; they delivered a culture shift. Their approach to AI is pragmatic, effective, and deeply human-centric.",
+        "Always ahead of the competition and ready to deliver and exceed expectations. They built VigilOre from the ground up — four specialized agents handling multilingual compliance that turned 160 hours of manual work into minutes.",
       source: "DIRECT",
-      headerCode: "(STRATEGY_LEAD)",
+      headerCode: "(DEFENSE_OPS)",
     },
     {
       id: 3,
-      client: "Michael Chen",
-      company: "Google",
+      client: "Faculty Member",
+      company: "Flagler College",
       quote:
-        "A paradigm shift in how we approach interface design. The 'window stack' metaphor they engineered for our dashboard is now a standard across our internal tools.",
-      source: "CLUTCH",
-      headerCode: "(UX_DIRECTOR)",
+        "Whoa, this is a really good use of AI. How do you do this? They didn't push tools on us — they connected AI to our actual research and teaching, and that's when it clicked for the whole department.",
+      source: "FLAGLER COLLEGE NEWS",
+      headerCode: "(FACULTY)",
     },
     {
       id: 4,
-      client: "Elena Rodriguez",
-      company: "Spotify",
+      client: "Enterprise Client",
+      company: "Pacific Life",
       quote:
-        "Efficient, elegant, and educational. They left our engineers better than they found them.",
-      source: "E-MAIL",
-      headerCode: "(ENG_MANAGER)",
+        "95% of our team is still using what Eduba taught after 30 days — the industry average sits around 10%. They learned our workflows first, trained on what they found, and built agents that are saving us thousands of hours a year.",
+      source: "METRICS",
+      headerCode: "(ENTERPRISE_TRAINING)",
     },
   ],
 } as const;
@@ -296,39 +295,39 @@ export const paradigmShiftContent = {
     line2: "shift_",
   },
   description:
-    "We're not competing with other consultants or software vendors. We're teaching companies to build a capability that makes both obsolete. When every employee can build their own tools, and we orchestrate those tools into an intelligence layer, you get something no vendor could ever deliver: perfect fit, zero adoption friction, and capabilities that emerge from actual use rather than imagined requirements.",
+    "The future isn't about humans versus AI, or even humans with AI. It's about understanding how multiple humans and multiple AI systems collaborate to create value. We address the core challenges: output validation, build-versus-buy decisions, actual implementation costs, and the systems thinking that integrates technical systems, workforce development, and governance.",
   defaultActiveIndex: 2,
   items: [
     {
       id: "EB001",
-      title: "Defence & Military",
+      title: "Defence & Intelligence",
       slug: "defense-military",
       description:
-        "Mission-critical AI systems with security-first architecture. We build decision support tools that operate in contested environments, maintain human oversight, and meet the strictest compliance requirements.",
+        "AI integration for defense operations. Multi-agent compliance platforms, document intake and aggregation across multilingual regulatory frameworks. Mission-critical systems with security-first architecture and human oversight.",
       cta: "LEARN MORE",
     },
     {
-      id: "EB001",
-      title: "Aerospace",
-      slug: "aerospace",
-      description:
-        "From predictive maintenance to supply chain optimization. We help aerospace companies build AI capabilities that reduce costs, improve safety margins, and accelerate certification timelines.",
-      cta: "LEARN MORE",
-    },
-    {
-      id: "EB001",
+      id: "EB002",
       title: "Enterprise",
       slug: "enterprise",
       description:
-        "Stop buying dashboards. Start building what your people actually use. In one sprint, your team will ship a working AI pipeline and a clear build vs buy vs orchestrate plan. We'll tell you what not to automate-and where AI truly pays back.",
+        "Your team has AI tools. They're not sure what to do with them. We sit with your people, learn what they actually do, and show them exactly where these tools fit. In their workflows, with their data, on their deadlines.",
       cta: "LEARN MORE",
     },
     {
-      id: "EB001",
-      title: "Government",
+      id: "EB003",
+      title: "Education & Research",
+      slug: "education-research",
+      description:
+        "Faculty AI workshops, psychometric assessment of large language models, and curriculum programs that bridge theory-practice gaps. Published research at UKICER 2025 and partnerships with University of Edinburgh and Flagler College.",
+      cta: "LEARN MORE",
+    },
+    {
+      id: "EB004",
+      title: "Government & Policy",
       slug: "government",
       description:
-        "Citizen-centric AI that improves service delivery while maintaining transparency and accountability. We navigate procurement complexity and build systems that work within existing infrastructure.",
+        "AI ethics briefings for international affairs experts. Governance frameworks, soft power measurement, and policy research. Working with the British Council, Academy of International Affairs NRW, and Ben Gurion University.",
       cta: "LEARN MORE",
     },
   ],
@@ -337,58 +336,28 @@ export const paradigmShiftContent = {
 export const teamContent = {
   title: "our people",
   subtitle:
-    "We're a rag-tag bunch and proud of it. Spanning backgrounds across the research, data, blockchain, army, business and strategy landscape we work hard, get on, and prioritise culture.",
+    "Veteran-owned. From cryptographic systems and fighter jet avionics to software engineering across defense, gaming, and enterprise. We work hard, get on, and prioritise culture.",
   linkedinLabel: "in",
-  defaultActiveIndex: 2,
+  defaultActiveIndex: 0,
   people: [
     {
       id: "jake",
       code: "EB-CEO/",
       name: "Jake Van Clief",
-      role: "THE CEO",
+      role: "FOUNDER & CEO",
       email: "theceo@eduba.io",
       description:
-        "Former fintech operator focused on turning AI strategy into shipped systems with real operational lift.",
+        "8 years USMC on cryptographic systems and fighter jet avionics. MSc Future Governance at University of Edinburgh. Takes the biggest AI skeptics in a room and makes their criticisms the most valuable part of the conversation.",
       linkedin: "https://www.linkedin.com/",
     },
     {
       id: "david",
-      code: "EB001/",
+      code: "EB-CTO/",
       name: "David McDermott",
-      role: "THE CTO",
+      role: "CTO",
       email: "thecto@eduba.io",
       description:
-        "Built data platforms and audit tooling for regulated teams, with a bias toward practical, maintainable stacks.",
-      linkedin: "https://www.linkedin.com/",
-    },
-    {
-      id: "kay",
-      code: "EB001/",
-      name: "Kay K.",
-      role: "FRONTEND & DESIGN LEAD",
-      email: "thefrontendguy@eduba.io",
-      description:
-        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
-      linkedin: "https://www.linkedin.com/",
-    },
-    {
-      id: "nick",
-      code: "EB001/",
-      name: "Nick",
-      role: "THE CTO",
-      email: "thecto@eduba.io",
-      description:
-        "Leads platform reliability and workflow automation with a product-first mindset and pragmatic delivery.",
-      linkedin: "https://www.linkedin.com/",
-    },
-    {
-      id: "claire",
-      code: "EB001/",
-      name: "Claire",
-      role: "FRONTEND & DESIGN LEAD",
-      email: "thefrontendguy@eduba.io",
-      description:
-        "Designs end-to-end experiences and front-end systems that scale with complex workflows.",
+        "Over a decade in software engineering across defense, gaming, and enterprise systems. MS Computer Science, University of Iowa. Previously at BAE Systems, Epic Games, and Derivco.",
       linkedin: "https://www.linkedin.com/",
     },
   ],
