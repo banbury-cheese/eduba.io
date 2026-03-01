@@ -112,7 +112,7 @@ export function ParadigmShift() {
   return (
     <section className={styles.container}>
       <div className={styles.cornerTopLeft}>
-        <ArrowCorner size={24} />
+        {/* <ArrowCorner size={24} /> */}
       </div>
 
       <div className={styles.content}>
@@ -160,7 +160,7 @@ export function ParadigmShift() {
                   <p className={styles.rowDescription}>
                     {industry.description}
                     <span className={styles.arrowInline}>
-                      <svg
+                      {/* <svg
                         width="16"
                         height="10"
                         viewBox="0 0 16 10"
@@ -174,7 +174,7 @@ export function ParadigmShift() {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         />
-                      </svg>
+                      </svg> */}
                     </span>
                   </p>
                   <Link
@@ -191,7 +191,7 @@ export function ParadigmShift() {
       </div>
 
       <div className={styles.cornerBottomRight}>
-        <ArrowCorner size={24} mirror />
+        {/* <ArrowCorner size={24} mirror /> */}
       </div>
     </section>
   );
