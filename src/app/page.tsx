@@ -14,8 +14,8 @@ export default function Home() {
       <ThreeWheelStrategy />
       <Services />
       <Works />
-      <Reviews />
       <ParadigmShift />
+      <Reviews />
       <Team />
     </Layout>
   );
