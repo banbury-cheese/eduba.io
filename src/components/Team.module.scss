@@ -232,6 +232,9 @@
   justify-self: end;
   align-self: end;
   opacity: 0.5;
+  transform: rotate(90deg);
+  transform-origin: center;
+  margin-right: 10px;
 
   @include media("<=tablet") {
     display: none;
