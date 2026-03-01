@@ -6,44 +6,12 @@ import styles from "./ParadigmShift.module.scss";
 import Link from "next/link";
 import { ArrowCorner } from "./ArrowCorner";
 import { DotsArrow } from "./DotsArrow";
-
-const industries = [
-  {
-    id: "EB001",
-    title: "Defence & Military",
-    slug: "defense-military",
-    description:
-      "Mission-critical AI systems with security-first architecture. We build decision support tools that operate in contested environments, maintain human oversight, and meet the strictest compliance requirements.",
-    cta: "LEARN MORE",
-  },
-  {
-    id: "EB001",
-    title: "Aerospace",
-    slug: "aerospace",
-    description:
-      "From predictive maintenance to supply chain optimization. We help aerospace companies build AI capabilities that reduce costs, improve safety margins, and accelerate certification timelines.",
-    cta: "LEARN MORE",
-  },
-  {
-    id: "EB001",
-    title: "Enterprise",
-    slug: "enterprise",
-    description:
-      "Stop buying dashboards. Start building what your people actually use. In one sprint, your team will ship a working AI pipeline and a clear build vs buy vs orchestrate plan. We'll tell you what not to automate—and where AI truly pays back.",
-    cta: "LEARN MORE",
-  },
-  {
-    id: "EB001",
-    title: "Government",
-    slug: "government",
-    description:
-      "Citizen-centric AI that improves service delivery while maintaining transparency and accountability. We navigate procurement complexity and build systems that work within existing infrastructure.",
-    cta: "LEARN MORE",
-  },
-];
+import { paradigmShiftContent } from "@/data/homeContent";
 
 export function ParadigmShift() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(2);
+  const [activeIndex, setActiveIndex] = useState<number | null>(
+    paradigmShiftContent.defaultActiveIndex,
+  );
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Initialize the default open state on mount
@@ -152,30 +120,22 @@ export function ParadigmShift() {
         <div className={styles.header}>
           <div className={styles.headerLeft}>
             <h2 className={styles.title}>
-              the_paradigm
+              {paradigmShiftContent.title.line1}
               <br />
-              shift_
+              {paradigmShiftContent.title.line2}
             </h2>
           </div>
           <div className={styles.headerRight}>
             <div className={styles.dotsArrow}>
               <DotsArrow size={24} />
             </div>
-            <p className={styles.description}>
-              We&apos;re not competing with other consultants or software
-              vendors. We&apos;re teaching companies to build a capability that
-              makes both obsolete. When every employee can build their own
-              tools, and we orchestrate those tools into an intelligence layer,
-              you get something no vendor could ever deliver: perfect fit, zero
-              adoption friction, and capabilities that emerge from actual use
-              rather than imagined requirements.
-            </p>
+            <p className={styles.description}>{paradigmShiftContent.description}</p>
           </div>
         </div>
 
         {/* Industry Rows */}
         <div className={styles.industries}>
-          {industries.map((industry, index) => (
+          {paradigmShiftContent.items.map((industry, index) => (
             <div
               key={`${industry.id}-${index}`}
               className={`${styles.row} ${activeIndex === index ? styles.rowActive : ""}`}

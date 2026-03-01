@@ -3,33 +3,10 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { threeWheelStrategyContent } from "@/data/homeContent";
 import styles from "./ThreeWheelStrategy.module.scss";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const sections = [
-  {
-    id: "01",
-    title: "Democratize Building",
-    description:
-      "In 6 weeks, we teach non-technical employees to build POCs that used to require entire startups. Janet in accounting creates expense tools. Mike in ops builds workflow automation. They own it, they understand it, they iterate it.",
-    wheelKey: "democratise",
-  },
-  {
-    id: "02",
-    title: "Learn & Optimize",
-    description:
-      "We analyze what works, double down on winners, and cut what doesn't. Your team learns by doing, building institutional knowledge that compounds over time.",
-    wheelKey: "learn",
-  },
-  {
-    id: "03",
-    title: "The Orchestration Layer",
-    description:
-      "Human-in-the-loop multimodal systems that connect your tools, your data, and your people. Not replacing humans—amplifying them.",
-    wheelKey: "orchestration",
-  },
-];
 
 export function ThreeWheelStrategy() {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -411,12 +388,8 @@ export function ThreeWheelStrategy() {
         <div className={styles.wheelSide}>
           <div className={styles.wheelContent}>
             <div className={styles.header}>
-              <h2 className={styles.title}>The Three Wheel Strategy</h2>
-              <p className={styles.subtitle}>
-                We&apos;re not selling software or consulting. We&apos;re
-                building a new operational paradigm where every employee becomes
-                a solution architect.
-              </p>
+              <h2 className={styles.title}>{threeWheelStrategyContent.title}</h2>
+              <p className={styles.subtitle}>{threeWheelStrategyContent.subtitle}</p>
             </div>
 
             <div className={styles.wheelContainer}>
@@ -501,7 +474,7 @@ export function ThreeWheelStrategy() {
                     className={styles.wheelLabel}
                     style={{ fontSize: 14 }}
                   >
-                    DEMOCRATISE BUILDING
+                    {threeWheelStrategyContent.wheel.node1.title}
                   </text>
                   <text
                     x="245"
@@ -510,7 +483,7 @@ export function ThreeWheelStrategy() {
                     className={styles.wheelSubLabel}
                     style={{ fontSize: 9 }}
                   >
-                    Non Technical Builders
+                    {threeWheelStrategyContent.wheel.node1.subLabelLeft}
                   </text>
                   <text
                     x="400"
@@ -519,7 +492,7 @@ export function ThreeWheelStrategy() {
                     className={styles.wheelSubLabel}
                     style={{ fontSize: 9 }}
                   >
-                    6Wk POCs
+                    {threeWheelStrategyContent.wheel.node1.subLabelRight}
                   </text>
                 </g>
 
@@ -556,7 +529,7 @@ export function ThreeWheelStrategy() {
                     className={styles.wheelLabel}
                     style={{ fontSize: 11 }}
                   >
-                    LEARN &amp; OPTIMIZE
+                    {threeWheelStrategyContent.wheel.node2.title}
                   </text>
                   <text
                     x="70"
@@ -566,7 +539,7 @@ export function ThreeWheelStrategy() {
                     className={styles.wheelSubLabel}
                     style={{ fontSize: 8 }}
                   >
-                    buy what matters
+                    {threeWheelStrategyContent.wheel.node2.subLabel}
                   </text>
                 </g>
 
@@ -600,7 +573,7 @@ export function ThreeWheelStrategy() {
                     className={styles.wheelLabel}
                     style={{ fontSize: 11 }}
                   >
-                    THE ORCHESTRATION
+                    {threeWheelStrategyContent.wheel.node3.titleLine1}
                   </text>
                   <text
                     x="525"
@@ -609,7 +582,7 @@ export function ThreeWheelStrategy() {
                     className={styles.wheelLabel}
                     style={{ fontSize: 11 }}
                   >
-                    LAYER
+                    {threeWheelStrategyContent.wheel.node3.titleLine2}
                   </text>
                   <text
                     x="500"
@@ -619,7 +592,7 @@ export function ThreeWheelStrategy() {
                     className={styles.wheelSubLabel}
                     style={{ fontSize: 11 }}
                   >
-                    Human in the loop
+                    {threeWheelStrategyContent.wheel.node3.subLabel}
                   </text>
                 </g>
               </svg>
@@ -629,7 +602,7 @@ export function ThreeWheelStrategy() {
 
         {/* Right: Cards */}
         <div className={styles.cardsSide}>
-          {sections.map((section) => (
+          {threeWheelStrategyContent.sections.map((section) => (
             <div key={section.id} className={styles.card}>
               <div className={styles.sectionHeader}>
                 <div className={styles.sectionNumber}>{section.id}</div>
@@ -641,7 +614,7 @@ export function ThreeWheelStrategy() {
                   {section.description}
                 </p>
                 <button className={styles.consultButton}>
-                  BOOK CONSULTATION
+                  {threeWheelStrategyContent.consultButtonLabel}
                 </button>
               </div>
             </div>

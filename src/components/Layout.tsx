@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react";
 import styles from "@/app/page.module.scss";
+import { layoutContent } from "@/data/homeContent";
 import { ArrowCorner } from "./ArrowCorner";
 
 interface LayoutProps {
@@ -30,10 +31,14 @@ export function Layout({ children }: LayoutProps) {
               />
             </svg>
           </div>
-          <span className={styles.logoText}>The Faces of Interface</span>
+          <span className={styles.logoText}>{layoutContent.logoText}</span>
         </div>
         <div className={styles.navLinks}>
-          <a href="#" className={styles.readingsLink} aria-label="Readings">
+          <a
+            href="#"
+            className={styles.readingsLink}
+            aria-label={layoutContent.topNav.readingsLabel}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="11"
@@ -48,9 +53,15 @@ export function Layout({ children }: LayoutProps) {
                 fill="currentColor"
               />
             </svg>
-            <span className={styles.navLabel}>Readings</span>
+            <span className={styles.navLabel}>
+              {layoutContent.topNav.readingsLabel}
+            </span>
           </a>
-          <button className={styles.chaptersButton} type="button" aria-label="Chapters">
+          <button
+            className={styles.chaptersButton}
+            type="button"
+            aria-label={layoutContent.topNav.chaptersLabel}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="11"
@@ -131,11 +142,13 @@ export function Layout({ children }: LayoutProps) {
                 </clipPath>
               </defs>
             </svg>
-            <span className={styles.navLabel}>Chapters</span>
+            <span className={styles.navLabel}>
+              {layoutContent.topNav.chaptersLabel}
+            </span>
           </button>
           <button className={styles.navButtonPrimary} type="button">
             <span className={styles.dot}></span>
-            <span>Grab a Seat</span>
+            <span>{layoutContent.topNav.primaryCtaLabel}</span>
           </button>
         </div>
         {/* <div className={styles.navArrowLeft}>
@@ -155,9 +168,11 @@ export function Layout({ children }: LayoutProps) {
           <div className={styles.bookCallOuter}>
             <div className={styles.bookCallInner}>
               <div className={styles.bookCallInner}>
-                <span className={styles.bookCallTitle}>BOOK A CALL</span>
+                <span className={styles.bookCallTitle}>
+                  {layoutContent.bottomNav.bookCallTitle}
+                </span>
                 <span className={styles.bookCallSubtitle}>
-                  GET STARTED TODAY
+                  {layoutContent.bottomNav.bookCallSubtitle}
                 </span>
               </div>
             </div>
@@ -201,7 +216,9 @@ export function Layout({ children }: LayoutProps) {
           </div>
           <div className={styles.ctaOuter}>
             <div className={styles.ctaInner}>
-              <span className={styles.ctaText}>CALL TO ACTION</span>
+              <span className={styles.ctaText}>
+                {layoutContent.bottomNav.secondaryCtaLabel}
+              </span>
             </div>
           </div>
         </button>

@@ -2,55 +2,8 @@
 
 import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { reviewsContent } from "@/data/homeContent";
 import styles from "./Reviews.module.scss";
-
-type Review = {
-  id: number;
-  client: string;
-  company: string;
-  quote: string;
-  source: string;
-  headerCode: string;
-};
-
-const reviews: Review[] = [
-  {
-    id: 1,
-    client: "Jhon Doe",
-    company: "KPMG",
-    quote:
-      "eduba turned our ai strategy into a working pipeline in four weeks. they told us what not to build, paired with our team, and left us with skills—not dependency. we cut analysis time by 38% in month one.",
-    source: "LINKEDIN",
-    headerCode: "(POC_CLIENT)",
-  },
-  {
-    id: 2,
-    client: "Sarah Smith",
-    company: "Deloitte",
-    quote:
-      "The team at eduba didn't just deliver a product; they delivered a culture shift. Their approach to AI is pragmatic, effective, and deeply human-centric.",
-    source: "DIRECT",
-    headerCode: "(STRATEGY_LEAD)",
-  },
-  {
-    id: 3,
-    client: "Michael Chen",
-    company: "Google",
-    quote:
-      "A paradigm shift in how we approach interface design. The 'window stack' metaphor they engineered for our dashboard is now a standard across our internal tools.",
-    source: "CLUTCH",
-    headerCode: "(UX_DIRECTOR)",
-  },
-  {
-    id: 4,
-    client: "Elena Rodriguez",
-    company: "Spotify",
-    quote:
-      "Efficient, elegant, and educational. They left our engineers better than they found them.",
-    source: "E-MAIL",
-    headerCode: "(ENG_MANAGER)",
-  },
-];
 
 function CornerDots({ mirrored = false }: { mirrored?: boolean }) {
   return (
@@ -103,7 +56,9 @@ function CornerDots({ mirrored = false }: { mirrored?: boolean }) {
 export function Reviews() {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const [counterValue, setCounterValue] = useState(5);
+  const [counterValue, setCounterValue] = useState<number>(
+    reviewsContent.counter.startValue,
+  );
 
   // Ref to store the current order of indices
   // We will animate the visual properties of the DOM elements directly
@@ -177,7 +132,9 @@ export function Reviews() {
         const tl = gsap.timeline({
           onComplete: () => {
             currentIndex++;
-            setCounterValue((prev) => (prev >= 10 ? 1 : prev + 1));
+            setCounterValue((prev) =>
+              prev >= reviewsContent.counter.max ? 1 : prev + 1,
+            );
             // After animation, we wait a bit then trigger next
             gsap.delayedCall(3, animateNext);
           },
@@ -243,21 +200,18 @@ export function Reviews() {
     <section className={styles.section} ref={containerRef}>
       <div className={styles.maxContainer}>
         <div className={styles.header}>
-          <h2 className={styles.title}>
-            We start with truth, not hype. We teach your people to build. Then
-            we orchestrate what works into an advantage.
-          </h2>
+          <h2 className={styles.title}>{reviewsContent.title}</h2>
         </div>
 
         <div className={styles.stackRegion}>
           <div className={styles.sideLabel}>
-            A FEW WORDS FROM
+            {reviewsContent.sideLabel.line1}
             <br />
-            OUR CLIENTS
+            {reviewsContent.sideLabel.line2}
           </div>
 
           <div className={styles.stackContainer}>
-            {reviews.map((review, i) => (
+            {reviewsContent.items.map((review, i) => (
               <div
                 key={review.id}
                 className={styles.card}
@@ -288,7 +242,7 @@ export function Reviews() {
             ))}
             <div className={styles.counter}>
               <span>{counterDisplay}</span>
-              <span>/10</span>
+              <span>/{reviewsContent.counter.max}</span>
             </div>
           </div>
         </div>

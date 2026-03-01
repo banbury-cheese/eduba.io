@@ -1,23 +1,8 @@
 "use client";
 
 import styles from "@/app/page.module.scss";
+import { heroContent } from "@/data/homeContent";
 import { ArrowCorner } from "./ArrowCorner";
-
-const readings = [
-  "WHEN AI SHOWS ITS POLITICS",
-  "THE $300 QUESTION",
-  "THE QUESTIONS SCHOOLS AREN'T ASKING ABOUT AI",
-  "THE PHD PARADOX",
-  "THE LAB PARTY THAT CHANGED HOW I THINK ABOUT MONEY",
-];
-
-const chapters = [
-  "WHAT WE SELL",
-  "WHO IS OUR CLIENT",
-  "WHAT WE'VE MADE",
-  "WHICH SECTORS",
-  "WHO ARE THE PEOPLE",
-];
 
 export function HeroSection() {
   return (
@@ -98,7 +83,7 @@ export function HeroSection() {
 
       {/* Readings Section */}
       <section className={styles.readings}>
-        {readings.map((reading, index) => (
+        {heroContent.readings.map((reading, index) => (
           <article key={index} className={styles.readingCard}>
             <div className={styles.bookmarkIcon}>
               <ArrowCorner mirror />
@@ -111,10 +96,10 @@ export function HeroSection() {
       {/* Chapters Section */}
       <section className={styles.chapters}>
         <div className={styles.chaptersHeader}>
-          <span className={styles.chaptersTitle}>The Chapters</span>
+          <span className={styles.chaptersTitle}>{heroContent.chaptersLabel}</span>
         </div>
         <div className={styles.chaptersGrid}>
-          {chapters.map((chapter, index) => (
+          {heroContent.chapters.map((chapter, index) => (
             <button key={index} className={styles.chapterCard}>
               <span className={styles.chapterTitle}>{chapter}</span>
             </button>

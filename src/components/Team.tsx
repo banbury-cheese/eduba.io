@@ -4,72 +4,11 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import styles from "./Team.module.scss";
 import { DotsArrow } from "./DotsArrow";
-
-type TeamMember = {
-  id: string;
-  code: string;
-  name: string;
-  role: string;
-  email: string;
-  description: string;
-  linkedin: string;
-};
-
-const people: TeamMember[] = [
-  {
-    id: "jake",
-    code: "EB-CEO/",
-    name: "Jake Van Clief",
-    role: "THE CEO",
-    email: "theceo@eduba.io",
-    description:
-      "Former fintech operator focused on turning AI strategy into shipped systems with real operational lift.",
-    linkedin: "https://www.linkedin.com/",
-  },
-  {
-    id: "david",
-    code: "EB001/",
-    name: "David McDermott",
-    role: "THE CTO",
-    email: "thecto@eduba.io",
-    description:
-      "Built data platforms and audit tooling for regulated teams, with a bias toward practical, maintainable stacks.",
-    linkedin: "https://www.linkedin.com/",
-  },
-  {
-    id: "kay",
-    code: "EB001/",
-    name: "Kay K.",
-    role: "FRONTEND & DESIGN LEAD",
-    email: "thefrontendguy@eduba.io",
-    description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
-    linkedin: "https://www.linkedin.com/",
-  },
-  {
-    id: "nick",
-    code: "EB001/",
-    name: "Nick",
-    role: "THE CTO",
-    email: "thecto@eduba.io",
-    description:
-      "Leads platform reliability and workflow automation with a product-first mindset and pragmatic delivery.",
-    linkedin: "https://www.linkedin.com/",
-  },
-  {
-    id: "claire",
-    code: "EB001/",
-    name: "Claire",
-    role: "FRONTEND & DESIGN LEAD",
-    email: "thefrontendguy@eduba.io",
-    description:
-      "Designs end-to-end experiences and front-end systems that scale with complex workflows.",
-    linkedin: "https://www.linkedin.com/",
-  },
-];
+import { teamContent } from "@/data/homeContent";
 
 export function Team() {
-  const initialIndex = 2;
+  const people = teamContent.people;
+  const initialIndex = teamContent.defaultActiveIndex;
   const [activeIndex, setActiveIndex] = useState<number | null>(
     people[initialIndex] ? initialIndex : null
   );
@@ -170,12 +109,8 @@ export function Team() {
     <section className={styles.container}>
       <div className={styles.inner}>
         <header className={styles.header}>
-          <h2 className={styles.title}>our people</h2>
-          <p className={styles.subtitle}>
-            We&apos;re a rag-tag bunch and proud of it. Spanning backgrounds
-            across the research, data, blockchain, army, business and strategy
-            landscape we work hard, get on, and prioritise culture.
-          </p>
+          <h2 className={styles.title}>{teamContent.title}</h2>
+          <p className={styles.subtitle}>{teamContent.subtitle}</p>
         </header>
 
         <div className={styles.list}>
@@ -205,7 +140,7 @@ export function Team() {
                   href={person.linkedin}
                   aria-label={`LinkedIn for ${person.name}`}
                 >
-                  in
+                  {teamContent.linkedinLabel}
                 </a>
               </div>
 

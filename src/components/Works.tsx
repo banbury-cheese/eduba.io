@@ -4,94 +4,10 @@ import { useLayoutEffect, useRef } from "react";
 import type { CSSProperties } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { worksContent } from "@/data/homeContent";
 import styles from "./Works.module.scss";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const workThemes = {
-  rose: {
-    bg: "#d8bfc1",
-    title: "#5d3136",
-    meta: "rgba(66, 29, 36, 0.7)",
-    tagBg: "#ead5d6",
-    tagText: "#5d3136",
-    divider: "rgba(93, 49, 54, 0.2)",
-    placeholderBg: "rgba(93, 49, 54, 0.08)",
-    placeholderText: "rgba(93, 49, 54, 0.45)",
-    summary: "#4a4a4a",
-  },
-  dark: {
-    bg: "#421d24",
-    title: "#fefbf6",
-    meta: "rgba(254, 251, 246, 0.75)",
-    tagBg: "rgba(254, 251, 246, 0.18)",
-    tagText: "#fefbf6",
-    divider: "rgba(254, 251, 246, 0.35)",
-    placeholderBg: "rgba(254, 251, 246, 0.08)",
-    placeholderText: "rgba(254, 251, 246, 0.6)",
-    summary: "#fefbf6",
-  },
-  skin: {
-    bg: "#f9ecdf",
-    title: "#5d3136",
-    meta: "rgba(66, 29, 36, 0.7)",
-    tagBg: "rgba(66, 29, 36, 0.12)",
-    tagText: "#5d3136",
-    divider: "rgba(66, 29, 36, 0.2)",
-    placeholderBg: "rgba(66, 29, 36, 0.06)",
-    placeholderText: "rgba(66, 29, 36, 0.4)",
-    summary: "#4a4a4a",
-  },
-} as const;
-
-type WorkTheme = keyof typeof workThemes;
-
-type WorkItem = {
-  id: string;
-  badge: string;
-  title: string;
-  year: string;
-  client: string;
-  tags: string[];
-  summary: string;
-  theme: WorkTheme;
-};
-
-const works: WorkItem[] = [
-  {
-    id: "colgate",
-    badge: "COLGATE",
-    title: "Colgate Workshop",
-    year: "2025",
-    client: "JHON DOE",
-    tags: ["AI PIPELINE", "AUDITS", "FRONTEND"],
-    summary:
-      "eduba turned our AI strategy into a working pipeline in four weeks. They told us what not to build, paired with our team, and left us with skills, not dependency.",
-    theme: "rose",
-  },
-  {
-    id: "vigilore",
-    badge: "VIGILORE",
-    title: "VigilOre Audit POC",
-    year: "2024",
-    client: "ANDREW ZDUNICH",
-    tags: ["RISK OPS", "COMPLIANCE", "DASHBOARD"],
-    summary:
-      "We reduced audit prep time by 38% in month one by building live risk maps and automated documentation flows. The team shipped new workflows without us.",
-    theme: "dark",
-  },
-  {
-    id: "armetor",
-    badge: "ARMETOR",
-    title: "Rapid Prototyping Sprint",
-    year: "2023",
-    client: "PRIYA CHANDRA",
-    tags: ["ORCHESTRATION", "MULTIMODAL", "PROTOTYPES"],
-    summary:
-      "A two-week build sprint delivered working agentic workflows across sales and ops. Their team kept the IP and rolled it out across regions.",
-    theme: "skin",
-  },
-];
 
 export function Works() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -173,11 +89,11 @@ export function Works() {
                 d="M0 7V45.5H344L311.601 2.77064C310.277 1.02527 308.213 0 306.023 0H7C3.13401 0 0 3.13401 0 7Z"
               />
             </svg>
-            <span className={styles.seeAllLabel}>SEE ALL WORKS -&gt;</span>
+            <span className={styles.seeAllLabel}>{worksContent.seeAllLabel}</span>
           </div>
 
-          {works.map((work, index) => {
-            const theme = workThemes[work.theme];
+          {worksContent.items.map((work, index) => {
+            const theme = worksContent.themes[work.theme];
             const tagsTicker = work.tags.join(", ");
 
             return (
@@ -238,7 +154,7 @@ export function Works() {
                           className={styles.viewProject}
                           aria-label={`View ${work.title} project`}
                         >
-                          VIEW PROJECT -&gt;
+                          {worksContent.viewProjectLabel}
                         </a>
                         <div className={styles.tagTicker} aria-hidden="true">
                           <div className={styles.tagTickerTrack}>
@@ -254,7 +170,7 @@ export function Works() {
                     <div className={styles.gallery}>
                       {[1, 2, 3].map((i) => (
                         <div key={i} className={styles.placeholder}>
-                          IMAGE PLACEHOLDER
+                          {worksContent.imagePlaceholderLabel}
                         </div>
                       ))}
                     </div>
