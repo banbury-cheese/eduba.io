@@ -1,126 +1,185 @@
 @use "../styles/variables" as *;
+@use "../styles/breakpoints" as *;
 
 .section {
-  padding: 80px 20px;
-  background-color: $skin;
+  padding: 56px 20px 72px;
+  background-color: $white;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
+
+  @include media("<=tablet") {
+    padding: 38px 12px 56px;
+    min-height: auto;
+  }
 }
 
 .maxContainer {
   width: 100%;
-  max-width: 1440px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .header {
-  width: 100%;
-  max-width: 900px;
-  margin-bottom: 80px;
-  text-align: left;
-  align-self: flex-start;
-  padding-left: 5%;
+  width: min(1120px, 100%);
+  margin: 0 auto 30px;
 }
 
 .title {
   font-family: $font-primary;
-  font-size: 40px;
-  font-weight: 500;
+  font-size: clamp(34px, 3.8vw, 56px);
+  font-weight: 600;
   color: $brown;
-  line-height: 1.2;
+  line-height: 1.12;
   letter-spacing: -0.01em;
+  margin: 0;
+  max-width: 760px;
 
-  @media (min-width: 768px) {
-    font-size: 56px;
+  @include media("<=tablet") {
+    font-size: clamp(26px, 8.6vw, 40px);
+    max-width: none;
+  }
+}
+
+.stackRegion {
+  position: relative;
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding-left: 108px;
+  padding-bottom: 0;
+
+  @include media("<=tablet") {
+    padding-left: 0;
+    padding-bottom: 0;
+  }
+}
+
+.sideLabel {
+  position: absolute;
+  left: 0;
+  top: 34px;
+  font-family: $font-mono;
+  font-size: 11px;
+  color: $brown;
+  text-transform: uppercase;
+  line-height: 1.4;
+  max-width: 120px;
+  letter-spacing: 0.08em;
+
+  @include media("<=tablet") {
+    position: static;
+    margin-bottom: 12px;
+    font-size: 10px;
+    max-width: none;
   }
 }
 
 .stackContainer {
   position: relative;
   width: 100%;
-  max-width: 800px; // Adjust based on card size
-  height: 500px; // Enough for the cards + offsets
+  height: clamp(360px, 32vw, 460px);
+  padding-bottom: 30px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+
+  @include media("<=tablet") {
+    height: clamp(260px, 76vw, 360px);
+    padding-bottom: 24px;
+  }
 }
 
 .card {
   position: absolute;
-  width: 90%;
-  max-width: 600px;
-  aspect-ratio: 16/10;
-  background-color: $dark-brown;
-  border-radius: 4px;
-  border: 1px solid $light-pink; // Subtle border
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: min(610px, calc(100% - 220px));
+  aspect-ratio: 16 / 9.4;
+  background-color: #541019;
+  border: 1px solid rgba($light-brown, 0.35);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   will-change: transform, opacity, z-index;
+
+  @include media("<=tablet") {
+    width: calc(100% - 48px);
+    aspect-ratio: 16 / 10.3;
+  }
 }
 
-// Terminal/Window Header
 .cardHeader {
+  position: relative;
   height: 28px;
-  background-color: #ead5d6; // Light header color from image
-  border-bottom: 1px solid $light-brown;
+  background-color: $cream;
+  border-bottom: 1px solid rgba($light-brown, 0.6);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0 8px;
+  justify-content: center;
+  padding: 0 10px;
   font-family: $font-mono;
-  font-size: 10px;
+  font-size: 9px;
   color: $dark-brown;
   text-transform: uppercase;
+  letter-spacing: 0.08em;
+
+  @include media("<=tablet") {
+    height: 24px;
+    font-size: 8px;
+  }
 }
 
-.dots {
-  display: flex;
-  gap: 4px;
+.headerDotsLeft,
+.headerDotsRight {
+  position: absolute;
+  top: 6px;
 
-  // Example "corner dots" visual
-  &::before {
-    content: "::::";
-    letter-spacing: -2px;
-    opacity: 0.5;
+  @include media("<=tablet") {
+    top: 4px;
   }
+}
+
+.headerDotsLeft {
+  left: 8px;
+}
+
+.headerDotsRight {
+  right: 8px;
+}
+
+.cornerDotsSvg {
+  display: block;
+  width: 12px;
+  height: 12px;
 }
 
 .headerTitle {
   font-weight: 600;
-  letter-spacing: 0.05em;
-}
-
-.headerDecor {
-  opacity: 0.5;
 }
 
 .cardBody {
   flex: 1;
-  padding: 40px 50px;
+  padding: clamp(10px, 1.2vw, 16px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #3e1e24; // Slightly lighter than pure dark brown if needed, or matched
+  background-color: #541019;
 }
 
 .quote {
   font-family: $font-primary;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.4;
+  font-size: clamp(13px, 1.2vw, 20px);
+  font-weight: 600;
+  line-height: 1.18;
   color: $white;
+  margin: 0;
+  max-width: 92%;
 
-  @media (min-width: 768px) {
-    font-size: 28px;
+  @include media("<=tablet") {
+    font-size: clamp(9px, 2.8vw, 12px);
+    line-height: 1.16;
+    max-width: 100%;
   }
 }
 
@@ -130,53 +189,58 @@
   align-items: flex-end;
   font-family: $font-mono;
   color: $cream;
-  font-size: 12px;
+  font-size: 8px;
   text-transform: uppercase;
-  margin-top: 20px;
+  margin-top: 12px;
+  letter-spacing: 0.06em;
+
+  @include media("<=tablet") {
+    font-size: 7px;
+    margin-top: 8px;
+  }
 }
 
 .clientInfo {
   display: flex;
   gap: 8px;
+  align-items: baseline;
 
   span:first-child {
     font-weight: 700;
   }
+
+  @include media("<=phone") {
+    gap: 6px;
+  }
+}
+
+.company {
+  opacity: 0.9;
 }
 
 .source {
-  opacity: 0.6;
-}
-
-// Side labels (optional decoration from image "A FEW WORDS FROM OUR CLIENTS")
-.sideLabel {
-  position: absolute;
-  left: 5%;
-  top: 100px;
-  font-family: $font-mono;
-  font-size: 10px;
-  color: $brown;
-  text-transform: uppercase;
-  max-width: 100px;
-  line-height: 1.4;
-
-  @media (max-width: 1024px) {
-    display: none;
-  }
+  opacity: 0.58;
 }
 
 .counter {
   position: absolute;
-  bottom: 40px;
-  left: 20px; // Adjust alignment
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: min(610px, calc(100% - 220px));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 60;
+  pointer-events: none;
   font-family: $font-mono;
   font-size: 14px;
   color: $brown;
   font-weight: 600;
-  display: flex;
-  gap: 4px;
-  width: 100%;
-  max-width: 800px;
-  justify-content: space-between;
-  padding: 0 20px;
+  letter-spacing: 0.05em;
+
+  @include media("<=tablet") {
+    width: calc(100% - 48px);
+    font-size: 13px;
+  }
 }
