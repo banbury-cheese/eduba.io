@@ -349,6 +349,14 @@
     min-height: 90vh;
     margin-bottom: 84px;
   }
+
+  @include media("<=phone") {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+    margin-bottom: 24px;
+  }
 }
 
 // Hero Section

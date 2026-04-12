@@ -259,8 +259,14 @@
   letter-spacing: 0.06em;
 
   @include media("<=tablet") {
-    font-size: 7px;
+    font-size: 8px;
     margin-top: 8px;
+  }
+
+  @include media("<=phone") {
+    gap: 10px;
+    font-size: 8px;
+    line-height: 1.15;
   }
 }
 
@@ -269,14 +275,21 @@
   gap: 8px;
   align-items: baseline;
   flex-wrap: wrap;
-  font-size: 12px;
+  font-size: inherit;
+  line-height: 1.15;
 
   span:first-child {
     font-weight: 700;
   }
 
-  @include media("<=phone") {
+  @include media("<=tablet") {
     gap: 6px;
+  }
+
+  @include media("<=phone") {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
   }
 }
 
@@ -295,9 +308,14 @@
 
 .source {
   opacity: 0.58;
-  font-size: 12px;
+  font-size: inherit;
+  line-height: 1.15;
   text-decoration: underline;
   cursor: pointer;
   color: inherit;
   flex-shrink: 0;
+
+  @include media("<=phone") {
+    align-self: flex-end;
+  }
 }

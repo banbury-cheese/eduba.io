@@ -12,7 +12,7 @@
   }
 
   @include media("<=phone") {
-    padding: 36px 10px 50px;
+    padding: 36px 14px 58px;
   }
 }
 
@@ -77,6 +77,11 @@
     grid-template-columns: 1fr 28px;
     column-gap: 10px;
     align-items: start;
+    padding-inline: 4px;
+  }
+
+  @include media("<=phone") {
+    padding-inline: 6px;
   }
 }
 
@@ -103,7 +108,7 @@
     grid-column: 1 / 2;
     grid-template-columns: 1fr;
     row-gap: 6px;
-    padding: 14px 0;
+    padding: 16px 0;
   }
 }
 
@@ -189,6 +194,10 @@
     font-size: 11px;
     margin-top: 14px;
   }
+
+  @include media("<=phone") {
+    margin-top: 16px;
+  }
 }
 
 .details {
@@ -206,7 +215,11 @@
   @include media("<=tablet") {
     grid-template-columns: 1fr;
     row-gap: 10px;
-    padding: 0 0 16px;
+    padding: 0 4px 18px;
+  }
+
+  @include media("<=phone") {
+    padding: 0 6px 20px;
   }
 }
 

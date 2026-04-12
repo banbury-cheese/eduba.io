@@ -111,8 +111,8 @@ export function Reviews() {
 
       const setCardState = (card: HTMLElement, index: number) => {
         const isMobile = window.innerWidth <= 800;
-        const xOffset = (isMobile ? -10 : -35) * index;
-        const yOffset = (isMobile ? 16 : 30) * index;
+        const xOffset = (isMobile ? -12 : -35) * index;
+        const yOffset = (isMobile ? 10 : 30) * index;
         const scaleStep = isMobile ? 0.04 : 0.05;
         const scale = 1 - scaleStep * index;
         const opacity = 1;
