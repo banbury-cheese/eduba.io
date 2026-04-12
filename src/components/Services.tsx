@@ -2,20 +2,57 @@
 
 import { useRef, useState } from "react";
 import type { CSSProperties } from "react";
+import Link from "next/link";
 import { gsap } from "gsap";
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { servicesContent } from "@/data/homeContent";
 import styles from "./Services.module.scss";
 import { ArrowCorner } from "./ArrowCorner";
 
+gsap.registerPlugin(ScrambleTextPlugin);
+
 export function Services() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
+  type ServiceProject = (typeof servicesContent.items)[number]["projects"][number];
+
+  const getProjectLabel = (project: ServiceProject) =>
+    typeof project === "string" ? project : project.label;
+
+  const getProjectHref = (project: ServiceProject) => {
+    if (typeof project === "string") return null;
+    return "href" in project ? project.href : null;
+  };
+
+  const scrambleLabel = (text: HTMLElement | null) => {
+    if (!text) return;
+
+    if (!text.dataset.originalLabel) {
+      text.dataset.originalLabel = text.textContent || "";
+    }
+
+    gsap.killTweensOf(text);
+    gsap.to(text, {
+      duration: 0.8,
+      scrambleText: {
+        text: text.dataset.originalLabel || "",
+        chars: "upperCase",
+        revealDelay: 0,
+        speed: 0.8,
+      },
+    });
+  };
+
+  const resetLabel = (text: HTMLElement | null) => {
+    if (!text) return;
+    gsap.killTweensOf(text);
+    text.textContent = text.dataset.originalLabel || text.textContent || "";
+  };
 
   const handleCardClick = (index: number) => {
     const previousIndex = activeIndex;
     const newIndex = activeIndex === index ? null : index;
 
-    // Close previous card
     if (previousIndex !== null && previousIndex !== index) {
       const prevContent = contentRefs.current[previousIndex];
       if (prevContent) {
@@ -39,12 +76,10 @@ export function Services() {
       }
     }
 
-    // Toggle clicked card
     const content = contentRefs.current[index];
     if (content) {
       const frame = content.querySelector(`.${styles.cardContentFrame}`);
       if (newIndex === null) {
-        // Closing
         if (frame) {
           gsap.to(frame, {
             opacity: 0,
@@ -60,7 +95,6 @@ export function Services() {
           overwrite: "auto",
         });
       } else {
-        // Opening
         const targetHeight = content.scrollHeight;
         if (frame) {
           gsap.set(frame, { opacity: 0 });
@@ -96,7 +130,6 @@ export function Services() {
   return (
     <section className={styles.container}>
       <div className={styles.content}>
-        {/* Header */}
         <div className={styles.header}>
           <div className={styles.headerLeft}>
             <div className={styles.arrowHeaderLeft}>
@@ -119,7 +152,6 @@ export function Services() {
           <span>{servicesContent.metaLabel}</span>
         </div>
 
-        {/* Service Cards */}
         <div className={styles.cardsContainer}>
           {servicesContent.items.map((service, index) => (
             <div
@@ -135,7 +167,6 @@ export function Services() {
                 } as CSSProperties
               }
             >
-              {/* Card Tab/Header */}
               <button
                 type="button"
                 className={styles.cardHeader}
@@ -259,7 +290,6 @@ export function Services() {
                 ></div>
               </button>
 
-              {/* Expanded Content */}
               <div
                 ref={(el) => {
                   contentRefs.current[index] = el;
@@ -288,7 +318,28 @@ export function Services() {
                             <ul className={styles.projectsList}>
                               {service.projects.map((project, i) => (
                                 <li key={i} className={styles.projectItem}>
-                                  {project}
+                                  {getProjectHref(project) ? (
+                                    <Link
+                                      href={getProjectHref(project)!}
+                                      className={styles.projectLink}
+                                      onMouseEnter={(event) =>
+                                        scrambleLabel(event.currentTarget)
+                                      }
+                                      onMouseLeave={(event) =>
+                                        resetLabel(event.currentTarget)
+                                      }
+                                      onFocus={(event) =>
+                                        scrambleLabel(event.currentTarget)
+                                      }
+                                      onBlur={(event) =>
+                                        resetLabel(event.currentTarget)
+                                      }
+                                    >
+                                      {getProjectLabel(project)}
+                                    </Link>
+                                  ) : (
+                                    getProjectLabel(project)
+                                  )}
                                 </li>
                               ))}
                             </ul>
@@ -309,8 +360,6 @@ export function Services() {
                         <h4 className={styles.headline}>{service.headline}</h4>
                       </div>
                       <div className={styles.contentSection}>
-                        {/* <span className={styles.label}>DESCRIPTION</span>
-                        <div className={styles.cardDivider} /> */}
                         <p className={styles.description}>
                           {service.description}
                         </p>
@@ -319,11 +368,31 @@ export function Services() {
                         <span className={styles.label}>
                           {servicesContent.labels.whereWeDidIt}
                         </span>
-                        {/* <div className={styles.cardDivider} /> */}
                         <ul className={styles.projectsList}>
                           {service.projects.map((project, i) => (
                             <li key={i} className={styles.projectItem}>
-                              {project}
+                              {getProjectHref(project) ? (
+                                <Link
+                                  href={getProjectHref(project)!}
+                                  className={styles.projectLink}
+                                  onMouseEnter={(event) =>
+                                    scrambleLabel(event.currentTarget)
+                                  }
+                                  onMouseLeave={(event) =>
+                                    resetLabel(event.currentTarget)
+                                  }
+                                  onFocus={(event) =>
+                                    scrambleLabel(event.currentTarget)
+                                  }
+                                  onBlur={(event) =>
+                                    resetLabel(event.currentTarget)
+                                  }
+                                >
+                                  {getProjectLabel(project)}
+                                </Link>
+                              ) : (
+                                getProjectLabel(project)
+                              )}
                             </li>
                           ))}
                         </ul>

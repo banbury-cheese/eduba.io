@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono } from "next/font/google";
 import "@/styles/globals.scss";
+import { FilmGrain } from "@/components/FilmGrain";
 
 const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex-mono",
@@ -18,6 +19,10 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "EDUBA - The Faces of Interface",
   description: "Exploring the intersection of AI and education",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -29,6 +34,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={ibmPlexMono.variable} style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}>
         {children}
+        <FilmGrain />
       </body>
     </html>
   );

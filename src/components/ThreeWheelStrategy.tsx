@@ -21,6 +21,12 @@ export function ThreeWheelStrategy() {
     const scroller = track.closest("main") || window;
     const mm = gsap.matchMedia();
 
+    const getOrbitRing = (group: SVGGElement) =>
+      group.querySelector(`.${styles.orbitRing}`) as SVGGeometryElement | null;
+
+    const getOrbitTravel = (orbit: SVGGeometryElement | null, factor = 0.2) =>
+      orbit ? -orbit.getTotalLength() * factor : 0;
+
     mm.add("(min-width: 801px)", () => {
       const ctx = gsap.context(() => {
         const cards = gsap.utils.toArray<HTMLElement>(
@@ -36,6 +42,9 @@ export function ThreeWheelStrategy() {
         const connector1 = viewport.querySelector(`.${styles.connector1}`);
         const connector2 = viewport.querySelector(`.${styles.connector2}`);
         const connector3 = viewport.querySelector(`.${styles.connector3}`);
+        const orbit1 = getOrbitRing(wheelGroups[0]);
+        const orbit2 = getOrbitRing(wheelGroups[1]);
+        const orbit3 = getOrbitRing(wheelGroups[2]);
 
         const vh = window.innerHeight;
         const stack3Pos = vh - 150;
@@ -68,6 +77,9 @@ export function ThreeWheelStrategy() {
           strokeDashoffset: 0,
           opacity: 1,
         });
+        gsap.set([orbit1, orbit2, orbit3], {
+          strokeDashoffset: 0,
+        });
 
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -85,6 +97,13 @@ export function ThreeWheelStrategy() {
         const buffer = 0.1;
         const totalDur =
           moveDur + expandDur + readHold + moveDur + expandDur + buffer;
+        const stage1ExpandStart = moveDur - expandDur;
+        const stage2MoveStart = stage1ExpandStart + expandDur + readHold;
+        const stage2ExpandStart = stage2MoveStart + moveDur;
+        const stage2BodyStart = stage2ExpandStart - expandDur;
+        const orbit1Travel = getOrbitTravel(orbit1, 0.22);
+        const orbit2Travel = getOrbitTravel(orbit2, 0.28);
+        const orbit3Travel = getOrbitTravel(orbit3, 0.28);
 
         if (connector1 && connector3) {
           tl.to(
@@ -110,6 +129,42 @@ export function ThreeWheelStrategy() {
           );
         }
 
+        if (orbit1) {
+          tl.to(
+            orbit1,
+            {
+              strokeDashoffset: orbit1Travel,
+              duration: stage1ExpandStart,
+              ease: "none",
+            },
+            0,
+          );
+        }
+
+        if (orbit2) {
+          tl.to(
+            orbit2,
+            {
+              strokeDashoffset: orbit2Travel,
+              duration: stage2BodyStart - stage1ExpandStart,
+              ease: "none",
+            },
+            stage1ExpandStart,
+          );
+        }
+
+        if (orbit3) {
+          tl.to(
+            orbit3,
+            {
+              strokeDashoffset: orbit3Travel,
+              duration: totalDur - stage2BodyStart,
+              ease: "none",
+            },
+            stage2BodyStart,
+          );
+        }
+
         tl.to(
           cards[1],
           { y: top2Pos, duration: moveDur, ease: "power2.inOut" },
@@ -122,7 +177,6 @@ export function ThreeWheelStrategy() {
         if (path1) tl.to(path1, { fill: inactiveFill, duration: moveDur }, 0);
         if (path2) tl.to(path2, { fill: activeFill, duration: moveDur }, 0);
 
-        const stage1ExpandStart = moveDur - expandDur;
         tl.to(
           bodies[1],
           {
@@ -138,8 +192,6 @@ export function ThreeWheelStrategy() {
           { opacity: 0, height: 0, duration: expandDur, ease: "power4.inOut" },
           stage1ExpandStart,
         );
-
-        const stage2MoveStart = stage1ExpandStart + expandDur + readHold;
 
         tl.to(
           cards[2],
@@ -157,7 +209,6 @@ export function ThreeWheelStrategy() {
         if (path3)
           tl.to(path3, { fill: activeFill, duration: moveDur }, stage2MoveStart);
 
-        const stage2ExpandStart = stage2MoveStart + moveDur;
         tl.to(
           bodies[2],
           {
@@ -166,12 +217,12 @@ export function ThreeWheelStrategy() {
             duration: expandDur,
             ease: "power4.inOut",
           },
-          stage2ExpandStart - expandDur,
+          stage2BodyStart,
         );
         tl.to(
           bodies[1],
           { opacity: 0, height: 0, duration: expandDur, ease: "power4.inOut" },
-          stage2ExpandStart - expandDur,
+          stage2BodyStart,
         );
 
         tl.to({}, { duration: buffer });
@@ -199,6 +250,10 @@ export function ThreeWheelStrategy() {
         if (cards.length < 3 || bodies.length < 3 || wheelGroups.length < 3) {
           return;
         }
+
+        const orbit1 = getOrbitRing(wheelGroups[0]);
+        const orbit2 = getOrbitRing(wheelGroups[1]);
+        const orbit3 = getOrbitRing(wheelGroups[2]);
 
         const inactiveFill = "rgba(162, 119, 122, 0.1)";
         const activeFill = "rgba(162, 119, 122, 0.4)";
@@ -233,6 +288,9 @@ export function ThreeWheelStrategy() {
           strokeDashoffset: 0,
           opacity: 1,
         });
+        gsap.set([orbit1, orbit2, orbit3], {
+          strokeDashoffset: 0,
+        });
 
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -250,6 +308,12 @@ export function ThreeWheelStrategy() {
         const buffer = 0.15;
         const totalDur =
           moveDur + expandDur + readHold + moveDur + expandDur + buffer;
+        const phase1BodyStart = moveDur - expandDur;
+        const phase2Start = phase1BodyStart + expandDur + readHold;
+        const phase2BodyStart = phase2Start + moveDur - expandDur;
+        const orbit1Travel = getOrbitTravel(orbit1, 0.22);
+        const orbit2Travel = getOrbitTravel(orbit2, 0.28);
+        const orbit3Travel = getOrbitTravel(orbit3, 0.28);
 
         if (connector1 && connector3) {
           tl.to(
@@ -272,6 +336,42 @@ export function ThreeWheelStrategy() {
               ease: "none",
             },
             0,
+          );
+        }
+
+        if (orbit1) {
+          tl.to(
+            orbit1,
+            {
+              strokeDashoffset: orbit1Travel,
+              duration: phase1BodyStart,
+              ease: "none",
+            },
+            0,
+          );
+        }
+
+        if (orbit2) {
+          tl.to(
+            orbit2,
+            {
+              strokeDashoffset: orbit2Travel,
+              duration: phase2BodyStart - phase1BodyStart,
+              ease: "none",
+            },
+            phase1BodyStart,
+          );
+        }
+
+        if (orbit3) {
+          tl.to(
+            orbit3,
+            {
+              strokeDashoffset: orbit3Travel,
+              duration: totalDur - phase2BodyStart,
+              ease: "none",
+            },
+            phase2BodyStart,
           );
         }
 
@@ -306,7 +406,6 @@ export function ThreeWheelStrategy() {
         if (path1) tl.to(path1, { fill: inactiveFill, duration: moveDur }, 0);
         if (path2) tl.to(path2, { fill: activeFill, duration: moveDur }, 0);
 
-        const phase1BodyStart = moveDur - expandDur;
         tl.to(
           bodies[1],
           {
@@ -323,7 +422,6 @@ export function ThreeWheelStrategy() {
           phase1BodyStart,
         );
 
-        const phase2Start = phase1BodyStart + expandDur + readHold;
         tl.to(
           cards[1],
           {
@@ -356,7 +454,6 @@ export function ThreeWheelStrategy() {
           );
         if (path3) tl.to(path3, { fill: activeFill, duration: moveDur }, phase2Start);
 
-        const phase2BodyStart = phase2Start + moveDur - expandDur;
         tl.to(
           bodies[2],
           {
@@ -456,6 +553,7 @@ export function ThreeWheelStrategy() {
                     ry="141.5"
                     stroke="#5D3136"
                     strokeDasharray="4 4"
+                    className={styles.orbitRing}
                   />
                   {/* Hub */}
                   <circle
@@ -513,6 +611,7 @@ export function ThreeWheelStrategy() {
                     ry="76.5"
                     stroke="#5D3136"
                     strokeDasharray="4 4"
+                    className={styles.orbitRing}
                   />
                   <circle
                     cx="80"
@@ -557,6 +656,7 @@ export function ThreeWheelStrategy() {
                     ry="83.5"
                     stroke="#5D3136"
                     strokeDasharray="4 4"
+                    className={styles.orbitRing}
                   />
                   <circle
                     cx="525"
@@ -613,9 +713,11 @@ export function ThreeWheelStrategy() {
                 <p className={styles.sectionDescription}>
                   {section.description}
                 </p>
-                <button className={styles.consultButton}>
-                  {threeWheelStrategyContent.consultButtonLabel}
-                </button>
+                {threeWheelStrategyContent.consultButtonLabel ? (
+                  <button className={styles.consultButton}>
+                    {threeWheelStrategyContent.consultButtonLabel}
+                  </button>
+                ) : null}
               </div>
             </div>
           ))}

@@ -11,11 +11,11 @@ export default function Home() {
   return (
     <Layout>
       <HeroSection />
+      <Reviews />
       <ThreeWheelStrategy />
       <Services />
       <Works />
       <ParadigmShift />
-      <Reviews />
       <Team />
     </Layout>
   );

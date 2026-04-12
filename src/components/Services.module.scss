@@ -7,6 +7,8 @@
   background-color: $white;
   position: relative;
   padding: 40px var(--services-pad-x) 72px;
+  max-width: 1440px;
+  margin: 0 auto;
 
   @include media("<=tablet") {
     --services-pad-x: 16px;
@@ -224,6 +226,7 @@
   height: clamp(90px, 9vw, 132px);
   z-index: 0;
   margin-top: -10px;
+  pointer-events: none;
 
   @include media("<=tablet") {
     height: clamp(96px, 27vw, 118px);
@@ -275,13 +278,19 @@
 }
 
 .cardTitle {
-  font-size: clamp(26px, 3vw, 38px);
+  font-size: clamp(24px, 2.7vw, 38px);
   font-weight: 600;
   font-family: $font-primary;
   color: var(--card-title);
   margin: 0;
   line-height: 1.05;
-  max-width: clamp(250px, 52vw, 620px);
+  max-width: clamp(250px, 46vw, 620px);
+  text-wrap: balance;
+
+  @include media("<=desktop") {
+    font-size: clamp(22px, 2.45vw, 34px);
+    max-width: min(42vw, 540px);
+  }
 
   @include media("<=tablet") {
     font-size: clamp(22px, 8vw, 30px);
@@ -454,4 +463,12 @@
   letter-spacing: 0.14em;
   color: var(--card-title);
   text-transform: uppercase;
+}
+
+.projectLink {
+  color: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
 }

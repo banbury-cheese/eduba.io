@@ -36,7 +36,7 @@ export interface Sector {
     cards: {
       id: string;
       title: string;
-      price: string;
+      price?: string;
       body: string;
     }[];
   };

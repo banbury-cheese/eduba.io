@@ -51,6 +51,66 @@
   @include media("<=tablet") {
     padding-left: 0;
     padding-bottom: 0;
+    padding-top: 16px;
+  }
+}
+
+.fanButton {
+  position: absolute;
+  right: 2vw;
+  top: calc(8vh + 6px);
+  width: 84px;
+  height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $light-pink;
+  border-radius: 999px;
+  background: $white;
+  color: $brown;
+  cursor: pointer;
+  z-index: 80;
+  pointer-events: auto;
+  transition:
+    background-color $transition-fast,
+    color $transition-fast,
+    border-color $transition-fast;
+
+  &:hover,
+  &:focus-visible {
+    background: $brown;
+    color: $white;
+    border-color: $brown;
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba($dark-brown, 0.18);
+    outline-offset: 4px;
+  }
+
+  @include media("<=tablet") {
+    position: static;
+    margin: 0 0 14px auto;
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.fanButtonInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+}
+
+.fanIcon {
+  display: block;
+  width: 32px;
+  height: 32px;
+
+  @include media("<=tablet") {
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -78,14 +138,14 @@
   position: relative;
   width: 100%;
   height: clamp(360px, 32vw, 460px);
-  padding-bottom: 30px;
+  padding-bottom: 8px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 
   @include media("<=tablet") {
-    height: clamp(260px, 76vw, 360px);
-    padding-bottom: 24px;
+    height: clamp(290px, 82vw, 380px);
+    padding-bottom: 0;
   }
 }
 
@@ -190,6 +250,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  gap: 12px;
   font-family: $font-mono;
   color: $cream;
   font-size: 8px;
@@ -207,6 +268,7 @@
   display: flex;
   gap: 8px;
   align-items: baseline;
+  flex-wrap: wrap;
   font-size: 12px;
 
   span:first-child {
@@ -215,6 +277,15 @@
 
   @include media("<=phone") {
     gap: 6px;
+  }
+}
+
+.clientLink {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.82;
   }
 }
 
@@ -227,27 +298,6 @@
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
-}
-
-.counter {
-  position: absolute;
-  left: 44%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: min(610px, calc(100% - 220px));
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 60;
-  pointer-events: none;
-  font-family: $font-mono;
-  font-size: 14px;
-  color: $brown;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-
-  @include media("<=tablet") {
-    width: calc(100% - 48px);
-    font-size: 13px;
-  }
+  color: inherit;
+  flex-shrink: 0;
 }

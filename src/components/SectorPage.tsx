@@ -216,7 +216,9 @@ export function SectorPage({ sector }: SectorPageProps) {
               <article key={card.id} className={styles.serviceCard}>
                 <span className={styles.cardId}>{card.id}</span>
                 <h3 className={styles.cardTitle}>{card.title}</h3>
-                <span className={styles.servicePrice}>{card.price}</span>
+                {card.price ? (
+                  <span className={styles.servicePrice}>{card.price}</span>
+                ) : null}
                 <p className={styles.cardBody}>{card.body}</p>
               </article>
             ))}

@@ -2,17 +2,51 @@
 
 import { useLayoutEffect, useRef } from "react";
 import type { CSSProperties } from "react";
+import Link from "next/link";
+import { NavArrow } from "./NavArrow";
 import { gsap } from "gsap";
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { worksContent } from "@/data/homeContent";
 import styles from "./Works.module.scss";
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrambleTextPlugin);
 
 export function Works() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
+  const getImageSrc = (
+    image: (typeof worksContent.items)[number]["gallery"][number],
+  ) => {
+    const src = (image as { src?: string }).src;
+    return typeof src === "string" && src.length > 0 ? src : null;
+  };
+  const scrambleLabel = (text: HTMLElement | null) => {
+    if (!text) return;
+
+    if (!text.dataset.originalLabel) {
+      text.dataset.originalLabel = text.textContent || "";
+    }
+
+    gsap.killTweensOf(text);
+    gsap.to(text, {
+      duration: 0.8,
+      scrambleText: {
+        text: text.dataset.originalLabel || "",
+        chars: "upperCase",
+        revealDelay: 0,
+        speed: 0.8,
+      },
+    });
+  };
+
+  const resetLabel = (text: HTMLElement | null) => {
+    if (!text) return;
+
+    gsap.killTweensOf(text);
+    text.textContent = text.dataset.originalLabel || text.textContent || "";
+  };
 
   useLayoutEffect(() => {
     const track = trackRef.current;
@@ -25,14 +59,14 @@ export function Works() {
       const cards = gsap.utils.toArray<HTMLElement>(
         viewport.querySelectorAll(`.${styles.cardContainer}`),
       );
+      if (cards.length === 0) return;
 
-      // --- INITIAL STATE ---
-      // Card 1: Visible (y: 0)
-      gsap.set(cards[0], { y: 0, zIndex: 1 });
-
-      // Card 2 & 3: Offscreen (y: 100vh)
-      gsap.set(cards[1], { y: window.innerHeight, zIndex: 2 });
-      gsap.set(cards[2], { y: window.innerHeight, zIndex: 3 });
+      cards.forEach((card, index) => {
+        gsap.set(card, {
+          y: index === 0 ? 0 : window.innerHeight,
+          zIndex: index + 1,
+        });
+      });
 
       // --- TIMELINE ---
       const tl = gsap.timeline({
@@ -48,25 +82,15 @@ export function Works() {
       // Duration for each slide
       const duration = 1;
 
-      // Slide Card 2 Up
-      tl.to(cards[1], {
-        y: 0,
-        duration: duration,
-        ease: "power1.inOut", // Smooth slide
+      cards.slice(1).forEach((card) => {
+        tl.to(card, {
+          y: 0,
+          duration: duration,
+          ease: "power1.inOut",
+        });
+
+        tl.to({}, { duration: 0.2 });
       });
-
-      // Buffer/Hold
-      tl.to({}, { duration: 0.2 });
-
-      // Slide Card 3 Up
-      tl.to(cards[2], {
-        y: 0,
-        duration: duration,
-        ease: "power1.inOut",
-      });
-
-      // Final Buffer
-      tl.to({}, { duration: 0.2 });
     }, track);
 
     return () => ctx.revert();
@@ -74,23 +98,29 @@ export function Works() {
 
   return (
     <div className={styles.container}>
-      <div ref={trackRef} className={styles.track}>
+      <div
+        ref={trackRef}
+        className={styles.track}
+        style={{ height: `${worksContent.items.length * 100}vh` }}
+      >
         <div ref={viewportRef} className={styles.stickyViewport}>
-          {/* Global Header/Button if needed fixed at top-right */}
-          <div className={styles.header}>
-            <svg
-              width="280"
-              height="46"
-              viewBox="0 0 344 46"
-              className={styles.seeAll}
-            >
-              <path
-                fill="#000"
-                d="M0 7V45.5H344L311.601 2.77064C310.277 1.02527 308.213 0 306.023 0H7C3.13401 0 0 3.13401 0 7Z"
-              />
-            </svg>
-            <span className={styles.seeAllLabel}>{worksContent.seeAllLabel}</span>
-          </div>
+          <Link
+            href="/works"
+            className={styles.header}
+            aria-label={worksContent.seeAllLabel}
+          >
+            {/* Desktop: original wide tab with text */}
+            <span className={styles.tabDesktop} aria-hidden="true">
+              <svg width="280" height="46" viewBox="0 0 344 46" fill="none" className={styles.seeAll}>
+                <path fill="#111111" d="M0 7V45.5H344L311.601 2.77064C310.277 1.02527 308.213 0 306.023 0H7C3.13401 0 0 3.13401 0 7Z" />
+              </svg>
+              <span className={styles.seeAllLabel}>{worksContent.seeAllLabel}</span>
+            </span>
+            {/* Mobile: compact icon tab */}
+            <span className={styles.tabMobile} aria-hidden="true">
+              <NavArrow iconMarginTop="7px" direction="forward" />
+            </span>
+          </Link>
 
           {worksContent.items.map((work, index) => {
             const theme = worksContent.themes[work.theme];
@@ -149,13 +179,17 @@ export function Works() {
                           <span className={styles.metaYear}>{work.year}</span>
                           <span className={styles.metaClient}>{work.client}</span>
                         </div>
-                        <a
-                          href={`#work-${work.id}`}
+                        <Link
+                          href={`/works/${work.id}`}
                           className={styles.viewProject}
                           aria-label={`View ${work.title} project`}
+                          onMouseEnter={(event) => scrambleLabel(event.currentTarget)}
+                          onMouseLeave={(event) => resetLabel(event.currentTarget)}
+                          onFocus={(event) => scrambleLabel(event.currentTarget)}
+                          onBlur={(event) => resetLabel(event.currentTarget)}
                         >
                           {worksContent.viewProjectLabel}
-                        </a>
+                        </Link>
                         <div className={styles.tagTicker} aria-hidden="true">
                           <div className={styles.tagTickerTrack}>
                             <span>{tagsTicker}</span>
@@ -168,11 +202,21 @@ export function Works() {
                     <div className={styles.divider} />
 
                     <div className={styles.gallery}>
-                      {[1, 2, 3].map((i) => (
-                        <div key={i} className={styles.placeholder}>
-                          {worksContent.imagePlaceholderLabel}
-                        </div>
-                      ))}
+                      {work.gallery.map((image) =>
+                        getImageSrc(image) ? (
+                          <div
+                            key={image.id}
+                            className={styles.galleryImage}
+                            style={{ backgroundImage: `url(${getImageSrc(image)})` }}
+                            role="img"
+                            aria-label={image.label}
+                          />
+                        ) : (
+                          <div key={image.id} className={styles.placeholder}>
+                            {image.label || worksContent.imagePlaceholderLabel}
+                          </div>
+                        ),
+                      )}
                     </div>
 
                     <p className={styles.summary}>{work.summary}</p>

@@ -3,8 +3,6 @@
 import { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import styles from "./ParadigmShift.module.scss";
-import Link from "next/link";
-import { ArrowCorner } from "./ArrowCorner";
 import { DotsArrow } from "./DotsArrow";
 import { paradigmShiftContent } from "@/data/homeContent";
 
@@ -177,12 +175,9 @@ export function ParadigmShift() {
                       </svg> */}
                     </span>
                   </p>
-                  <Link
-                    className={styles.ctaButton}
-                    href={`/sectors/${industry.slug}`}
-                  >
+                  <a className={styles.ctaButton} href={industry.href}>
                     {industry.cta}
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

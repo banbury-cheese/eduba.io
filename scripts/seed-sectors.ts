@@ -2,12 +2,8 @@ import { createClient } from "@sanity/client";
 import { randomUUID } from "crypto";
 import { readFileSync } from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
 
 import { fallbackSectors } from "../src/data/sectors";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 function loadEnvFile(filePath: string) {
   const env: Record<string, string> = {};
@@ -100,11 +96,26 @@ function toSectorDoc(sector: (typeof fallbackSectors)[number]) {
 
 async function run() {
   const docs = fallbackSectors.map(toSectorDoc);
+  const desiredIds = new Set(docs.map((doc) => doc._id));
+  const existingIds = await client.fetch<string[]>(`*[_type == "sector"]._id`);
+  const staleIds = existingIds.filter((id) => !desiredIds.has(id));
+
   const transaction = client.transaction();
+  staleIds.forEach((id) => {
+    transaction.delete(id);
+  });
   docs.forEach((doc) => {
     transaction.createOrReplace(doc);
   });
+
   const result = await transaction.commit();
+
+  console.log(
+    `Cleaned ${staleIds.length} stale sector docs, seeded ${docs.length} sectors.`,
+  );
+  if (staleIds.length > 0) {
+    console.log("Deleted ids:", staleIds);
+  }
   console.log(`Seeded ${docs.length} sectors.`);
   console.log(result);
 }

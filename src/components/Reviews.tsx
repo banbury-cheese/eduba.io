@@ -53,16 +53,54 @@ function CornerDots({ mirrored = false }: { mirrored?: boolean }) {
   );
 }
 
+function FanIcon() {
+  return (
+    <svg
+      width="45"
+      height="45"
+      viewBox="0 0 45 45"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={styles.fanIcon}
+      aria-hidden="true"
+    >
+      <g clipPath="url(#clip0_670_59)">
+        <path
+          d="M22.6 29.0002C27.8 34.1002 35.9999 34.0002 41.0999 29.0002C46.1999 23.9002 46.1999 15.5002 41.0999 10.4002L28.9 22.6002L22.4 29.0002L15.9 22.6002L22.4 16.2002L28.9 22.6002C33.9999 17.5002 33.9999 9.10023 28.9 4.00023C23.8 -1.09977 15.5 -1.29977 10.3 3.90023L22.4 16.0002C17.2 11.0002 8.99995 11.0002 3.89995 16.1002C-1.20005 21.2002 -1.20005 29.6002 3.89995 34.7002L15.9 22.7002C10.9 27.9002 10.9 36.1002 16 41.2002C21.1 46.3002 29.4999 46.3002 34.5999 41.2002L22.5 29.1002L22.6 29.0002Z"
+          fill="currentColor"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_670_59">
+          <rect width="45" height="45" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+}
+
 export function Reviews() {
+  const totalReviewItems = reviewsContent.items.length;
+  const visibleCardCount = Math.min(5, totalReviewItems);
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const [counterValue, setCounterValue] = useState<number>(
-    reviewsContent.counter.startValue,
+  const fanIconRef = useRef<HTMLSpanElement>(null);
+  const currentIndexRef = useRef(0);
+  const nextReviewIndexRef = useRef(visibleCardCount % totalReviewItems);
+  const isAnimatingRef = useRef(false);
+  const advanceReviewRef = useRef<(() => void) | null>(null);
+  const scheduleAutoRotateRef = useRef<(() => void) | null>(null);
+  const autoRotateTimerRef = useRef<number | null>(null);
+  const [slotReviewIndices, setSlotReviewIndices] = useState<number[]>(() =>
+    Array.from({ length: visibleCardCount }, (_, index) => index),
   );
 
-  // Ref to store the current order of indices
-  // We will animate the visual properties of the DOM elements directly
-  // But logically we treat them as a cycling list.
+  const clearAutoRotateTimer = () => {
+    if (autoRotateTimerRef.current) {
+      window.clearTimeout(autoRotateTimerRef.current);
+      autoRotateTimerRef.current = null;
+    }
+  };
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -71,32 +109,12 @@ export function Reviews() {
 
       const totalCards = cards.length;
 
-      // Initial positions
-      // We want a stack effect:
-      // Front card: zIndex high, scale 1, y 0
-      // Back cards: zIndex lower, scale smaller, y offset downwards and to the right/left?
-      // Image shows:
-      // Stack goes Top-Left to Bottom-Right visually?
-      // Actually image shows:
-      // Backmost card is smallest, top-leftest.
-      // Frontmost card is largest, bottom-rightest (closest to viewer).
-      // Wait, let's look at the image again.
-      // Front card is fully visible. Behind it, shifted up and left, is the next card.
-      // So the stack recedes into the background (Up and Left).
-
       const setCardState = (card: HTMLElement, index: number) => {
-        // index 0 = front
-        // index 1 = behind 0
-        // index 2 = behind 1
-
-        // Per image:
-        // Front card is dominant.
-        // Behind cards are shifted UP and LEFT, and scaled down slightly?
-        // Or just shifted UP and LEFT.
-
-        const xOffset = -35 * index;
-        const yOffset = 30 * index;
-        const scale = 1 - index * 0.05;
+        const isMobile = window.innerWidth <= 800;
+        const xOffset = (isMobile ? -10 : -35) * index;
+        const yOffset = (isMobile ? 16 : 30) * index;
+        const scaleStep = isMobile ? 0.04 : 0.05;
+        const scale = 1 - scaleStep * index;
         const opacity = 1;
         const zIndex = totalCards - index;
 
@@ -110,43 +128,37 @@ export function Reviews() {
         };
       };
 
-      // Set initial positions
       cards.forEach((card, i) => {
         gsap.set(card, setCardState(card, i));
       });
 
-      // Animation Loop
-      // We cycle the "visual" state.
-      // The DOM order stays the same.
-      // We just animate the properties of each element to match the "next" logical position.
-      // Actually, for a continuous cycle, it's often easier to physically permute the array of properties
-      // or modify the target values.
-
-      let currentIndex = 0;
-
-      const animateNext = () => {
-        // The card at currentIndex is at position 0 (Front).
-        // It needs to go to position N-1 (Back).
-        // All other cards need to move forward (position i becomes i-1).
+      advanceReviewRef.current = () => {
+        if (isAnimatingRef.current) return;
+        isAnimatingRef.current = true;
+        const outgoingSlotIndex = currentIndexRef.current % totalCards;
 
         const tl = gsap.timeline({
           onComplete: () => {
-            currentIndex++;
-            setCounterValue((prev) =>
-              prev >= reviewsContent.counter.max ? 1 : prev + 1,
-            );
-            // After animation, we wait a bit then trigger next
-            gsap.delayedCall(3, animateNext);
+            if (totalReviewItems > totalCards) {
+              const nextReviewIndex = nextReviewIndexRef.current;
+              setSlotReviewIndices((previousSlots) => {
+                const nextSlots = [...previousSlots];
+                nextSlots[outgoingSlotIndex] = nextReviewIndex;
+                return nextSlots;
+              });
+              nextReviewIndexRef.current =
+                (nextReviewIndex + 1) % totalReviewItems;
+            }
+
+            currentIndexRef.current =
+              (currentIndexRef.current + 1) % totalCards;
+            isAnimatingRef.current = false;
           },
         });
 
-        // Animate Front Card (Current) directly to the back
-        // It floats OVER the others to reach the back position
-        const frontCard = cards[currentIndex % totalCards];
-        const backIndex = totalCards - 1;
-        const backState = setCardState(frontCard, backIndex); // Target visual state for the back
+        const frontCard = cards[currentIndexRef.current % totalCards];
+        const backState = setCardState(frontCard, totalCards - 1);
 
-        // 1. Move Front card to Back position visuals, but keep Z high so it passes over
         tl.to(
           frontCard,
           {
@@ -157,17 +169,14 @@ export function Reviews() {
             filter: backState.filter,
             duration: 0.8,
             ease: "power2.inOut",
-            zIndex: 0, // Keep it on top while moving
+            zIndex: 0,
           },
           0,
         );
 
-        // 2. Animate others forward (Index i -> Index i-1)
         for (let i = 1; i < totalCards; i++) {
-          const cardIndex = (currentIndex + i) % totalCards;
+          const cardIndex = (currentIndexRef.current + i) % totalCards;
           const card = cards[cardIndex];
-
-          // New position is (i - 1)
           const targetState = setCardState(card, i - 1);
 
           tl.to(
@@ -181,20 +190,50 @@ export function Reviews() {
           );
         }
 
-        // 3. After animation, effectively "drop" the old front card to the bottom of the stack
         tl.set(frontCard, {
           zIndex: 1, // Now it is physically at the back
         });
       };
 
-      // Start loop
-      gsap.delayedCall(2, animateNext);
+      const scheduleAutoRotate = () => {
+        clearAutoRotateTimer();
+        autoRotateTimerRef.current = window.setTimeout(() => {
+          if (isAnimatingRef.current) {
+            scheduleAutoRotate();
+            return;
+          }
+
+          advanceReviewRef.current?.();
+          scheduleAutoRotate();
+        }, 4000);
+      };
+
+      scheduleAutoRotateRef.current = scheduleAutoRotate;
+      scheduleAutoRotate();
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => {
+      clearAutoRotateTimer();
+      advanceReviewRef.current = null;
+      scheduleAutoRotateRef.current = null;
+      ctx.revert();
+    };
   }, []);
 
-  const counterDisplay = String(counterValue).padStart(2, "0");
+  const handleAdvanceReview = () => {
+    if (isAnimatingRef.current) return;
+
+    if (fanIconRef.current) {
+      gsap.to(fanIconRef.current, {
+        rotate: "+=90",
+        duration: 0.32,
+        ease: "power2.out",
+      });
+    }
+
+    advanceReviewRef.current?.();
+    scheduleAutoRotateRef.current?.();
+  };
 
   return (
     <section className={styles.section} ref={containerRef}>
@@ -210,13 +249,27 @@ export function Reviews() {
             {reviewsContent.sideLabel.line2}
           </div>
 
+          <button
+            type="button"
+            className={styles.fanButton}
+            onClick={handleAdvanceReview}
+            aria-label="Show next review"
+          >
+            <span className={styles.fanButtonInner} ref={fanIconRef}>
+              <FanIcon />
+            </span>
+          </button>
+
           <div className={styles.stackContainer}>
-            {reviewsContent.items.map((review, i) => (
+            {slotReviewIndices.map((reviewIndex, slotIndex) => {
+              const review = reviewsContent.items[reviewIndex];
+
+              return (
               <div
-                key={review.id}
+                key={slotIndex}
                 className={styles.card}
                 ref={(el) => {
-                  if (el) cardsRef.current[i] = el;
+                  cardsRef.current[slotIndex] = el;
                 }}
               >
                 <div className={styles.cardHeader}>
@@ -235,15 +288,19 @@ export function Reviews() {
                       <span>{review.client},</span>
                       <span className={styles.company}>{review.company}</span>
                     </div>
-                    <span className={styles.source}>{review.source}</span>
+                    <a
+                      href={review.sourceHref}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={styles.source}
+                    >
+                      {review.source}
+                    </a>
                   </div>
                 </div>
               </div>
-            ))}
-            <div className={styles.counter}>
-              <span>{counterDisplay}</span>
-              <span>/{reviewsContent.counter.max}</span>
-            </div>
+              );
+            })}
           </div>
         </div>
       </div>

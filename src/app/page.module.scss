@@ -40,6 +40,8 @@
   align-items: center;
   gap: 10px;
   min-width: 0;
+  color: inherit;
+  text-decoration: none;
 
   @include media("<=phone") {
     gap: 6px;
@@ -82,27 +84,28 @@
 .navLinks {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 18px;
+  overflow: visible;
 
   @include media("<=tablet") {
-    gap: 8px;
+    gap: 12px;
   }
 
   @include media("<=phone") {
-    gap: 6px;
+    gap: 8px;
   }
 }
 
 .readingsLink {
   display: flex;
   align-items: center;
-  gap: 6px;
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
   color: inherit;
   text-decoration: none;
   transition: opacity $transition-fast;
+  will-change: color;
 
   &:hover {
     opacity: 0.7;
@@ -120,15 +123,9 @@
   }
 }
 
-.readingsIcon {
-  width: 11px;
-  height: 11px;
-  flex-shrink: 0;
-
-  @include media("<=tablet") {
-    width: 12px;
-    height: 12px;
-  }
+.navScrambleText {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .navLabel {
@@ -213,7 +210,8 @@
 
 .chaptersButton {
   display: flex;
-  background-color: $light-pink;
+  position: relative;
+  background-color: transparent;
   align-items: center;
   gap: 8px;
   border-radius: 4px;
@@ -223,6 +221,10 @@
   padding: 3px 12px;
   color: $dark-brown;
   white-space: nowrap;
+  overflow: visible;
+  border: none;
+  will-change: color;
+  flex: 0 0 auto;
 
   svg {
     flex-shrink: 0;
@@ -231,6 +233,10 @@
       width: 12px;
       height: 12px;
     }
+  }
+
+  svg path {
+    fill: currentColor;
   }
 
   @include media("<=tablet") {
@@ -242,19 +248,49 @@
   }
 }
 
+.navChipBg {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  border: 0.5px solid transparent;
+  background-color: $light-pink;
+  pointer-events: none;
+  transform-origin: center center;
+  will-change: transform, background-color, border-color;
+}
+
+.navButtonContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: inherit;
+}
+
 .navButtonPrimary {
   @extend .chaptersButton;
   display: flex;
   align-items: center;
-  background-color: black;
   color: white;
   gap: 8px;
+  will-change: color;
+
+  .navChipBg {
+    background-color: black;
+  }
 
   .dot {
     width: 5px;
     height: 5px;
     background-color: #25ca58;
     border-radius: 50%;
+    animation: dotBlink 2s ease-in-out infinite;
+  }
+
+  @keyframes dotBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.15; }
   }
 
   @include media("<=tablet") {
@@ -304,12 +340,12 @@
 }
 
 .content {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  height: 100%;
   min-height: 100%;
 
   @include media("<=tablet") {
-    display: flex;
-    flex-direction: column;
-
     min-height: 90vh;
     margin-bottom: 84px;
   }
@@ -412,6 +448,21 @@
   align-items: flex-start;
   gap: 10px;
   max-width: 220px;
+  color: inherit;
+  text-decoration: none;
+  transition:
+    opacity $transition-fast,
+    transform $transition-fast;
+
+  // &:hover {
+  //   opacity: 0.78;
+  //   transform: translateY(-1px);
+  // }
+
+  &:focus-visible {
+    outline: 2px solid rgba($dark-brown, 0.3);
+    outline-offset: 3px;
+  }
 
   @include media("<=phone") {
     max-width: none;
@@ -440,48 +491,50 @@
 }
 
 .readingTitle {
-  font-size: 10px;
+  font-size: 11px;
   text-transform: uppercase;
   line-height: 1.4;
   color: $text-dark;
   font-weight: 500;
 
   @include media("<=tablet") {
-    font-size: 9px;
+    font-size: 10px;
     line-height: 1.25;
   }
 
   @include media("<=phone") {
-    font-size: 11px;
+    font-size: 12px;
     line-height: 1.2;
     letter-spacing: 0.2px;
   }
 }
 
-// Chapters Section
-.chapters {
-  margin-top: 12vw;
+// Resources Section
+.resources {
+  padding-top: clamp(18px, 3vh, 36px);
+  padding-bottom: clamp(24px, 3.5vh, 42px);
 
   @include media("<=tablet") {
-    margin-top: auto;
     padding-top: 10px;
+    padding-bottom: 22px;
   }
 
   @include media("<=phone") {
     padding-top: 8px;
+    padding-bottom: 18px;
   }
 }
 
-.chaptersHeader {
+.resourcesHeader {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 
   @include media("<=phone") {
     margin-bottom: 10px;
   }
 }
 
-.chaptersTitle {
+.resourcesTitle {
   display: inline-block;
   font-size: 11px;
   text-transform: uppercase;
@@ -492,67 +545,229 @@
   color: $white;
 }
 
-.chaptersGrid {
+.resourcesGrid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
   padding: 0px 20px;
+  width: 100%;
+  box-sizing: border-box;
 
   @include media("<=desktop") {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   @include media("<=tablet") {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
     padding: 0 10px;
   }
 
   @include media("<=phone") {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 8px;
     padding: 0 8px;
   }
 
   @include media("<=small") {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-.chapterCard {
+.resourceCard {
   border: 1px solid $light-pink;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  gap: 14px;
+  padding: 18px 16px;
   text-align: center;
-  transition: all $transition-fast;
+  transition:
+    background-color $transition-fast,
+    border-color $transition-fast,
+    color $transition-fast;
   background: transparent;
-  aspect-ratio: 3 / 1;
+  aspect-ratio: 2 / 1;
   border-radius: 2px;
   font-weight: 600;
   color: $brown;
+  text-decoration: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  font-family: inherit;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  will-change: background-color, border-color;
 
-  &:hover {
-    background: $dark-brown;
-    color: $cream;
+  &:focus-visible {
+    outline: 2px solid rgba($dark-brown, 0.35);
+    outline-offset: 3px;
+  }
+
+  @include media("<=desktop") {
+    padding: 10px 8px;
+    gap: 12px;
+    aspect-ratio: 3;
   }
 
   @include media("<=tablet") {
     padding: 10px 8px;
+    gap: 12px;
     aspect-ratio: 1 / 0.9;
   }
 
   @include media("<=phone") {
     padding: 8px 6px;
+    gap: 10px;
     aspect-ratio: 1 / 0.85;
   }
 }
 
-.chapterTitle {
+.resourceIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+
+  svg {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 52px;
+    max-height: 40px;
+  }
+
+  @include media("<=tablet") {
+    min-height: 42px;
+
+    svg {
+      max-width: 42px;
+      max-height: 36px;
+    }
+  }
+
+  @include media("<=phone") {
+    min-height: 38px;
+
+    svg {
+      max-width: 36px;
+      max-height: 32px;
+    }
+  }
+}
+
+.resourceSvg {
+  overflow: visible;
+}
+
+.resourceNode,
+.resourceLink {
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform, opacity;
+  transition: transform 0.42s cubic-bezier(0.34, 1.48, 0.64, 1);
+}
+
+.resourceVoxBarTall,
+.resourceVoxBarMid {
+  transform-origin: center bottom;
+}
+
+// ─── Scribe: fork opens outward on hover ────────────────────────────────────
+.resourceCard:hover .resourceScribeNodeTopLeft {
+  transform: translate(-2.5px, -3px);
+}
+.resourceCard:hover .resourceScribeNodeBottomLeft {
+  transform: translate(-2.5px, 3px);
+}
+.resourceCard:hover .resourceScribeNodeRight,
+.resourceCard:hover .resourceScribeNodeRightEcho {
+  transform: translate(2px, 0);
+}
+
+// ─── Study Arcade: corners breathe outward ──────────────────────────────────
+.resourceCard:hover .resourceStudyArcadeNodeTl {
+  transform: translate(-2.5px, -2.5px);
+}
+.resourceCard:hover .resourceStudyArcadeNodeTr {
+  transform: translate(2.5px, -2.5px);
+}
+.resourceCard:hover .resourceStudyArcadeNodeBl {
+  transform: translate(-2.5px, 2.5px);
+  transition-delay: 0.04s;
+}
+.resourceCard:hover .resourceStudyArcadeNodeBr {
+  transform: translate(2.5px, 2.5px);
+  transition-delay: 0.04s;
+}
+
+// ─── Vox Meet: EQ bars pulse upward, staggered ──────────────────────────────
+.resourceCard:hover .resourceVoxNodeTallTop {
+  transform: translateY(-5px);
+}
+.resourceCard:hover .resourceVoxNodeTallBottom {
+  transform: translateY(3px);
+  transition-delay: 0.03s;
+}
+.resourceCard:hover .resourceVoxNodeMidTop {
+  transform: translateY(-3.5px);
+  transition-delay: 0.07s;
+}
+.resourceCard:hover .resourceVoxNodeMidBottom {
+  transform: translateY(2.5px);
+  transition-delay: 0.1s;
+}
+.resourceCard:hover .resourceVoxNodeSmallBottom {
+  transform: translateY(2px);
+  transition-delay: 0.14s;
+}
+
+// ─── Clief Notes: checkmark traces its path ─────────────────────────────────
+.resourceCard:hover .resourceCliefNodeTop {
+  transform: translate(2.5px, -2px);
+}
+.resourceCard:hover .resourceCliefNodeCenter {
+  transform: translate(1px, 1.5px);
+  transition-delay: 0.05s;
+}
+.resourceCard:hover .resourceCliefNodeLeft {
+  transform: translate(-2px, 1px);
+  transition-delay: 0.1s;
+}
+
+// ─── Substack: grid nodes expand from center ────────────────────────────────
+.resourceCard:hover .resourceSubstackNodeTl {
+  transform: translate(-2.5px, -2.5px);
+}
+.resourceCard:hover .resourceSubstackNodeTr {
+  transform: translate(2.5px, -2.5px);
+}
+.resourceCard:hover .resourceSubstackNodeBl {
+  transform: translate(-2.5px, 2.5px);
+  transition-delay: 0.04s;
+}
+.resourceCard:hover .resourceSubstackNodeBr {
+  transform: translate(2.5px, 2.5px);
+  transition-delay: 0.04s;
+}
+.resourceCard:hover .resourceSubstackNodeCenter {
+  transform: scale(1.22);
+  transition-delay: 0.02s;
+  transition-timing-function: cubic-bezier(0.34, 1.8, 0.64, 1);
+}
+
+.resourceTitle {
   font-size: 12px;
   text-transform: uppercase;
   line-height: 1.4;
+  font-family: $font-mono;
+  letter-spacing: 0.04em;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 
   @include media("<=tablet") {
     font-size: 9px;
@@ -562,6 +777,45 @@
   @include media("<=phone") {
     font-size: 8px;
     line-height: 1.15;
+  }
+}
+
+.edubaToaster {
+  :global([data-sonner-toast]) {
+    transition:
+      transform 0.18s ease-out,
+      opacity 0.18s ease-out,
+      height 0.18s ease-out,
+      box-shadow 0.14s ease-out !important;
+  }
+}
+
+.edubaToastCard {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-width: 220px;
+  max-width: min(320px, calc(100vw - 24px));
+  padding: 10px 14px;
+  border: 1px solid rgba($cream, 0.35);
+  border-radius: 4px;
+  background: $dark-brown;
+  color: $white;
+  box-shadow: 0 18px 40px rgba($dark-brown, 0.16);
+  font-family: $font-mono;
+  font-size: 11px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: left;
+  cursor: pointer;
+
+  @include media("<=phone") {
+    min-width: 0;
+    width: 100%;
+    padding: 9px 12px;
+    font-size: 10px;
   }
 }
 
@@ -580,6 +834,7 @@
   padding: 19px 20px 20px;
   border-radius: $radius-sm;
   pointer-events: none;
+  z-index: 40;
 
   @include media("<=tablet") {
     padding: 12px;
@@ -593,13 +848,11 @@
 
 .bookCallButton {
   display: flex;
-  align-items: stretch;
+  align-items: flex-end;
   gap: 3px;
   background: transparent;
   border: none;
   padding: 0;
-  cursor: pointer;
-  transition: all $transition-fast;
   height: fit-content;
 }
 
@@ -621,22 +874,31 @@
   border: 1px solid $light-brown;
   padding: 2px;
 
-  div {
-    padding: 5px 28px 5px 5px;
+  @include media("<=phone") {
+    padding: 1px;
   }
+}
+
+.bookCallTrigger {
+  display: flex;
+  flex-direction: column;
+  background: none;
+  border: none;
+  border: 1px solid $light-brown;
+  padding: 5px 28px 5px 5px;
+  cursor: pointer;
+  pointer-events: auto;
+  text-align: left;
+  width: 100%;
+  min-width: 200px;
 
   @include media("<=tablet") {
-    div {
-      padding: 4px 16px 4px 4px;
-    }
+    padding: 4px 16px 4px 4px;
   }
 
   @include media("<=phone") {
-    padding: 1px;
-
-    div {
-      padding: 3px 10px 3px 3px;
-    }
+    padding: 3px 10px 3px 3px;
+    min-width: 160px;
   }
 }
 
@@ -645,6 +907,7 @@
   text-transform: uppercase;
   font-weight: 700;
   color: $dark-brown;
+  font-family: $font-mono;
 
   @include media("<=tablet") {
     font-size: 10px;
@@ -671,18 +934,193 @@
 
 .bookCallArrow {
   display: flex;
-  align-items: start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  pointer-events: auto;
   height: 15px;
+  width: 14px;
+  flex-shrink: 0;
 
   svg {
     width: 100%;
     height: 100%;
+    display: block;
   }
 
   @include media("<=phone") {
     height: 13px;
   }
+}
+
+// ── Contact form panel ───────────────────────────────────────────────────────
+
+.contactBackdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 39;
+  cursor: pointer;
+}
+
+.contactFormPanel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.52s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contactFormPanelOpen {
+  grid-template-rows: 1fr;
+
+  .contactFormContent {
+    pointer-events: auto;
+  }
+}
+
+.contactFormContent {
+  overflow: hidden;
+  min-height: 0;
+  pointer-events: none;
+}
+
+.contactFormInner {
+  padding: 6px 4px 6px;
+  border-bottom: 1px dashed rgba(93, 49, 54, 0.22);
+  margin-bottom: 2px;
+}
+
+.contactHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 0 6px;
+  border-bottom: 1px dashed rgba(93, 49, 54, 0.18);
+  margin-bottom: 7px;
+}
+
+.contactHeaderLabel {
+  font-family: $font-mono;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: $light-brown;
+}
+
+.contactFieldGroup {
+  padding: 0 2px 6px;
+  border-bottom: 1px dashed rgba(93, 49, 54, 0.12);
+  margin-bottom: 6px;
+
+  &:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+}
+
+.contactLabel {
+  display: block;
+  font-family: $font-mono;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: $light-brown;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.contactInput {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(93, 49, 54, 0.2);
+  outline: none;
+  font-family: $font-mono;
+  font-size: 9px;
+  color: $dark-brown;
+  padding: 2px 0 3px;
+  transition: border-color 0.15s ease;
+
+  &::placeholder {
+    color: rgba(93, 49, 54, 0.28);
+  }
+
+  &:focus {
+    border-bottom-color: $dark-brown;
+  }
+}
+
+.contactTextarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(93, 49, 54, 0.2);
+  outline: none;
+  font-family: $font-mono;
+  font-size: 9px;
+  color: $dark-brown;
+  padding: 2px 0 3px;
+  resize: none;
+  min-height: 50px;
+  display: block;
+  line-height: 1.5;
+  transition: border-color 0.15s ease;
+
+  &::placeholder {
+    color: rgba(93, 49, 54, 0.28);
+  }
+
+  &:focus {
+    border-bottom-color: $dark-brown;
+  }
+}
+
+.contactSendRow {
+  padding: 4px 2px 0;
+}
+
+.sendButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $dark-brown;
+  color: $white;
+  border: none;
+  padding: 5px 7px 5px 8px;
+  font-family: $font-mono;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: lighten($dark-brown, 7%);
+
+    .sendArrow {
+      transform: translateX(3px);
+    }
+  }
+
+  &:active {
+    background: darken($dark-brown, 5%);
+  }
+}
+
+.sendButtonSuccess {
+  background: #1a9c43 !important;
+  justify-content: center !important;
+}
+
+.sendArrow {
+  font-size: 12px;
+  line-height: 1;
+  transition: transform 0.18s ease;
 }
 
 .scrollIndicator {

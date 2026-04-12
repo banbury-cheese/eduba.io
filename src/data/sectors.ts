@@ -7,11 +7,11 @@ export const fallbackSectors: Sector[] = [
     pageIndex: "001",
     pageTag: "DEFENSE AI INTEGRATION",
     hero: {
-      title: "Defense AI,\nminus the black box.",
+      title: "Mission-ready AI\nfor defense teams.",
       subtitle:
-        "We help defense teams ship mission-ready AI systems, not demos. Your operators learn the patterns, keep the IP, and get resilient decision support in contested environments. Veteran-owned, security-first.",
-      ctaLabel: "LET'S TALK",
-      ctaHref: "#",
+        "We help defense and intelligence teams decide where AI belongs, build the systems that hold up under real constraints, and train operators to run them with confidence.",
+      ctaLabel: "START A CONVERSATION",
+      ctaHref: "mailto:theceo@eduba.io",
       exploreLabel: "EXPLORE",
     },
     consulting: {
@@ -41,7 +41,7 @@ export const fallbackSectors: Sector[] = [
     },
     whyUs: {
       label: "Why us",
-      title: "Why choose us for Defense?",
+      title: "Why defense teams work with us",
       items: [
         {
           id: "01",
@@ -83,45 +83,45 @@ export const fallbackSectors: Sector[] = [
     },
     services: {
       label: "Services",
-      title: "Our Defense Services",
+      title: "Examples of the work",
       intro:
-        "We focus on shipping mission-ready systems your teams can run and extend. Each engagement transfers capability (and IP) to you, with governance and adoption patterns baked in.",
+        "The scope follows the mission. Sometimes that means a briefing or a design sprint. Sometimes it means a governed product build with human review, testing, and handover.",
       cards: [
         {
           id: "/001",
           title: "executive advisory",
-          price: "$5-10K",
+          price: "",
           body: "mission fit assessment, program triage, and a 90-day build vs buy vs orchestrate map.",
         },
         {
           id: "/002",
           title: "capability workshops",
-          price: "$15-60K",
+          price: "",
           body: "ai literacy to mission capability, pipeline design sprint, and governance bootcamps aligned to your environment.",
         },
         {
           id: "/003",
           title: "rapid prototyping",
-          price: "$30-120K",
+          price: "",
           body: "4-week POCs for intel triage, logistics planning, compliance automation, or training copilots.",
         },
         {
           id: "/004",
           title: "multi-agent systems",
-          price: "$50-200K",
+          price: "",
           body: "full product builds like VigilOre — specialized agents for document intake, aggregation, comparison, and reporting.",
         },
         {
           id: "/005",
           title: "ethics & evaluation engine",
-          price: "$25-75K",
+          price: "",
           body: "bias and robustness tests, red-team exercises, and reporting that safety boards can sign off on.",
         },
       ],
     },
     methodology: {
       label: "Our methodology",
-      title: "Our No-Nonsense Defense Development Methodology",
+      title: "How defense delivery works",
       steps: [
         {
           id: "01",
@@ -220,10 +220,10 @@ export const fallbackSectors: Sector[] = [
       ],
     },
     cta: {
-      label: "LET'S TALK",
-      title: "Book a no-obligation defense consultation today.",
-      buttonLabel: "LET'S TALK",
-      buttonHref: "#",
+      label: "CONTACT",
+      title: "If the mission problem is real, write to us.",
+      buttonLabel: "theceo@eduba.io",
+      buttonHref: "mailto:theceo@eduba.io",
     },
   },
   {
@@ -232,11 +232,11 @@ export const fallbackSectors: Sector[] = [
     pageIndex: "002",
     pageTag: "ENTERPRISE AI TRAINING",
     hero: {
-      title: "Your team has AI tools.\nThey're not sure what to do with them.",
+      title: "Your team already has AI tools.\nWe help them use them well.",
       subtitle:
-        "That's not a training problem. It's a translation problem. Someone needs to sit with your people, learn what they actually do all day, and show them exactly where these tools fit. Not in theory. In their workflows, with their data, on their deadlines.",
-      ctaLabel: "LET'S TALK",
-      ctaHref: "#",
+        "We learn the workflow first, train people on their real work, and build the systems that hold up after the workshop is over. That is how adoption stays high and the work becomes usable.",
+      ctaLabel: "START A CONVERSATION",
+      ctaHref: "mailto:theceo@eduba.io",
       exploreLabel: "EXPLORE",
     },
     consulting: {
@@ -266,7 +266,7 @@ export const fallbackSectors: Sector[] = [
     },
     whyUs: {
       label: "Why us",
-      title: "Why choose us for Enterprise?",
+      title: "Why enterprise teams work with us",
       items: [
         {
           id: "01",
@@ -276,9 +276,9 @@ export const fallbackSectors: Sector[] = [
         },
         {
           id: "02",
-          title: "340+ PEOPLE TRAINED",
+          title: "600+ PEOPLE TRAINED",
           description:
-            "since May 2025 across Pacific Life, Colgate-Palmolive, KPMG UK, and more.",
+            "across Pacific Life, Colgate-Palmolive, KPMG UK, IAG, and university programs.",
         },
         {
           id: "03",
@@ -288,9 +288,9 @@ export const fallbackSectors: Sector[] = [
         },
         {
           id: "04",
-          title: "REAL HOURS SAVED",
+          title: "6-9K HOURS SAVED ANNUALLY",
           description:
-            "2-3K projected annual hours saved from agents developed during training at Pacific Life & Colgate.",
+            "from the workflows teams built during the Pacific Life and Colgate-Palmolive programs.",
         },
         {
           id: "05",
@@ -308,45 +308,45 @@ export const fallbackSectors: Sector[] = [
     },
     services: {
       label: "Services",
-      title: "Our Enterprise Services",
+      title: "Examples of the work",
       intro:
-        "We focus on training that sticks and systems that ship. Each engagement transfers capability (and IP) to you, with governance and adoption patterns baked in.",
+        "The format follows the work. Some teams need an executive session. Some need multi-day training. Some need paired implementation after the training reveals what should be built.",
       cards: [
         {
           id: "/001",
           title: "executive briefing",
-          price: "60-90 MIN",
+          price: "",
           body: "executive alignment on what AI can actually do. Cut through vendor noise and hype cycles, tailored to your industry.",
         },
         {
           id: "/002",
           title: "implementation readiness",
-          price: "FULL DAY",
+          price: "",
           body: "workflow audit, opportunity mapping, and a clear build vs buy vs automate assessment for your org.",
         },
         {
           id: "/003",
           title: "multi-day training",
-          price: "SCOPED",
+          price: "",
           body: "hands-on sessions built entirely around your existing workflows. Your team works with their own tasks, their own data, in real time.",
         },
         {
           id: "/004",
           title: "technical implementation",
-          price: "SCOPED",
+          price: "",
           body: "we build the agents and workflows that actually earn back the investment. Your team pairs with us and keeps the IP.",
         },
         {
           id: "/005",
           title: "ongoing advisory",
-          price: "MONTHLY",
+          price: "",
           body: "sustained support to ensure adoption sticks and your team continues to build on what they learned.",
         },
       ],
     },
     methodology: {
       label: "Our methodology",
-      title: "How We Work",
+      title: "How enterprise delivery works",
       steps: [
         {
           id: "01",
@@ -426,7 +426,7 @@ export const fallbackSectors: Sector[] = [
         {
           question: "who have you trained?",
           answer:
-            "340+ people since May 2025 across Pacific Life, Colgate-Palmolive, KPMG UK, IAG, and University of Edinburgh.",
+            "600+ people across Pacific Life, Colgate-Palmolive, KPMG UK, IAG, University of Edinburgh, and related partner programs.",
         },
         {
           question: "can our team maintain this without you?",
@@ -436,7 +436,7 @@ export const fallbackSectors: Sector[] = [
         {
           question: "how do you prove ROI?",
           answer:
-            "We instrument time saved, adoption rates, and real outcomes. Pacific Life & Colgate project 2-3K annual hours saved.",
+            "We instrument time saved, adoption rates, and real outcomes. Pacific Life and Colgate-Palmolive track 95 percent thirty-day adoption and 6-9K hours saved annually.",
         },
         {
           question: "what if AI isn't right for our problem?",
@@ -446,10 +446,10 @@ export const fallbackSectors: Sector[] = [
       ],
     },
     cta: {
-      label: "LET'S TALK",
-      title: "Your team could be the next one that actually uses what they learned.",
-      buttonLabel: "LET'S TALK",
-      buttonHref: "#",
+      label: "CONTACT",
+      title: "If this matches what your team needs, write to us.",
+      buttonLabel: "theceo@eduba.io",
+      buttonHref: "mailto:theceo@eduba.io",
     },
   },
   {
@@ -458,11 +458,11 @@ export const fallbackSectors: Sector[] = [
     pageIndex: "003",
     pageTag: "EDUCATION AI INTEGRATION",
     hero: {
-      title: "Education AI,\nminus the hype.",
+      title: "AI work for faculty,\nresearchers, and students.",
       subtitle:
-        "We teach abstract fundamentals independent of platform changes. Emphasis on critical output assessment and principles over procedures. The people most skeptical of AI often become its most thoughtful adopters.",
-      ctaLabel: "LET'S TALK",
-      ctaHref: "#",
+        "We work with academic teams that want durable AI literacy, better evaluation habits, and delivery that fits research and teaching rather than distorting it.",
+      ctaLabel: "START A CONVERSATION",
+      ctaHref: "mailto:theceo@eduba.io",
       exploreLabel: "EXPLORE",
     },
     consulting: {
@@ -492,7 +492,7 @@ export const fallbackSectors: Sector[] = [
     },
     whyUs: {
       label: "Why us",
-      title: "Why choose us for Education?",
+      title: "Why academic teams work with us",
       items: [
         {
           id: "01",
@@ -534,45 +534,45 @@ export const fallbackSectors: Sector[] = [
     },
     services: {
       label: "Services",
-      title: "Our Education Services",
+      title: "Examples of the work",
       intro:
-        "We focus on building lasting AI literacy and capability in academic institutions. Each engagement transfers knowledge that doesn't expire with the next platform update.",
+        "The work ranges from faculty workshops to research partnerships and curriculum design. The common thread is that the material stays useful after the tool changes.",
       cards: [
         {
           id: "/001",
           title: "faculty workshops",
-          price: "CUSTOM",
+          price: "",
           body: "hands-on sessions where faculty discover how AI connects to their actual research and teaching disciplines.",
         },
         {
           id: "/002",
           title: "AI ethics briefings",
-          price: "CUSTOM",
+          price: "",
           body: "governance frameworks, ethical considerations, and policy implications for academic and policy audiences.",
         },
         {
           id: "/003",
           title: "research partnerships",
-          price: "CUSTOM",
+          price: "",
           body: "psychometric assessment, AI evaluation methodology, and published research collaborations.",
         },
         {
           id: "/004",
           title: "curriculum programs",
-          price: "CUSTOM",
+          price: "",
           body: "design and delivery of AI curriculum that teaches critical thinking and principles over tool-specific procedures.",
         },
         {
           id: "/005",
           title: "student programs",
-          price: "CUSTOM",
+          price: "",
           body: "AI literacy programs that prepare students for a world where understanding AI systems is a baseline skill.",
         },
       ],
     },
     methodology: {
       label: "Our methodology",
-      title: "Our Education & Research Methodology",
+      title: "How work gets adopted in academic settings",
       steps: [
         {
           id: "01",
@@ -672,10 +672,10 @@ export const fallbackSectors: Sector[] = [
       ],
     },
     cta: {
-      label: "LET'S TALK",
-      title: "Ready to build lasting AI capability in your institution?",
-      buttonLabel: "LET'S TALK",
-      buttonHref: "#",
+      label: "CONTACT",
+      title: "If your institution is working through this now, write to us.",
+      buttonLabel: "theceo@eduba.io",
+      buttonHref: "mailto:theceo@eduba.io",
     },
   },
   {
@@ -684,11 +684,11 @@ export const fallbackSectors: Sector[] = [
     pageIndex: "004",
     pageTag: "GOVERNMENT AI GOVERNANCE",
     hero: {
-      title: "Government AI,\nminus the guesswork.",
+      title: "AI work for government\nand policy teams.",
       subtitle:
-        "We help government teams and policy institutions navigate AI with honest assessment, ethical frameworks, and practical governance. From ambassador briefings to citizen-centric AI systems.",
-      ctaLabel: "LET'S TALK",
-      ctaHref: "#",
+        "We work with public institutions on governance, evaluation, briefings, and carefully scoped systems. The emphasis is on public trust, clear ownership, and procurement reality.",
+      ctaLabel: "START A CONVERSATION",
+      ctaHref: "mailto:theceo@eduba.io",
       exploreLabel: "EXPLORE",
     },
     consulting: {
@@ -718,7 +718,7 @@ export const fallbackSectors: Sector[] = [
     },
     whyUs: {
       label: "Why us",
-      title: "Why choose us for Government & Policy?",
+      title: "Why public institutions work with us",
       items: [
         {
           id: "01",
@@ -760,45 +760,45 @@ export const fallbackSectors: Sector[] = [
     },
     services: {
       label: "Services",
-      title: "Our Government & Policy Services",
+      title: "Examples of the work",
       intro:
-        "We focus on honest AI assessment and practical governance for public institutions. Every engagement is grounded in research and designed for transparency.",
+        "The work can be a briefing, a research partnership, a capability workshop, or a carefully scoped build. The frame stays the same. Public trust, usable governance, and clear accountability.",
       cards: [
         {
           id: "/001",
           title: "AI ethics briefing",
-          price: "CUSTOM",
+          price: "",
           body: "governance implications, ethical frameworks, and practical guidance for policymakers and international affairs experts.",
         },
         {
           id: "/002",
           title: "capability workshops",
-          price: "$12-60K",
+          price: "",
           body: "AI literacy to institutional capability, with governance and compliance tailored to your environment.",
         },
         {
           id: "/003",
           title: "policy research",
-          price: "CUSTOM",
+          price: "",
           body: "AI governance research, soft power measurement, and evaluation methodology that informs real policy decisions.",
         },
         {
           id: "/004",
           title: "rapid prototyping",
-          price: "$20-100K",
+          price: "",
           body: "4-week POCs for case triage, benefits routing, compliance reviews, or citizen-facing assistants.",
         },
         {
           id: "/005",
           title: "ethics & evaluation engine",
-          price: "$25-75K",
+          price: "",
           body: "psychometric assessment of AI systems, bias testing, and reporting that oversight bodies can sign off on.",
         },
       ],
     },
     methodology: {
       label: "Our methodology",
-      title: "Our Government & Policy Methodology",
+      title: "How government and policy delivery works",
       steps: [
         {
           id: "01",
@@ -898,10 +898,10 @@ export const fallbackSectors: Sector[] = [
       ],
     },
     cta: {
-      label: "LET'S TALK",
-      title: "Book a no-obligation government consultation today.",
-      buttonLabel: "LET'S TALK",
-      buttonHref: "#",
+      label: "CONTACT",
+      title: "If the institution-level problem is clear, write to us.",
+      buttonLabel: "theceo@eduba.io",
+      buttonHref: "mailto:theceo@eduba.io",
     },
   },
 ];

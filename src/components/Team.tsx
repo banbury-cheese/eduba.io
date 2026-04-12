@@ -2,9 +2,12 @@
 
 import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import styles from "./Team.module.scss";
 import { DotsArrow } from "./DotsArrow";
 import { teamContent } from "@/data/homeContent";
+
+gsap.registerPlugin(ScrambleTextPlugin);
 
 export function Team() {
   const people = teamContent.people;
@@ -27,6 +30,31 @@ export function Team() {
       gsap.set(frame, { opacity: 1 });
     }
   }, [activeIndex]);
+
+  const scrambleLabel = (text: HTMLElement | null) => {
+    if (!text) return;
+
+    if (!text.dataset.originalLabel) {
+      text.dataset.originalLabel = text.textContent || "";
+    }
+
+    gsap.killTweensOf(text);
+    gsap.to(text, {
+      duration: 0.8,
+      scrambleText: {
+        text: text.dataset.originalLabel || "",
+        chars: "upperCase",
+        revealDelay: 0,
+        speed: 0.8,
+      },
+    });
+  };
+
+  const resetLabel = (text: HTMLElement | null) => {
+    if (!text) return;
+    gsap.killTweensOf(text);
+    text.textContent = text.dataset.originalLabel || text.textContent || "";
+  };
 
   const handleRowClick = (index: number) => {
     const previousIndex = activeIndex;
@@ -154,6 +182,20 @@ export function Team() {
               >
                 <div className={styles.detailsInner}>
                   <p className={styles.description}>{person.description}</p>
+                  {person.websiteHref && person.websiteLabel ? (
+                    <a
+                      className={styles.websiteLink}
+                      href={person.websiteHref}
+                      target="_blank"
+                      rel="noreferrer"
+                      onMouseEnter={(event) => scrambleLabel(event.currentTarget)}
+                      onMouseLeave={(event) => resetLabel(event.currentTarget)}
+                      onFocus={(event) => scrambleLabel(event.currentTarget)}
+                      onBlur={(event) => resetLabel(event.currentTarget)}
+                    >
+                      {person.websiteLabel}
+                    </a>
+                  ) : null}
                   <div className={styles.dots}>
                     <DotsArrow size={26} color="#a2777a" />
                   </div>
