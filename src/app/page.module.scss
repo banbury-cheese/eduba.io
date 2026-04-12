@@ -6,13 +6,22 @@
   inset: 0;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  padding: 8px;
+  padding:
+    calc(8px + env(safe-area-inset-top))
+    calc(8px + env(safe-area-inset-right))
+    calc(8px + env(safe-area-inset-bottom))
+    calc(8px + env(safe-area-inset-left));
   background-color: $dark-brown;
-  height: 100vh;
+  height: 100svh;
+  min-height: 100svh;
   overflow: hidden;
 
   @include media("<=phone") {
-    padding: 5px;
+    padding:
+      calc(5px + env(safe-area-inset-top))
+      calc(5px + env(safe-area-inset-right))
+      calc(5px + env(safe-area-inset-bottom))
+      calc(5px + env(safe-area-inset-left));
   }
 }
 
@@ -316,11 +325,11 @@
   position: relative;
 
   @include media("<=tablet") {
-    padding-bottom: 84px;
+    padding-bottom: calc(84px + env(safe-area-inset-bottom));
   }
 
   @include media("<=phone") {
-    padding-bottom: 72px;
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
   }
 
   // Custom scrollbar
@@ -845,11 +854,11 @@
   z-index: 40;
 
   @include media("<=tablet") {
-    padding: 12px;
+    padding: 12px 12px calc(12px + env(safe-area-inset-bottom));
   }
 
   @include media("<=phone") {
-    padding: 10px 8px;
+    padding: 10px 8px calc(10px + env(safe-area-inset-bottom));
     align-items: flex-end;
   }
 }
