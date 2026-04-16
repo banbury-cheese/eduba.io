@@ -540,7 +540,7 @@ export function ThreeWheelStrategy() {
                 <g className={styles.wheelGroup}>
                   {/* Background Shape */}
                   <path
-                    style={{ transform: "translate(11px, 5px);" }}
+                    style={{ transform: "translate(11px, 5px)" }}
                     d="M308 0.5C387.261 0.5 451.5 63.6361 451.5 141.5C451.5 219.364 387.261 282.5 308 282.5C228.739 282.5 164.5 219.364 164.5 141.5C164.5 63.6361 228.739 0.5 308 0.5Z"
                     stroke="#A2777A"
                     fill="rgba(162, 119, 122, 0.1)"
@@ -596,7 +596,7 @@ export function ThreeWheelStrategy() {
 
                 {/* Node 2: Bottom Left (80, 608) */}
                 <g
-                  style={{ transform: "translate(-0px, -60px);" }}
+                  style={{ transform: "translate(0px, -60px)" }}
                   className={styles.wheelGroup}
                 >
                   <path
