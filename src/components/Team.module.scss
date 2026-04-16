@@ -163,8 +163,22 @@
 }
 
 .email {
+  display: inline-flex;
+  align-items: center;
   font-size: 12px;
   color: $light-brown;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba($dark-brown, 0.24);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
 
   @include media("<=tablet") {
     font-size: 11px;

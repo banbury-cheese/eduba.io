@@ -160,7 +160,13 @@ export function Team() {
                   <span className={styles.name}>{person.name}</span>
                   <span className={styles.roleBlock}>
                     <span className={styles.role}>{person.role}</span>
-                    <span className={styles.email}>{person.email}</span>
+                    <a
+                      className={styles.email}
+                      href={`mailto:${person.email}`}
+                      aria-label={`Email ${person.name}`}
+                    >
+                      {person.email}
+                    </a>
                   </span>
                 </button>
                 <a
