@@ -13,7 +13,7 @@ import styles from "./WorksArchive.module.scss";
 const TABLET_BP = 800;
 const getMargins = () => {
   const mobile = typeof window !== "undefined" && window.innerWidth <= TABLET_BP;
-  return { closed: mobile ? 0 : -49, open: mobile ? -42 : -46 };
+  return { closed: mobile ? -132 : -49, open: mobile ? -42 : -46 };
 };
 
 gsap.registerPlugin(ScrambleTextPlugin);
