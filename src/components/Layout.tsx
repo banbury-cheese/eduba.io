@@ -177,7 +177,7 @@ export function Layout({ children }: LayoutProps) {
     const body = encodeURIComponent(
       `From: ${contactEmail}\n\nMessage:\n${contactMessage}`,
     );
-    window.open(`mailto:theceo@eduba.io?subject=${subject}&body=${body}`);
+    window.open(`mailto:info@eduba.io?subject=${subject}&body=${body}`);
     setSubmitSuccess(true);
     setTimeout(() => {
       setSubmitSuccess(false);

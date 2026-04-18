@@ -11,7 +11,7 @@ export const fallbackSectors: Sector[] = [
       subtitle:
         "We help defense and intelligence teams decide where AI belongs, build the systems that hold up under real constraints, and train operators to run them with confidence.",
       ctaLabel: "START A CONVERSATION",
-      ctaHref: "mailto:theceo@eduba.io",
+      ctaHref: "mailto:info@eduba.io",
       exploreLabel: "EXPLORE",
     },
     consulting: {
@@ -222,8 +222,8 @@ export const fallbackSectors: Sector[] = [
     cta: {
       label: "CONTACT",
       title: "If the mission problem is real, write to us.",
-      buttonLabel: "theceo@eduba.io",
-      buttonHref: "mailto:theceo@eduba.io",
+      buttonLabel: "info@eduba.io",
+      buttonHref: "mailto:info@eduba.io",
     },
   },
   {
@@ -236,7 +236,7 @@ export const fallbackSectors: Sector[] = [
       subtitle:
         "We learn the workflow first, train people on their real work, and build the systems that hold up after the workshop is over. That is how adoption stays high and the work becomes usable.",
       ctaLabel: "START A CONVERSATION",
-      ctaHref: "mailto:theceo@eduba.io",
+      ctaHref: "mailto:info@eduba.io",
       exploreLabel: "EXPLORE",
     },
     consulting: {
@@ -448,8 +448,8 @@ export const fallbackSectors: Sector[] = [
     cta: {
       label: "CONTACT",
       title: "If this matches what your team needs, write to us.",
-      buttonLabel: "theceo@eduba.io",
-      buttonHref: "mailto:theceo@eduba.io",
+      buttonLabel: "info@eduba.io",
+      buttonHref: "mailto:info@eduba.io",
     },
   },
   {
@@ -462,7 +462,7 @@ export const fallbackSectors: Sector[] = [
       subtitle:
         "We work with academic teams that want durable AI literacy, better evaluation habits, and delivery that fits research and teaching rather than distorting it.",
       ctaLabel: "START A CONVERSATION",
-      ctaHref: "mailto:theceo@eduba.io",
+      ctaHref: "mailto:info@eduba.io",
       exploreLabel: "EXPLORE",
     },
     consulting: {
@@ -674,8 +674,8 @@ export const fallbackSectors: Sector[] = [
     cta: {
       label: "CONTACT",
       title: "If your institution is working through this now, write to us.",
-      buttonLabel: "theceo@eduba.io",
-      buttonHref: "mailto:theceo@eduba.io",
+      buttonLabel: "info@eduba.io",
+      buttonHref: "mailto:info@eduba.io",
     },
   },
   {
@@ -688,7 +688,7 @@ export const fallbackSectors: Sector[] = [
       subtitle:
         "We work with public institutions on governance, evaluation, briefings, and carefully scoped systems. The emphasis is on public trust, clear ownership, and procurement reality.",
       ctaLabel: "START A CONVERSATION",
-      ctaHref: "mailto:theceo@eduba.io",
+      ctaHref: "mailto:info@eduba.io",
       exploreLabel: "EXPLORE",
     },
     consulting: {
@@ -900,8 +900,8 @@ export const fallbackSectors: Sector[] = [
     cta: {
       label: "CONTACT",
       title: "If the institution-level problem is clear, write to us.",
-      buttonLabel: "theceo@eduba.io",
-      buttonHref: "mailto:theceo@eduba.io",
+      buttonLabel: "info@eduba.io",
+      buttonHref: "mailto:info@eduba.io",
     },
   },
 ];

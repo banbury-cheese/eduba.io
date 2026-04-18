@@ -6,15 +6,15 @@ export const layoutContent = {
     chaptersLabel: "Clief Notes",
     chaptersHref:
       "https://www.skool.com/quantum-quill-lyceum-1116/about?ref=74977a0154074322bd5d66df96d42a5f",
-    primaryCtaLabel: "theceo@eduba.io",
-    primaryCtaHref: "mailto:theceo@eduba.io",
+    primaryCtaLabel: "info@eduba.io",
+    primaryCtaHref: "mailto:info@eduba.io",
   },
   bottomNav: {
     bookCallTitle: "START A CONVERSATION",
-    bookCallSubtitle: "theceo@eduba.io",
-    bookCallHref: "mailto:theceo@eduba.io",
+    bookCallSubtitle: "info@eduba.io",
+    bookCallHref: "mailto:info@eduba.io",
     secondaryCtaLabel: "EMAIL US",
-    secondaryCtaHref: "mailto:theceo@eduba.io",
+    secondaryCtaHref: "mailto:info@eduba.io",
   },
 } as const;
 
@@ -733,7 +733,7 @@ export const paradigmShiftContent = {
       description:
         "12,500+ members use the community to learn the fundamentals, ship first projects, and compare notes with other builders. It is public, active, and designed to help people start immediately.",
       cta: "ASK FOR ACCESS",
-      href: "mailto:theceo@eduba.io?subject=Eduba%20Community",
+      href: "mailto:info@eduba.io?subject=Eduba%20Community",
     },
     {
       id: "CL002",
@@ -742,7 +742,7 @@ export const paradigmShiftContent = {
       description:
         "The Lyceum is our twelve-week certification program. Cohorts are split by skill level, the work is capstone-based, and instruction comes from people who build with these tools daily.",
       cta: "ASK ABOUT COHORTS",
-      href: "mailto:theceo@eduba.io?subject=The%20Lyceum",
+      href: "mailto:info@eduba.io?subject=The%20Lyceum",
     },
     {
       id: "CL003",
@@ -751,7 +751,7 @@ export const paradigmShiftContent = {
       description:
         "Teams who work with us get access to the community as part of the relationship. That matters because adoption does not hold on workshops alone. People need somewhere to keep practicing after delivery ends.",
       cta: "START A CONVERSATION",
-      href: "mailto:theceo@eduba.io?subject=Eduba%20Engagement",
+      href: "mailto:info@eduba.io?subject=Eduba%20Engagement",
     },
   ],
 } as const;
