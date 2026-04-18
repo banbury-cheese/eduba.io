@@ -1,0 +1,529 @@
+@use "../styles/variables" as *;
+@use "../styles/breakpoints" as *;
+
+.page {
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+}
+
+// ── Shared ────────────────────────────────────────────────────────────
+
+.tag {
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: $light-brown;
+  text-transform: uppercase;
+}
+
+.tagDivider {
+  font-family: $font-mono;
+  font-size: 10px;
+  color: $light-pink;
+  margin: 0 8px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 28px;
+  border-bottom: 1px solid $cream;
+  margin-bottom: 52px;
+
+  @include media("<=tablet") {
+    margin-bottom: 36px;
+    padding-bottom: 18px;
+  }
+}
+
+// ── Button ────────────────────────────────────────────────────────────
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  // gap: 10px;
+  padding: 11px 22px;
+  background-color: $dark-brown;
+  color: $white;
+  border-radius: $radius-sm;
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  transition:
+    background-color $transition-fast,
+    opacity $transition-fast;
+
+  &:hover {
+    background-color: $text-dark;
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba($dark-brown, 0.4);
+    outline-offset: 3px;
+  }
+
+  svg{
+    margin-right: -17px;
+    margin-top: -10px;
+  }
+}
+
+.btnLight {
+  background-color: $white;
+  color: $dark-brown;
+
+  &:hover {
+    background-color: $cream;
+  }
+}
+
+.btnLabel {
+  letter-spacing: inherit;
+}
+
+// ── Hero ──────────────────────────────────────────────────────────────
+
+.hero {
+  --pad-x: 48px;
+  position: relative;
+  padding: 64px var(--pad-x) 80px;
+  border-bottom: 1px solid $cream;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+
+  @include media("<=tablet") {
+    --pad-x: 20px;
+    padding-top: 44px;
+    padding-bottom: 60px;
+  }
+
+  @include media("<=phone") {
+    --pad-x: 14px;
+    padding-top: 36px;
+    padding-bottom: 52px;
+  }
+}
+
+.heroMeta {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.heroTitle {
+  font-family: $font-primary;
+  font-size: clamp(52px, 7.5vw, 108px);
+  font-weight: 700;
+  color: $dark-brown;
+  line-height: 0.94;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+
+  @include media("<=tablet") {
+    font-size: clamp(44px, 11vw, 72px);
+  }
+
+  @include media("<=phone") {
+    font-size: clamp(38px, 10.5vw, 58px);
+  }
+}
+
+.heroSub {
+  font-family: $font-mono;
+  font-size: 13px;
+  font-weight: 400;
+  color: $light-brown;
+  // line-height: 1.9;
+  margin: 0 0 44px;
+
+  @include media("<=phone") {
+    font-size: 10px;
+
+    br {
+      display: none;
+    }
+  }
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.heroCornerBr {
+  position: absolute;
+  bottom: 28px;
+  right: var(--pad-x);
+  opacity: 0.35;
+
+  @include media("<=tablet") {
+    display: none;
+  }
+}
+
+// ── How it works ──────────────────────────────────────────────────────
+
+.steps {
+  --pad-x: 48px;
+  padding: 72px var(--pad-x);
+  border-bottom: 1px solid $cream;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+
+  @include media("<=tablet") {
+    --pad-x: 20px;
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+
+  @include media("<=phone") {
+    --pad-x: 14px;
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  @include media("<=tablet") {
+    grid-template-columns: 1fr;
+  }
+}
+
+.step {
+  padding: 0 36px 0 0;
+  border-right: 1px solid $cream;
+
+  &:last-child {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  &:not(:first-child) {
+    padding-left: 36px;
+  }
+
+  @include media("<=tablet") {
+    border-right: none;
+    border-bottom: 1px solid $cream;
+    padding: 28px 0;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    &:not(:first-child) {
+      padding-left: 0;
+    }
+  }
+}
+
+.stepId {
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: $light-brown;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.stepTitle {
+  font-family: $font-primary;
+  font-size: clamp(24px, 2.4vw, 36px);
+  font-weight: 700;
+  color: $dark-brown;
+  line-height: 1.08;
+  margin: 0 0 10px;
+
+  @include media("<=tablet") {
+    font-size: clamp(22px, 6.5vw, 30px);
+  }
+}
+
+.stepDesc {
+  font-family: $font-mono;
+  font-size: 12px;
+  font-weight: 400;
+  color: $brown;
+  line-height: 1.85;
+  margin: 0;
+}
+
+// ── Features ──────────────────────────────────────────────────────────
+
+.features {
+  --pad-x: 48px;
+  padding: 72px var(--pad-x);
+  border-bottom: 1px solid $cream;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+
+  @include media("<=tablet") {
+    --pad-x: 20px;
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+
+  @include media("<=phone") {
+    --pad-x: 14px;
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 3px;
+
+  .featureCard:nth-child(-n + 2) {
+    grid-column: span 3;
+  }
+
+  .featureCard:nth-child(n + 3) {
+    grid-column: span 2;
+  }
+
+  @include media("<=tablet") {
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+
+    .featureCard:nth-child(-n + 2),
+    .featureCard:nth-child(n + 3) {
+      grid-column: span 1;
+    }
+
+    .featureCard:last-child {
+      grid-column: span 2;
+    }
+  }
+
+  @include media("<=phone") {
+    grid-template-columns: 1fr;
+
+    .featureCard:nth-child(-n + 2),
+    .featureCard:nth-child(n + 3),
+    .featureCard:last-child {
+      grid-column: span 1;
+    }
+  }
+}
+
+.featureCard {
+  padding: 30px 26px 36px;
+  border-radius: $radius-sm;
+
+  @include media("<=tablet") {
+    padding: 22px 18px 28px;
+  }
+}
+
+.featureId {
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  display: block;
+  margin-bottom: 14px;
+  opacity: 0.55;
+}
+
+.featureTitle {
+  font-family: $font-primary;
+  font-size: clamp(18px, 1.8vw, 26px);
+  font-weight: 700;
+  line-height: 1.08;
+  margin: 0 0 14px;
+
+  @include media("<=tablet") {
+    font-size: clamp(17px, 4.5vw, 22px);
+  }
+}
+
+.featureDesc {
+  font-family: $font-primary;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.65;
+  margin: 0;
+  opacity: 0.82;
+
+  @include media("<=phone") {
+    font-size: 12px;
+  }
+}
+
+// ── Privacy ───────────────────────────────────────────────────────────
+
+.privacy {
+  --pad-x: 48px;
+  padding: 80px var(--pad-x);
+  border-bottom: 1px solid $cream;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+
+  @include media("<=tablet") {
+    --pad-x: 20px;
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  @include media("<=phone") {
+    --pad-x: 14px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}
+
+.privacyInner {
+  display: grid;
+  grid-template-columns: 1fr 1.65fr;
+  gap: 80px;
+
+  @include media("<=tablet") {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.privacyLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.privacyTitle {
+  font-family: $font-primary;
+  font-size: clamp(32px, 3.8vw, 56px);
+  font-weight: 700;
+  color: $dark-brown;
+  line-height: 1.0;
+  margin: 0;
+
+  @include media("<=tablet") {
+    font-size: clamp(28px, 9vw, 44px);
+  }
+}
+
+.privacyRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+}
+
+.privacyText {
+  font-family: $font-primary;
+  font-size: 15px;
+  font-weight: 300;
+  color: $text-dark;
+  line-height: 1.72;
+  margin: 0;
+
+  @include media("<=phone") {
+    font-size: 13px;
+  }
+}
+
+.privacyMeta {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+
+  span {
+    font-family: $font-mono;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: $light-brown;
+  }
+}
+
+// ── CTA ───────────────────────────────────────────────────────────────
+
+.cta {
+  --pad-x: 48px;
+  position: relative;
+  padding: 88px var(--pad-x);
+  background-color: $dark-brown;
+  overflow: hidden;
+
+  @include media("<=tablet") {
+    --pad-x: 20px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  @include media("<=phone") {
+    --pad-x: 14px;
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+}
+
+.ctaInner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 36px;
+  max-width: 1344px;
+  margin: 0 auto;
+}
+
+.ctaTitle {
+  font-family: $font-primary;
+  font-size: clamp(30px, 4.5vw, 64px);
+  font-weight: 700;
+  color: $white;
+  line-height: 1.04;
+  margin: 0;
+  max-width: 780px;
+
+  @include media("<=tablet") {
+    font-size: clamp(26px, 7.5vw, 44px);
+  }
+}
+
+.ctaNote {
+  font-family: $font-mono;
+  font-size: 10px;
+  font-weight: 400;
+  color: $light-brown;
+  letter-spacing: 0.12em;
+  margin: 0;
+}
+
+.ctaCornerTl {
+  position: absolute;
+  top: 28px;
+  left: var(--pad-x);
+  opacity: 0.2;
+}
+
+.ctaCornerBr {
+  position: absolute;
+  bottom: 28px;
+  right: var(--pad-x);
+  opacity: 0.2;
+  transform: rotate(180deg);
+}
