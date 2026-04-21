@@ -17,8 +17,8 @@ const ibmPlexMono = IBM_Plex_Mono({
 // });
 
 export const metadata: Metadata = {
-  title: "EDUBA - The Faces of Interface",
-  description: "Exploring the intersection of AI and education",
+  title: "EDUBA",
+  description: "The Faces of Interface",
   icons: {
     icon: "/icon.svg",
     shortcut: "/icon.svg",
