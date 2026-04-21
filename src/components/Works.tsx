@@ -201,7 +201,11 @@ export function Works() {
 
                     <div className={styles.divider} />
 
-                    <div className={styles.gallery}>
+                    <div
+                      className={`${styles.gallery} ${
+                        work.gallery.length === 1 ? styles.gallerySingle : ""
+                      }`}
+                    >
                       {work.gallery.map((image) =>
                         getImageSrc(image) ? (
                           <div

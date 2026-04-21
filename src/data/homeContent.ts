@@ -351,6 +351,7 @@ export type WorkItem = {
   details: string[];
   gallery: WorkGalleryItem[];
   theme: WorkThemeKey;
+  url?: string;
 };
 
 const featuredWorkItems: WorkItem[] = [
@@ -368,7 +369,7 @@ const featuredWorkItems: WorkItem[] = [
       "The sessions didn't just teach people how to use AI tools. They uncovered where automation actually made sense, and where it didn't. Out of the coursework itself, teams began building agents that are projected to save 2,000 to 3,000 hours annually. But the bigger outcome was what nobody planned for: new value-adds beyond just automation, places where AI could improve decision quality, not just speed.",
     ],
     gallery: [
-      { id: "pacific-colgate-01", label: "WORKSHOP FLOOR SESSION 01", src: "/images/pacific-colgate/01-workshop-session.jpeg" },
+      { id: "pacific-colgate-01", label: "WORKSHOP FLOOR SESSION 01", src: "/images/pacific-colgate/01-workshop-session.jpg" },
     ],
     theme: "rose",
   },
@@ -386,7 +387,7 @@ const featuredWorkItems: WorkItem[] = [
       "Executives left with a practical operating framework for AI investment decisions, including risk thresholds, evaluation criteria, and ownership models across business and technology teams.",
     ],
     gallery: [
-      { id: "kpmg-01", label: "EXECUTIVE WORKSHOP SESSION", src: "/images/kpmg/01-executive-workshop.jpeg" },
+      { id: "kpmg-01", label: "EXECUTIVE WORKSHOP SESSION", src: "/images/kpmg/01-executive-workshop.jpg" },
     ],
     theme: "dark",
   },
@@ -454,7 +455,7 @@ const archiveOnlyWorkItems: WorkItem[] = [
       "Presented the Ethics Engine research alongside ongoing work with ICR and the British Council on international soft power, connecting the psychometric evaluation of AI models to the broader question of how governments and institutions should think about the tools they're adopting.",
     ],
     gallery: [
-      { id: "aia-01", label: "WORKSHOP GROUP BONN", src: "/images/aia-nrw/01-workshop-group-bonn.jpeg" },
+      { id: "aia-01", label: "WORKSHOP GROUP BONN", src: "/images/aia-nrw/01-workshop-group-bonn.jpg" },
     ],
     theme: "rose",
   },
@@ -489,7 +490,12 @@ const archiveOnlyWorkItems: WorkItem[] = [
       "Most organizations choose AI tools based on marketing. We built a methodology to evaluate them using validated psychological instruments — the same psychometric frameworks applied to humans, now applied at scale to large language models. The Ethics Engine gives organizations something they've never had before: an empirical, repeatable way to assess the behavioral tendencies of the models they're trusting with their work.",
       "Being able to evaluate these models at all was the hard part. Doing it at scale is what makes it useful. This research was also presented at UKICER 2025 under \"AI Workflows: Honest, Transparent, Reusable Work\" and formed the basis of the AI governance briefing at the Academy of International Affairs NRW.",
     ],
-    gallery: [],
+    gallery: [
+      { id: "ethics-01", label: "ASSESSMENT OVERVIEW", src: "/images/ethics-engine/01-assessment-overview.png" },
+      { id: "ethics-02", label: "PSYCHOMETRIC SCALES", src: "/images/ethics-engine/02-psychometric-scales.png" },
+      { id: "ethics-03", label: "PERSONA CONFIGURATION", src: "/images/ethics-engine/03-persona-configuration.png" },
+    ],
+    url: "https://ethicsengine.eduba.io/",
     theme: "skin",
   },
   {

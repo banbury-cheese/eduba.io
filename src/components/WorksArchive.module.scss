@@ -318,7 +318,7 @@
   border: 1px solid var(--work-divider, rgba(93, 49, 54, 0.2));
   border-top: 0;
   background: var(--work-bg, #f0ebe6);
-  padding: 20px 26px 32px;
+  padding: 20px 26px 52px;
 
   @include media("<=tablet") {
     padding: 16px 16px 80px;
@@ -430,4 +430,17 @@
   @include media("<=tablet") {
     font-size: 14px;
   }
+}
+
+.liveLink {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--work-title, #5d3136);
+  font-family: $font-mono;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
 }

@@ -102,6 +102,16 @@ export function WorkDetail({ work }: WorkDetailProps) {
                 {paragraph}
               </p>
             ))}
+            {work.url && (
+              <Link
+                href={work.url}
+                className={styles.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                VIEW LIVE &rarr;
+              </Link>
+            )}
           </section>
 
           <section className={styles.galleryStack}>

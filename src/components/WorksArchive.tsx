@@ -260,6 +260,16 @@ export function WorksArchive() {
                             {detail}
                           </p>
                         ))}
+                        {work.url && (
+                          <Link
+                            href={work.url}
+                            className={styles.liveLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            VIEW LIVE &rarr;
+                          </Link>
+                        )}
                       </div>
                     </div>
                   </div>

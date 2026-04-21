@@ -271,6 +271,24 @@
   }
 }
 
+.liveLink {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--work-title, #5d3136);
+  font-family: $font-mono;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+
+  @include media(">=tablet") {
+    font-size: 13px;
+    margin-top: 20px;
+  }
+}
+
 .mediaBlock {
   width: 100%;
   margin-top: 16px;

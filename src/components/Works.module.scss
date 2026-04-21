@@ -435,6 +435,37 @@
   }
 }
 
+.gallerySingle {
+  grid-auto-flow: row;
+  grid-auto-columns: auto;
+  grid-template-columns: 1fr;
+  height: clamp(220px, 31vw, 364px);
+  overflow: hidden;
+
+  @include media("<=1024px") {
+    grid-auto-columns: clamp(220px, 38vw, 320px);
+  }
+
+  .galleryImage {
+    // aspect-ratio: 3 / 4;
+    background-size: 80% auto;
+    width: 36vw;
+    background-size: cover;
+    margin-left: 20px;
+  }
+
+  @include media("<=tablet") {
+    height: auto;
+
+    .galleryImage {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16/9;
+      margin-left: 0px;
+    }
+  }
+}
+
 .galleryImage,
 .placeholder {
   background: var(--work-divider, rgba(93, 49, 54, 0.05));
