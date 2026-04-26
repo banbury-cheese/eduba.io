@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "@/styles/globals.scss";
 import { FilmGrain } from "@/components/FilmGrain";
 
@@ -35,6 +36,7 @@ export default function RootLayout({
       <body className={ibmPlexMono.variable} style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}>
         {children}
         <FilmGrain />
+        <Analytics />
       </body>
     </html>
   );
