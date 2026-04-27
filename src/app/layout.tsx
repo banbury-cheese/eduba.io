@@ -3,6 +3,7 @@ import { IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "@/styles/globals.scss";
 import { FilmGrain } from "@/components/FilmGrain";
+import { WebMCP } from "@/components/WebMCP";
 
 const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex-mono",
@@ -36,6 +37,7 @@ export default function RootLayout({
       <body className={ibmPlexMono.variable} style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}>
         {children}
         <FilmGrain />
+        <WebMCP />
         <Analytics />
       </body>
     </html>
