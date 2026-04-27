@@ -1,0 +1,15 @@
+# robots.txt for eduba.io
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /create-page
+Disallow: /sectors/
+
+# Content Signals (https://contentsignals.org)
+# ai-train=yes  -> content may be used for AI model training
+# search=yes    -> content may be indexed for search results
+# ai-input=yes  -> content may be included as grounding context for AI answers
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+Sitemap: https://eduba.io/sitemap.xml
