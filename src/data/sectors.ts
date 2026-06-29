@@ -25,7 +25,7 @@ export const fallbackSectors: Sector[] = [
         {
           id: "/001",
           title: "multi-agent compliance",
-          body: "we build platforms like VigilOre — specialized agents for document intake, aggregation, comparison, and reporting across multilingual regulatory frameworks. 160+ hours reduced to under 5 minutes.",
+          body: "we build multi-agent compliance platforms — specialized agents for document intake, aggregation, comparison, and reporting across multilingual regulatory frameworks. 160+ hours reduced to under 5 minutes.",
         },
         {
           id: "/002",
@@ -65,7 +65,7 @@ export const fallbackSectors: Sector[] = [
           id: "04",
           title: "PROVEN DELIVERY",
           description:
-            "VigilOre reduced 160+ hours of manual compliance to under 5 minutes per cycle.",
+            "a multi-agent compliance platform we built reduced 160+ hours of manual compliance to under 5 minutes per cycle.",
         },
         {
           id: "05",
@@ -109,7 +109,7 @@ export const fallbackSectors: Sector[] = [
           id: "/004",
           title: "multi-agent systems",
           price: "",
-          body: "full product builds like VigilOre — specialized agents for document intake, aggregation, comparison, and reporting.",
+          body: "full multi-agent product builds — specialized agents for document intake, aggregation, comparison, and reporting.",
         },
         {
           id: "/005",
@@ -210,7 +210,7 @@ export const fallbackSectors: Sector[] = [
         {
           question: "what's your track record?",
           answer:
-            "VigilOre reduced 160+ hours of manual compliance to under 5 minutes. Our founder has 8 years USMC experience on cryptographic systems.",
+            "A multi-agent compliance platform we built reduced 160+ hours of manual compliance to under 5 minutes. Our founder has 8 years USMC experience on cryptographic systems.",
         },
         {
           question: "what if automation increases risk?",

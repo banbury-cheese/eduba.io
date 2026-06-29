@@ -226,10 +226,6 @@ export const servicesContent = {
         "For the problems that do belong to AI, we build the systems. Multi-agent platforms, data pipelines, governance tooling, and production workflows. The team that trained with us stays involved so they understand what was built and can maintain it.",
       projects: [
         {
-          label: "VIGILORE COMPLIANCE PLATFORM",
-          href: "/works/vigilore",
-        },
-        {
           label: "ETHICS ENGINE RESEARCH",
           href: "/works/ethics-engine",
         },
@@ -390,53 +386,6 @@ const featuredWorkItems: WorkItem[] = [
       { id: "kpmg-01", label: "EXECUTIVE WORKSHOP SESSION", src: "/images/kpmg/01-executive-workshop.jpg" },
     ],
     theme: "dark",
-  },
-  {
-    id: "vigilore",
-    badge: "VigilOre",
-    title: "VigilOre Compliance Platform",
-    year: "2024",
-    client: "ARMETOUR",
-    tags: ["DEFENSE", "MULTI-AGENT SYSTEMS", "FULL PRODUCT BUILD", "INTELLIGENCE"],
-    summary:
-      "Multi-agent compliance platform for DRC mining operations. 160+ hours of manual work per cycle reduced to under 5 minutes. Full product — architecture to demo — designed and produced by Eduba.",
-    details: [
-      "Working with Armetour's defense and intelligence teams to integrate AI capabilities into operational workflows. This engagement draws on the same zero-defect thinking that comes from working on systems where failure isn't an abstraction. When the stakes are this high, computational orchestration matters: knowing which layer each problem belongs on, whether that's AI, traditional code, human judgment, or a decision not to build it at all.",
-      "VigilOre is the system that came out of this work: a multi-agent compliance platform for DRC mining operations. Four specialized agents handle document intake, aggregation, comparison, and reporting across multilingual regulatory frameworks. The entire product, from architecture to the demo video, was designed and produced by Eduba.",
-    ],
-    gallery: [
-      {
-        id: "vigilore-01",
-        label: "COMPLIANCE DASHBOARD OVERVIEW",
-        src: "/images/vigilore/01-dashboard.png",
-      },
-      {
-        id: "vigilore-02",
-        label: "START AUDIT FLOW",
-        src: "/images/vigilore/02-submit-audit-start.png",
-      },
-      {
-        id: "vigilore-03",
-        label: "AUDIT FORM REVIEW",
-        src: "/images/vigilore/03-submit-audit-form-review.png",
-      },
-      {
-        id: "vigilore-04",
-        label: "AUDIT REPORT LIST",
-        src: "/images/vigilore/04-audit-reports.png",
-      },
-      {
-        id: "vigilore-05",
-        label: "REPORT DASHBOARD",
-        src: "/images/vigilore/05-audit-report-dashboard.png",
-      },
-      {
-        id: "vigilore-06",
-        label: "DRILL DOWN ANALYSIS",
-        src: "/images/vigilore/06-audit-report-drill-down.png",
-      },
-    ],
-    theme: "skin",
   },
 ];
 
@@ -626,7 +575,7 @@ export const reviewsContent = {
       client: "Andrew Sdunich",
       company: "Armetour",
       quote:
-        "Always ahead of the competition and ready to deliver and exceed expectations. They built VigilOre from the ground up — four specialized agents handling multilingual compliance that turned 160 hours of manual work into minutes.",
+        "Always ahead of the competition and ready to deliver and exceed expectations. They built our multi-agent compliance system from the ground up — specialized agents handling multilingual compliance that turned 160 hours of manual work into minutes.",
       source: "LINKEDIN",
       profileHref: "https://www.linkedin.com/in/andrewzdunich/",
       sourceHref: "https://www.linkedin.com/in/andrewzdunich/",
